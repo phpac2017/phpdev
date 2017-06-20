@@ -11,6 +11,26 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('home');
+Route::get('/foo', function () {
+    return 'Hello World';
+});*/
+//Route::get('/show', 'HomeController@show');
+
+
+
+Route::resource('doctor', 'DoctorController');
+Route::resource('patient', 'PatientController');
+Route::resource('patientprescription','PatientprescriptionController');
+Route::resource('patientbloodtest','PatientbloodtestController');
+Route::resource('patientdoctorconversation','PatientdoctorconversationController');
+Route::resource('patientmedicalrecord','PatientmedicalrecordController');
+Route::resource('doctortimeslot','DoctortimeslotController');
+

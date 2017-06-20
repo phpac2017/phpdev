@@ -1,6 +1,6 @@
 <?php
 
-return [
+ return [
 
     /*
     |--------------------------------------------------------------------------
@@ -17,6 +17,7 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -45,6 +46,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+		'admin' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+		'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -68,12 +77,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+			//'table' => 'users',
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'admins' => [
+             'driver' => 'database',
+			 'model' => App\Admin::class,
+             
+         ],
     ],
 
     /*
@@ -96,6 +107,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+		 'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 

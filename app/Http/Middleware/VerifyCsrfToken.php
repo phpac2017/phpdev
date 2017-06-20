@@ -13,5 +13,19 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
+		 'doctor',		
+		 'doctor/*',
+		 'patient',
+		 'patient/*',
+		 'patientprescription',
+		 'patientprescription/*',
+		 'patientbloodtest',
+		 'patientbloodtest/*',
+		 'patientdoctorconversation',
+		 'patientdoctorconversation/*',
+		 'patientmedicalrecord',
+		 'patientmedicalrecord/*',
+		 'doctortimeslot',
+		 'doctortimeslot/*'
     ];
 }
