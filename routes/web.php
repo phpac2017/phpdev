@@ -24,7 +24,9 @@ Route::get('/foo', function () {
 });*/
 //Route::get('/show', 'HomeController@show');
 
-
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::resource('doctor', 'DoctorController');
 Route::resource('patient', 'PatientController');
