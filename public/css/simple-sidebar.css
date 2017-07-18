@@ -107,11 +107,6 @@
     margin:0;
 }
 
-@media only screen and (max-width: 767px) {
-#page-content-wrapper {
-    position: relative;
-}
-}
 
 @media(min-width:768px) {
     #wrapper {
@@ -126,14 +121,14 @@
 
     #sidebar-wrapper {
         width: 250px;
-		top:0;
+        top:0;
     }
 
     #wrapper.toggled #sidebar-wrapper {
         width: 250px;
     }
     #wrapper.toggled-2 #sidebar-wrapper {
-        width: 0;
+        width: 43px;
     }
     #wrapper.toggled-2 #sidebar-wrapper:hover {
         width: 250px;

@@ -263,7 +263,6 @@
         <!-- /#page-content-wrapper -->
 @endsection
 	@section('scripts')
-
 <script>
 $(document).ready(function(){
 
@@ -296,18 +295,7 @@ $('.responsive-tabs').responsiveTabs({
   $("#datepicker").datepicker({ 
         autoclose: true, 
         todayHighlight: true
-  }).datepicker('update', new Date());;
-
-  
- 
-
+  }).datepicker('update', new Date());
 });
-
-
-
-
-
- 
-
 </script>
 @stop

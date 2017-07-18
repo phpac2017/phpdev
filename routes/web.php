@@ -24,7 +24,6 @@ Route::get('/foo', function () {
 });*/
 //Route::get('/show', 'HomeController@show');
 
-
 //Index Page
 Route::get('/', function () {
     return view('index');

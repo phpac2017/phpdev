@@ -416,7 +416,6 @@
 	</div>
 		
 </section>
-
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
@@ -463,7 +462,6 @@ $('.responsive-tabs').responsiveTabs({
         autoclose: true, 
         todayHighlight: true
   }).datepicker('update', new Date());;
-
 });
 
 </script>

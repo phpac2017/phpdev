@@ -599,8 +599,6 @@
 		$( '.slider-overlay' ).css("left", finalwidth);
 	}
 	});
-
 	</script>
-
 </body>
 </html>

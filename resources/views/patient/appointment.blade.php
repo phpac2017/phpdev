@@ -114,8 +114,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>2</td>
@@ -130,8 +129,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>3</td>
@@ -146,8 +144,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>4</td>
@@ -162,8 +159,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>5</td>
@@ -236,8 +232,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>2</td>
@@ -252,8 +247,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>3</td>
@@ -284,8 +278,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									  <tr>
 										<td>5</td>
@@ -300,8 +293,7 @@
 										<td class="text-center">
 											<span class="active-btn"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></span>
 											<span class="inactive-btn"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
-										</td>
-										
+										</td>										
 									  </tr>
 									</tbody>
 							  </table>
@@ -322,9 +314,7 @@
 						</ul>
 				  </div>
 				</div>
-			</div>
-			
-			
+			</div>			
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>
 			</div>
@@ -338,7 +328,6 @@
 @section('scripts')
 <script>
 		$(document).ready(function(){
-
 $('.responsive-tabs').responsiveTabs({
   accordionOn: ['xs']
 });
