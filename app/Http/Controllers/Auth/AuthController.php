@@ -102,7 +102,7 @@ class AuthController extends Controller
             'speciality' => $data['speciality'],
 			'experience' => $data['experience'],
             'mrc_no' => $data['mrc_no'],
-			'is_activated' => 0,
+			'is_activated' => 1,
         ]);
     }
 
@@ -188,10 +188,10 @@ class AuthController extends Controller
             DB::table('user_activations')->insert(['id_user'=>$user['id'],'token'=>$user['link']]);
             DB::table('role_user')->insert(['user_id'=>$user['id'],'role_id'=>$input['user_role']]);
 
-            Mail::send('emails.default', $user, function($message) use ($user) {
+           /*  Mail::send('emails.default', $user, function($message) use ($user) {
                 $message->to($user['email']);
                 $message->subject('Site - Activation Code');
-            });
+            }); */
 
             return 1;
 		}else{			
