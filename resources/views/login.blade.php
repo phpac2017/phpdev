@@ -44,144 +44,152 @@
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="home1">
-								<p class="reg_error"></p>
-									{{ csrf_field() }}
-									<!--<div class="login-social-icons">
-										<a href="#" class="login-fb">Facebook</a>
-										<a href="#" class="login-gplus">Google Plus</a>
-									</div>
-									<span class="or">or</span> -->
-									<div class="form-group">
-										<label for="pwd">User Type<span class="mandatory">*</span></label>
-										<select class="form-control" name="user_role" id="user_role">
-											<option value="2" selected>Doctor</option>
-											<option value="3">Patient</option>
-											
-										</select>
-									</div>
-									
-									<div class="form-group">
-										<label for="usr">Name: <span class="mandatory">*</span></label>
-										<input type="text" name="name" value="" class="form-control" id="name" autofocus>
-									</div>
-									
-									<div class="form-group">
-										<div class="radio-box">
-										 <input id="radio1" type="radio" name="gender[]" checked="checked" value="M"><label for="radio1">Male</label>
-										 <input id="radio2" type="radio" name="gender[]" value="F"><label for="radio2">Female</label>
+								<form id="register_form" method="POST">
+									<p class="reg_error"></p>
+										{{ csrf_field() }}
+										<div class="form-group">
+											<label for="pwd">User Type<span class="mandatory">*</span></label>
+											<select class="form-control" name="user_role" id="user_role">
+												<option value="2" <?php echo (session('user_role',2)==2)?'selected':'';?>>Doctor</option>
+												<option value="3"<?php echo (session('user_role',2)==3)?'selected':'';?>>Patient</option>
+											</select>
 										</div>
-									</div>
-									
-									<div class="row">
-										<div class="col-md-3 col-sm-3 col-xs-12">
-											<div class="form-group">
-												<label for="pwd">Country Code: <span class="mandatory">*</span></label>
-												<select class="form-control" name="country_code" id="country_code">
-													<option value="+91" selected>+91</option>
-													<option value="+241">+241</option>
-													<option value="+285">+285</option>
-													<option value="+84">+84</option>
-												</select>
+										
+										<div class="form-group">
+											<label for="usr">Name: <span class="mandatory">*</span></label>
+											<input type="text" name="name" value="" class="form-control" id="name" autofocus>
+										</div>
+										
+										<div class="form-group">
+											<div class="radio-box">
+											 <input id="radio1" type="radio" name="gender[]" checked="checked" value="M"><label for="radio1">Male</label>
+											 <input id="radio2" type="radio" name="gender[]" value="F"><label for="radio2">Female</label>
 											</div>
 										</div>
-										<div class="col-md-9 col-sm-9 col-xs-12">
-											<div class="form-group">
-												<label for="pwd">Mobile No: <span class="mandatory">*</span></label>
-												<input type="text" name="mobile_number" value="" class="form-control" id="mobile_number">
+										
+										<div class="row">
+											<div class="col-md-3 col-sm-3 col-xs-12">
+												<div class="form-group">
+													<label for="pwd">Country Code: <span class="mandatory">*</span></label>
+													<select class="form-control" name="country_code" id="country_code">
+														<option value="+91" selected>+91</option>
+														<option value="+241">+241</option>
+														<option value="+285">+285</option>
+														<option value="+84">+84</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-9 col-sm-9 col-xs-12">
+												<div class="form-group">
+													<label for="pwd">Mobile No: <span class="mandatory">*</span></label>
+													<input type="text" name="mobile_number" value="" class="form-control" id="mobile_number">
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="form-group doctor-fields">
-										<label for="pwd">Nationality<span class="mandatory">*</span></label>
-										<select class="form-control" name="nationality" id="nationality">
-											<option value="1" selected>Indian</option>
-											<option value="2">Pakistan</option>
-											<option value="3">Japan</option>
-											<option value="4">Srilanka</option>
-										</select>
-									</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Nationality<span class="mandatory">*</span></label>
+											<select class="form-control" name="nationality" id="nationality">
+												<option value="1" selected>Indian</option>
+												<option value="2">Pakistan</option>
+												<option value="3">Japan</option>
+												<option value="4">Srilanka</option>
+											</select>
+										</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Language<span class="mandatory">*</span></label>
+											<select class="form-control" name="language" id="language" multiple="multiple">
+												<option value="1" selected>Tamil</option>
+												<option value="2">English</option>
+												<option value="3">Hindi</option>
+												<option value="4">Malayalam</option>
+											</select>
+										</div>
 									
-									
-									<div class="form-group doctor-fields">
-										<label for="pwd">Language<span class="mandatory">*</span></label>
-										<select class="form-control" name="language" id="language" multiple="multiple">
-											<option value="1" selected>Tamil</option>
-											<option value="2">English</option>
-											<option value="3">Hindi</option>
-											<option value="4">Malayalam</option>
-										</select>
-									</div>
-								
-									
-									<div class="form-group">
-										<label for="pwd">Email: <span class="mandatory">*</span></label>
-										<input type="email" name="email" value="" class="form-control" id="email">
-									</div>
-									<div class="form-group">
-										<label for="pwd">Password: <span class="mandatory">*</span></label>
-										<input type="password" name="password" value="" class="form-control" id="password">
-									</div>
-									
-									<div class="form-group doctor-fields">
-										<label for="pwd">Qualification<span class="mandatory">*</span></label>
-										<select class="form-control" name="qualification" id="qualification" multiple="multiple">
-											<option value="1" selected>Bsc</option>
-											<option value="2">Msc</option>
-											<option value="3">M.com</option>
-											<option value="4">B.com</option>
-											<option value="5">Others</option>
-										</select>
-									</div>
-									
-									
-									<div class="form-group doctor-fields">
-										<label for="pwd">Speciality<span class="mandatory">*</span></label>
-										<select class="form-control" name="speciality" id="speciality" multiple="multiple">
-											<option value="1" selected>Acupressurist</option>
-											<option value="2">Acupressurist</option>
-											<option value="3">Acupressurist</option>
-											<option value="4">Acupressurist</option>
-											<option value="5">Acupressurist</option>
-										</select>
-									</div>
-									
-									
-									<div class="form-group doctor-fields">
-										<label for="pwd">Experience<span class="mandatory">*</span></label>
-										<select class="form-control" name="experience" id="experience">
-											<option value="1" selected>1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-									
-									<div class="form-group doctor-fields">
-										<label for="pwd">Medical Registration Number <span class="mandatory">*</span></label>
-										<input type="text" name ="mrc_no" placeholder="Medical Registration Number" class="form-control" id="mrc_no">
-									</div>
-									
-									<div class="checkbox ch-box">
-										<input id="checkbox1" type="checkbox" name="Checkbox" value="Box"><label for="checkbox1">I agree to the terms & conditions</label>
-									</div>
-									<button class="btn btn-formsubmit" id="register">Let's Get Started</button>
+										<div class="form-group">
+											<label for="pwd">Email: <span class="mandatory">*</span></label>
+											<input type="email" name="email" value="" class="form-control" id="email">
+										</div>
+										<div class="form-group">
+											<label for="pwd">Password: <span class="mandatory">*</span></label>
+											<input type="password" name="password" value="" class="form-control" id="password">
+										</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Qualification<span class="mandatory">*</span></label>
+											<select class="form-control" name="qualification" id="qualification" multiple="multiple">
+												<option value="1" selected>M.B.B.S</option>
+												<option value="2">B.D.S</option>
+												<option value="3">B.P.T</option>
+												<option value="4">B.O.T</option>
+												<option value="5">B.A.M.S</option>
+												<option value="6">B.H.M.S</option>
+												<option value="7">B.U.M.S</option>
+												<option value="8">MS</option>
+												<option value="9">MD</option>
+												<option value="10">Mch</option>
+											</select>
+										</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Speciality<span class="mandatory">*</span></label>
+											<select class="form-control" name="speciality" id="speciality" multiple="multiple">
+												<option value="1" selected>Anesthesiologist</option>
+												<option value="2">Obstetrician</option>
+												<option value="3">Cardiologist</option>
+												<option value="4">Dermatologist</option>
+												<option value="5">Gastroenterologist</option>
+												<option value="6">Gynecologist</option>
+												<option value="7">Hematologist</option>
+												<option value="8">Neonatologist</option>
+												<option value="9">Nephrologist</option>
+												<option value="10">Oncologist</option>
+											</select>
+										</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Experience<span class="mandatory">*</span></label>
+											<select class="form-control" name="experience" id="experience">
+												<option value="1" selected>1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">5+</option>
+												<option value="7">10+</option>
+												<option value="8">15+</option>
+												<option value="9">20+</option>
+												<option value="10">25+</option>
+											</select>
+										</div>
+										
+										<div class="form-group doctor-fields">
+											<label for="pwd">Medical Registration Number <span class="mandatory">*</span></label>
+											<input type="text" name ="mrc_no" placeholder="Medical Registration Number" class="form-control" id="mrc_no">
+										</div>
+										
+										<div class="checkbox ch-box">
+											<input id="accept_terms" type="checkbox" name="accept_terms"><label for="accept_terms">I agree to the terms & conditions</label>
+										</div>
+										<button type="submit" class="btn btn-formsubmit" id="register">Let's Get Started</button>
+									</form>
 							</div>
 							<div class="tab-pane login-user" id="profile1">
-								<p class="login_error"></p>
-									{{ csrf_field() }}
-
+								<form id="login_form" method="POST">
+									<p class="login_error"></p>
+										{{ csrf_field() }}
 									<div class="form-group">
 										<label for="email">E-Mail Address</label>
 										<div class="">
-											<input id="login_email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+											<input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('email') }}" required autofocus>
 										</div>
 									</div>
 								
 									<div class="form-group">
 										<label for="password">Password</label>
 										<div class="">
-											<input id="login_password" type="password" class="form-control" name="password" required>
+											<input id="login_password" type="password" class="form-control" name="login_password" required>
 										</div>
 									</div>
 									
@@ -195,7 +203,8 @@
 											<p><a href="#">Forgot Password?</a></p>
 										</div>
 									</div>
-									<button class="btn btn-formsubmit" id="login">Submit</button>								
+									<button type="submit" class="btn btn-formsubmit" id="login">Submit</button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -271,30 +280,35 @@
 	<script>
 	$(document).ready(function(){
 
-	$('.responsive-tabs').responsiveTabs({
-	  accordionOn: ['xs']
-	});
+		$('.responsive-tabs').responsiveTabs({
+		  accordionOn: ['xs']
+		});
 
 		<!-- Multiselect -->
 		$('#qualification').multiselect({
 		  buttonWidth: '100%'
 		});
 		
-		 $('#speciality').multiselect({
+		$('#speciality').multiselect({
 		  buttonWidth: '100%'
 		});
+		
 		$('#language').multiselect({
 		  buttonWidth: '100%'
 		});
+		
 		$('#nationality').multiselect({
 		  buttonWidth: '100%'
 		});
+		
 		$('#country_code').multiselect({
 		  buttonWidth: '100%'
 		});
+		
 		$('#experience').multiselect({
 		  buttonWidth: '100%'
 		});
+		
 		$("#user_role").on('change',function(){
 			if($( "#user_role option:selected" ).text()=='Patient'){
 				$(".doctor-fields").hide();
@@ -303,6 +317,11 @@
 			}
 			
 		});
+		
+		//Determine User Type
+		@if(session('user_role',2)==3)
+			$(".doctor-fields").hide();
+		@endif
 
 	});
 

@@ -55,12 +55,14 @@ Route::post('testmail', 'EmailController@send');
 
 //Patient Page
 Route::get('patient', function () {
+	session()->flash('user_role',3);
     return view('patient');
 });
 
 //Doctor Page
 Route::get('doctor', function () {
-	return view('doctor');
+	session()->flash('user_role',2);
+    return view('doctor');
 });
 
 Route::group(['middleware' => 'auth'], function() {

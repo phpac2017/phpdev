@@ -3104,3 +3104,6 @@ html[xmlns] .clearfix {	display: block; }
 	text-align:center;
 	display:block;
 }
+.form-control.error{
+	border : 1px solid #FF0000;
+}
