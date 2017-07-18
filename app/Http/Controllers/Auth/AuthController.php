@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Log;
 use Illuminate\Support\Facades\Input;
+use Entrust;
 use Redirect;
 use DB;
 use Mail;
@@ -41,9 +42,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
         //$this->middleware('guest')->except('logout');
+		//$this->user = $user;
     }
 
     /**
@@ -133,7 +135,13 @@ class AuthController extends Controller
 				if(auth()->user()->is_activated == '0'){
 					return -1;
 				}else{
-					return 1;
+					if(auth()->user()->hasRole('admin')){
+						return 'A';
+					}elseif(auth()->user()->hasRole('doctor')){
+						return 'D';
+					}else{
+						return 'P';
+					}
 				}            
 			}else{
 				return 0;

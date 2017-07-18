@@ -31,7 +31,7 @@
 <body>
 
 <div class="login-logo">
-	<a class="#" href="/"><img src="images/logo1.jpg" alt="" /></a>
+	<a class="#" href="/"><img src="images/login-logo.jpg" alt="" /></a>
 </div>
 
 <section class="login-bg">

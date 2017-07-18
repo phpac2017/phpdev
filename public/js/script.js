@@ -177,12 +177,28 @@ $('#login').on('click',function(e){
 				console.log("Data"+data);
 				$("#divLoading").removeClass('show');
 				$('.login_error').html('All Fields are Mandatory');
+			}else if(data=='A'){
+				console.log("Data"+data);
+				$("#divLoading").removeClass('show');
+				$('.login_error').html('');
+				var URL  =  window.location.protocol+'//'+window.location.host+'/admin/profile';
+				location.href = URL;
+			}else if(data=='D'){
+				console.log("Data"+data);
+				$("#divLoading").removeClass('show');
+				$('.login_error').html('');
+				var URL  =  window.location.protocol+'//'+window.location.host+'/doctor/profile';
+				location.href = URL;
+			}else if(data=='P'){
+				console.log("Data"+data);
+				$("#divLoading").removeClass('show');
+				$('.login_error').html('');
+				var URL  =  window.location.protocol+'//'+window.location.host+'/patient/profile';
+				location.href = URL;
 			}else{
 				console.log("Data"+data);
 				$("#divLoading").removeClass('show');
 				$('.login_error').html('');
-				var URL  =  window.location.protocol+'//'+window.location.host+'/profile';
-				location.href = URL;
 			}
 
 		//form clear

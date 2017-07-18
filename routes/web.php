@@ -60,77 +60,101 @@ Route::get('patient', function () {
 
 //Doctor Page
 Route::get('doctor', function () {
-    return view('doctor');
+	return view('doctor');
 });
 
-//Doctor Personal & Contact Details Page
-Route::get('profile', function () {
-    return view('doctor/profile');
+Route::group(['middleware' => 'auth'], function() {
+	Route::group(['prefix' => 'doctor', 'middleware' => ['role:doctor']], function() {
+		
+		//Doctor Personal & Contact Details Page
+		Route::get('profile', function () {
+			return view('doctor/profile');
+		});
+		
+		//Doctor Education & Specialization Page
+		Route::get('specialization', function () {
+			return view('doctor/education_specailization');
+		});
+
+		//Doctor Registration & Documents Page
+		Route::get('documents', function () {
+			return view('doctor/registration_documents');
+		});
+
+		//Doctor Services & Experience Page
+		Route::get('services', function () {
+			return view('doctor/services_experience');
+		});
+
+		//Doctor Award & Memberships Page
+		Route::get('awards', function () {
+			return view('doctor/awards_membership');
+		});
+		
+	});
 });
 
-//Doctor Education & Specialization Page
-Route::get('specialization', function () {
-    return view('doctor/education_specailization');
+Route::group(['middleware' => 'auth'], function() {
+	Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
+		Route::resource('roles','RoleController');
+		Route::resource('users','UserController');
+		Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+		Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
+		Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
+		Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
+		Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
+		Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
+		Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
+	});	
 });
 
-//Doctor Registration & Documents Page
-Route::get('documents', function () {
-    return view('doctor/registration_documents');
+Route::group(['middleware' => 'auth'], function() {
+	Route::group(['prefix' => 'patient', 'middleware' => ['role:patient']], function() {
+		
+		//Patient Dashboard Page
+		Route::get('dashboard', function () {
+			return view('patient/dashboard');
+		});
+
+
+		//Patient Profile Page
+		Route::get('profile', function () {
+			return view('patient/profile');
+		});
+
+		//Patient Appointment Page
+		Route::get('book_appointment', function () {
+			return view('patient/appointment');
+		});
+
+		//Patient Medical Records Page
+		Route::get('medical_records', function () {
+			return view('patient/medical_records');
+		});
+
+		//Feedback Page
+		Route::get('feedback', function () {
+			return view('patient/feedback');
+		});
+
+		//Payments Page
+		Route::get('payments', function () {
+			return view('patient/payments');
+		});
+		
+	});
 });
 
-//Doctor Services & Experience Page
-Route::get('services', function () {
-    return view('doctor/services_experience');
-});
-
-//Doctor Award & Memberships Page
-Route::get('awards', function () {
-    return view('doctor/awards_membership');
-});
-
-//Patient Dashboard Page
-Route::get('dashboard', function () {
-    return view('patient/dashboard');
-});
 
 
-//Patient Profile Page
-Route::get('patient_profile', function () {
-    return view('patient/profile');
-});
 
-//Patient Appointment Page
-Route::get('book_appointment', function () {
-    return view('patient/appointment');
-});
 
-//Patient Medical Records Page
-Route::get('patient_medical_records', function () {
-    return view('patient/medical_records');
-});
 
-//Feedback Page
-Route::get('feedback', function () {
-    return view('patient/feedback');
-});
-
-//Payments Page
-Route::get('payments', function () {
-    return view('patient/payments');
-});
-
-Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
-Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
-Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
-Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
-Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
-Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
 Route::get('user/activation/{token}', 'Auth\AuthController@userActivation');
 
-Route::resource('users','UserController');
-Route::resource('roles','RoleController');
+
+
 
 //Route::resource('doctor', 'DoctorController');
 //Route::resource('patient', 'PatientController');

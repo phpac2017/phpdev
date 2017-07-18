@@ -10,17 +10,15 @@
 
 	<title>@yield('title')</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css" />
-
-	<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css">
-
+	<link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet">
 	<!-- Custom CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/simple-sidebar.css" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
 
 	<!-- <link rel="stylesheet" href="css/bootstrap-responsive-tabs.css"> -->
 
@@ -38,14 +36,13 @@
 <body>
 <header class="">
 	<div class="login-logo logo-left">
-		 <a class="#" href="/"><img src="images/login-logo.jpg" alt="" /></a> 
+		 <a class="#" href="/"><img src="{{ asset('images/login-logo.jpg') }}" alt="" /></a> 
 	</div>
 	@if (!Auth::guest())
-	<div class="user-profile">
-		
+	<div class="user-profile">		
 		<ul class="user-img">
 			<li>
-				<span><img src="images/random-avatar7.jpg" alt="" /></span>
+				<span><img src="{{ asset('images/random-avatar7.jpg') }}" alt="" /></span>
 			</li>
 			<li>
 				Welcome,
@@ -69,11 +66,11 @@
 				<aside class="leftsidebar">
 					<h4>PROFILE</h4>
 					<ul class="left-profile">
-						<li><a href="{{ url('patient_profile') }}"><span><img src="images/commitments-list.png" alt="" /></span>View / Update Profile</a></li>
-						<li class="active"><a href="{{ url('book_appointment') }}"><span><img src="images/commitments-list.png" alt="" /></span>Appointment</a></li>
-						<li><a href="{{ url('patient_medical_records') }}"><span><img src="images/commitments-list.png" alt="" /></span>Medical Records</a></li>
-						<li><a href="{{ url('feedback') }}"><span><img src="images/commitments-list.png" alt="" /></span>Feedback</a></li>
-						<li><a href="{{ url('payments') }}"><span><img src="images/commitments-list.png" alt="" /></span>Payments</a></li>
+						<li><a href="{{ url('patient/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>View / Update Profile</a></li>
+						<li class="active"><a href="{{ url('patient/book_appointment') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Appointment</a></li>
+						<li><a href="{{ url('patient/medical_records') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Medical Records</a></li>
+						<li><a href="{{ url('patient/feedback') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Feedback</a></li>
+						<li><a href="{{ url('patient/payments') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Payments</a></li>
 					</ul>
 				</aside>
 			</div><!-- /#sidebar-wrapper -->
@@ -81,20 +78,19 @@
 			 @yield('content')
 			<!-- /#page-content-wrapper -->
 		</div>		
-	</div>
-		
+	</div>		
 </section>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.bootstrap-responsive-tabs.min.js"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.bootstrap-responsive-tabs.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/jquery.matchHeight.js"></script>
- <script src="js/sidebar_menu.js"></script>
- @yield('scripts')
+<script src="{{ asset('js/owl.carousel.js') }}"></script>
+<script src="{{ asset('js/jquery.matchHeight.js') }}"></script>
+<script src="{{ asset('js/sidebar_menu.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
