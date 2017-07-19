@@ -50,6 +50,19 @@ $(function(){
 		},
 		errorPlacement: function(error, element) {},
 		submitHandler:function(){
+			
+			var email_err = $("#email_err").val();
+			
+			if(email_err==0){
+				$(".email").html('');
+			}else{
+				$(".email").css('color','red');
+				$(".email").html('This Email is already registered');
+				$(".email").css('text-align','center');
+				$("#email").focus();
+				return false;
+			}
+			
 			//Validate Checkbox
 			if($("#accept_terms").is(':checked')==false){
 				$("html, body").animate({ scrollTop: 0 }, "slow");
@@ -239,3 +252,61 @@ $(function(){
 	});
 });
 /******************************************************************************************************/
+/***************************** Check Existing Email ***************************************************/
+
+function validateEmail(id){
+	var email = jQuery("#"+id).val();
+	if(valEmailFormat(email)){
+		var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/checkEmail';	
+		$.ajax({
+			type: "POST",
+			url: setAjaxUrl,
+			data: {email: email},
+			dataType: 'html',
+			cache: false,
+			beforeSend: function (xhr) {
+				var token = $('meta[name="_token"]').attr('content');
+			if (token) {
+				return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+			}
+			},
+			error: function ( xhr, ajaxOptions, thrownError )
+			{
+				if (xhr.status == 500){
+					$('.in-process').html('Error code:- '+xhr.status+', Error Description:- '+thrownError+', Please check your log file for more information');
+				}else {
+					$('.in-process').html('Error code:- '+xhr.status+', Error Description:- '+thrownError);
+				}
+			},
+			success: function(data) {
+				if(data==0){
+					$("."+id).html('');
+					$("#"+id+"_err").val(1);
+				}else{
+					$("."+id).css('color','red');
+					$("."+id).html('This Email is already registered');
+					$("."+id).css('text-align','center');
+					$("#"+id).focus();
+					$("#"+id+"_err").val(1);
+				}
+
+			//form clear
+			$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+				//location.reload();	
+			}
+		});
+	}else{
+		$("."+id).css('color','red');
+		$("."+id).html('Please Enter Valid Email');
+		$("."+id).css('text-align','center');
+		$("#"+id).focus();
+	}	
+}
+	
+/*************************************************************************************************************/
+
+// Script to validate Email
+	function valEmailFormat(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}

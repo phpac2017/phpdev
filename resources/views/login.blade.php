@@ -106,11 +106,13 @@
 												<option value="4">Malayalam</option>
 											</select>
 										</div>
-									
+										
 										<div class="form-group">
 											<label for="pwd">Email: <span class="mandatory">*</span></label>
-											<input type="email" name="email" value="" class="form-control" id="email">
+											<input type="email" name="email" value="" class="form-control" id="email" onBlur="validateEmail(this.id);">
+											<span class="email"></span>
 										</div>
+										
 										<div class="form-group">
 											<label for="pwd">Password: <span class="mandatory">*</span></label>
 											<input type="password" name="password" value="" class="form-control" id="password">
@@ -172,6 +174,8 @@
 										<div class="checkbox ch-box">
 											<input id="accept_terms" type="checkbox" name="accept_terms"><label for="accept_terms">I agree to the terms & conditions</label>
 										</div>
+										
+										<input type="hidden" name="email_err" id="email_err"/>
 										<button type="submit" class="btn btn-formsubmit" id="register">Let's Get Started</button>
 									</form>
 							</div>
@@ -183,6 +187,8 @@
 										<label for="email">E-Mail Address</label>
 										<div class="">
 											<input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('email') }}" required autofocus>
+											<span class="login_email"></span>
+											<input type="hidden" name="login_email_err" id="login_email_err"/>
 										</div>
 									</div>
 								

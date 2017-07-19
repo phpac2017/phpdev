@@ -56,7 +56,7 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-		//echo "<pre>";print_r($data);//exit;
+		Log::info('Server Side Validation In Progress..');
         $result =  Validator::make($data, [
             'name' => 'required|max:255',
 			'gender' => 'required',
@@ -71,13 +71,6 @@ class AuthController extends Controller
 			'experience' => 'required',
 			'mrc_no' => 'required|unique:users',
         ]);
-		//$result = Validator::make($input, $rules)->passes(); // true
-		/* if($result->fails()){
-			echo 'failed';
-		}else{
-			echo 'passed';
-		}
-		exit; */
     }
 
     /**
@@ -88,6 +81,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+		Log::info('Getting User Table Inputs..');
 		//Insert into users table
         return User::create([
             'name' => $data['name'],
@@ -114,6 +108,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+		Log::info('AJAX Call - Login Process..');
 		if($request->ajax()) {
 			//Get Form Values
 			$email = $request->input('email');
@@ -128,22 +123,29 @@ class AuthController extends Controller
 
 			if ($validator->fails()) {
 				// get the error messages from the validator
+				Log::info('AJAX Call - Server Side Validation Failed..');
 				return 2;
 			}
 			
-			if(auth()->attempt(array('email' => $request->input('email'), 'password' => $request->input('password'))))	{	
+			if(auth()->attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), $request->get('remember', 0))){	
+				$getName = auth()->user()->name;
 				if(auth()->user()->is_activated == '0'){
+					Log::info('User Logged - Email not yet verified..');
 					return -1;
 				}else{
 					if(auth()->user()->hasRole('admin')){
+						Log::info('Logged User is Admin - '.$getName);
 						return 'A';
 					}elseif(auth()->user()->hasRole('doctor')){
+						Log::info('Logged User is Doctor - '.$getName);
 						return 'D';
 					}else{
+						Log::info('Logged User is Patient - '.$getName);
 						return 'P';
 					}
 				}            
 			}else{
+				Log::info('User Details Not Found');
 				return 0;
 			}
 			
@@ -160,9 +162,11 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+		Log::info('AJAX Call - Registration Process..');
 		if($request->ajax()) {
 			$input = $request->all();	
 			//AJAX Implementation
+			Log::info('AJAX Call - Registration Validation..');
 			$validator = Validator::make($request->all(), [
 				'name' => 'required',
 				'gender' => 'required',
@@ -185,16 +189,31 @@ class AuthController extends Controller
 			$user = $this->create($input)->toArray();
             $user['link'] = str_random(30);
 
+			$ts_unique_id = ' Random No '.time();
+			
+			Log::info('Inserting values into User Activations Table..');
             DB::table('user_activations')->insert(['id_user'=>$user['id'],'token'=>$user['link']]);
+			Log::info('Inserting values into Role User Table..');
             DB::table('role_user')->insert(['user_id'=>$user['id'],'role_id'=>$input['user_role']]);
 
-           /*  Mail::send('emails.default', $user, function($message) use ($user) {
+			//Code to send E-mail
+            /*Mail::send('emails.default', $user, function($message) use ($user) {
                 $message->to($user['email']);
                 $message->subject('Site - Activation Code');
-            }); */
-
+            });
+			
+			if( count(Mail::failures()) > 0 ){
+			   Log::info('There was one or more failures while sending email.');
+			   foreach(Mail::failures as $email_address){
+				   Log::info($ts_unique_id." - $email_address ");
+			   }
+			}else{
+				Log::info($ts_unique_id." - Mail sent successfully.");
+			} */
+			Log::info('User Registered Successfully..');
             return 1;
-		}else{			
+		}else{	
+			Log::info('Invalid Call.. Operation Aborted.');
 			return 0;
 		}        
     }
@@ -207,9 +226,11 @@ class AuthController extends Controller
      */
     public function userActivation($token)
     {
-        $check = DB::table('user_activations')->where('token',$token)->first();
-
+        Log::info('User Activation Process Started..');
+		$check = DB::table('user_activations')->where('token',$token)->first();
+		
         if(!is_null($check)){
+			Log::info('User Activation Process Started..');
             $user = User::find($check->id_user);
 
             if($user->is_activated == 1){
@@ -218,12 +239,15 @@ class AuthController extends Controller
             }
 
             $user->update(['is_activated' => 1]);
+			Log::info('User Activated Successfully');
             DB::table('user_activations')->where('token',$token)->delete();
-
+			Log::info('Token Deleted from User Activations Table');
             return redirect()->to('account_activation')
                 ->with('status',"AC");
-        }
-
+        }else{
+			Log::info('Token Not Found');
+		}
+		Log::info('Token Not Found');
         return redirect()->to('account_activation')
                 ->with('status',"NA");
     }

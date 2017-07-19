@@ -37,6 +37,8 @@ Route::get('login', function () {
 Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('register', [ 'as' => 'register', 'uses' => 'Auth\AuthController@register']);
 
+Route::post('checkEmail', [ 'as' => 'checkEmail', 'uses' => 'FrontEndController@checkEmail']);
+
 //Registration Completed Page
 Route::get('register_complete', function () {
     return view('registration_complete');
