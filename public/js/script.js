@@ -22,10 +22,18 @@ $(function(){
 				required: true
 			},
 			nationality: {
-				required: true,
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
 			},
 			language:{
-				required:true
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
 			},
 			email: {
 				required: true,
@@ -36,40 +44,44 @@ $(function(){
 				minlength:6
 			},
 			qualification:{
-				required:true
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
 			},
 			speciality: {
-				required: true
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
 			},
 			experience:{
-				required:true
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
 			},
 			mrc_no:{
-				required:true
-			}
+				required: function(element){
+					if($("#user_role").val()==3){
+						return false;
+					}
+				},
+			} 
 		},
 		errorPlacement: function(error, element) {},
 		submitHandler:function(){
-			
-			var email_err = $("#email_err").val();
-			
-			if(email_err==0){
-				$(".email").html('');
-			}else{
-				$(".email").css('color','red');
-				$(".email").html('This Email is already registered');
-				$(".email").css('text-align','center');
-				$("#email").focus();
-				return false;
-			}
-			
+				
 			//Validate Checkbox
 			if($("#accept_terms").is(':checked')==false){
 				$("html, body").animate({ scrollTop: 0 }, "slow");
-				$('p.reg_error').text('Please accept terms and conditions');
+				$('p.reg_error').html('Please accept terms and conditions');
 				$('p.reg_error').show();
 				$('p.reg_error').fadeOut(4000, function() {
-					$('p.reg_error').text('');
+					$('p.reg_error').html('');
 				});
 				return false;
 			}
@@ -80,7 +92,6 @@ $(function(){
 				$(".doctor-fields select").val('');
 			}
 
-			//e.defaultPrevented;//preventDefault();
 			var form = jQuery(this).parents("form:first");
 			$("#divLoading").addClass('show');
 			var name = jQuery("#name").val();
@@ -102,7 +113,7 @@ $(function(){
 			var user_role=jQuery("#user_role").val();
 			//alert(name+"--"+gender+"--"+email+"--"+password+"--"+country_code+"--"+mobile_number+"--"+nationality+"--"+language+"--"+qualification+"--"+speciality+"--"+experience);
 			var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/register';
-			//var setAjaxUrl  =  'http://localhost/demoapp/poc/public/register';
+			//var setAjaxUrl  =  'http://localhost/demoapp2/poc/public/register';
 	
 			$.ajax({
 				type: "POST",
@@ -113,31 +124,33 @@ $(function(){
 				beforeSend: function (xhr) {
 					var token = $('meta[name="_token"]').attr('content');
 					if (token) {
-					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+						return xhr.setRequestHeader('X-CSRF-TOKEN', token);
 					}
 					$("#divLoading").addClass('show');		
 				},
 				error: function ( xhr, ajaxOptions, thrownError )
 				{
-					if (xhr.status == 500){
-					$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError+', Please check your log file for more information');				
-					$("#divLoading").css('display','block');
-					$("#divLoading").css('text-align','center');
-					$("#divLoading").css('color','red');
-					$("#divLoading").removeClass('show');
+					if(xhr.status == 422){					    
+						//Displaying Server side Validation Errors
+						$("html, body").animate({ scrollTop: 0 }, "slow");
+						var validate_err= jQuery.parseJSON(xhr.responseText);
+						$.each(validate_err,function(key,value){
+							$("p.reg_error").append('<span>'+value+'</span><br>'); 
+						 })
+						$("p.reg_error").css({"color":"red","text-align":"left"});
+						$('p.reg_error').fadeOut(4000, function() {
+							$('p.reg_error').html('');
+						});
 					}else {
-					$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError);				
-					$("#divLoading").css('display','block');
-					$("#divLoading").css('text-align','center');
-					$("#divLoading").css('color','red');
-					$("#divLoading").removeClass('show');
+						//For all type of errors 
+						$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError).css({"display":"block","text-align":"center","color":"red"});	
 					}
+					$("#divLoading").removeClass('show');
 				},
 				success: function(data) {
 				if(data==0){
 					console.log("Data"+data);
 					$("#divLoading").removeClass('show');
-					$('.reg_error').html('All Fields are Mandatory');
 				}else{
 					console.log("Data"+data);
 					$("#divLoading").removeClass('show');
@@ -176,10 +189,12 @@ $(function(){
 		   //var setAjaxUrl  =  'http://localhost/demoapp/poc/public/login';
 		    var email = jQuery("#login_email").val();
 			var password = jQuery("#login_password").val();	
+			var remember = jQuery("#checkbox2:checked").length;	
+
 			$.ajax({
 				type: "POST",
 				url: setAjaxUrl,
-				data: {email: email, password:password},
+				data: {email: email, password:password, remember:remember},
 				dataType: 'html',		
 				cache: false,
 				beforeSend: function (xhr) {
@@ -217,12 +232,11 @@ $(function(){
 					}else if(data==2){
 						console.log("Data"+data);
 						$("#divLoading").removeClass('show');
-						$('.login_error').html('All Fields are Mandatory');
 					}else if(data=='A'){
 						console.log("Data"+data);
 						$("#divLoading").removeClass('show');
 						$('.login_error').html('All Fields are Mandatory');
-						var URL  =  window.location.protocol+'//'+window.location.host+'/admin/profile';
+						var URL  =  window.location.protocol+'//'+window.location.host+'/admin/users';
 						location.href = URL;
 					}else if(data=='D'){
 						console.log("Data"+data);
@@ -243,10 +257,10 @@ $(function(){
 						$('.login_error').html('');
 					}
 
-				//form clear
-				$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
-					//location.reload();	
-				}
+					//form clear
+					$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+						//location.reload();	
+					}
 			});
 		}
 	});
@@ -290,10 +304,10 @@ function validateEmail(id){
 					$("#"+id+"_err").val(1);
 				}
 
-			//form clear
-			$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
-				//location.reload();	
-			}
+				//form clear
+				$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+					//location.reload();	
+				}
 		});
 	}else{
 		$("."+id).css('color','red');
@@ -306,7 +320,67 @@ function validateEmail(id){
 /*************************************************************************************************************/
 
 // Script to validate Email
-	function valEmailFormat(email) {
-		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(email);
-	}
+function valEmailFormat(email) {
+	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+
+
+/***************************** Forgot Password Submission ***************************************/
+
+$(function(){
+	jQuery("#forgot-pass-form").validate({
+		rules: {
+			forgot_email: {
+				required: true,
+				email: true
+			}
+		},
+		errorPlacement: function(error, element) {} ,
+		submitHandler:function(){
+			var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/forgot-password';
+		   //var setAjaxUrl  =  'http://localhost/demoapp2/poc/public/forgot-password';
+		    var email = jQuery("#forgot_email").val();
+			$.ajax({
+				type: "POST",
+				url: setAjaxUrl,
+				data: {email: email},
+				dataType: 'html',		
+				cache: false,
+				beforeSend: function (xhr) {
+					var token = $('meta[name="_token"]').attr('content');
+				if (token) {
+					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+				}
+					$("#divLoading").addClass('show');		
+				},
+				error: function ( xhr, ajaxOptions, thrownError )
+				{
+					if(xhr.status == 422){
+						var validate_err= jQuery.parseJSON(xhr.responseText);
+						$("#forgot_error").html(validate_err.email).css({"color":"red","text-align":"center"});
+					}else {
+						$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError).css({"display":"block","text-align":"center","color":"red"});	
+					}
+					$("#divLoading").removeClass('show');
+				},
+				success: function(data) {
+				    if(data==1){
+						$("#divLoading").removeClass('show');
+						$("#forgot_error").html('');
+						var URL  =  window.location.protocol+'//'+window.location.host+'/login';
+						location.href = URL;
+					}else{
+						$("#divLoading").removeClass('show');
+						$("#forgot_error").html('Some Network Error happened').css({"color":"red","text-align":"center"});
+					}
+
+					//form clear
+					$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+						//location.reload();	
+					}
+			});
+		}
+	});
+});
+/******************************************************************************************************/

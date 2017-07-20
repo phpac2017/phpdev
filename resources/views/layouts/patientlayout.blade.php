@@ -66,11 +66,11 @@
 				<aside class="leftsidebar">
 					<h4>PROFILE</h4>
 					<ul class="left-profile">
-						<li><a href="{{ url('patient/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>View / Update Profile</a></li>
-						<li class="active"><a href="{{ url('patient/book_appointment') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Appointment</a></li>
-						<li><a href="{{ url('patient/medical_records') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Medical Records</a></li>
-						<li><a href="{{ url('patient/feedback') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Feedback</a></li>
-						<li><a href="{{ url('patient/payments') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Payments</a></li>
+						<li class="{{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{ url('patient/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>View / Update Profile</a></li>
+						<li class="{{ Request::segment(2) === 'book_appointment' ? 'active' : null }}"><a href="{{ url('patient/book_appointment') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Appointment</a></li>
+						<li class="{{ Request::segment(2) === 'medical_records' ? 'active' : null }}"><a href="{{ url('patient/medical_records') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Medical Records</a></li>
+						<li class="{{ Request::segment(2) === 'feedback' ? 'active' : null }}"><a href="{{ url('patient/feedback') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Feedback</a></li>
+						<li class="{{ Request::segment(2) === 'payments' ? 'active' : null }}"><a href="{{ url('patient/payments') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Payments</a></li>
 					</ul>
 				</aside>
 			</div><!-- /#sidebar-wrapper -->

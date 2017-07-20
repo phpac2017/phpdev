@@ -29,11 +29,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-//Login Page
-Route::get('login', function () {
-    return view('login');
-});
-//Route::get('/home', 'FrontEndController@index')->name('home');
+
+Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
 Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\AuthController@login']);
 Route::post('register', [ 'as' => 'register', 'uses' => 'Auth\AuthController@register']);
 
@@ -51,9 +48,13 @@ Route::get('account_activation', function () {
 
 Route::post('logout', [ 'as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 
-//Testing Email
-Route::get('testmail', 'EmailController@testmail');
-Route::post('testmail', 'EmailController@send');
+// Routes for forgot and reset password 
+Route::post('forgot-password', array('as'=>'forgot-password','uses'=>'Auth\AuthController@sendResetPasswordLink'));
+Route::group(['prefix' => 'password'], function ()
+{
+	$this->get('reset/{token}', 'ResetPasswordController@showResetForm');
+	$this->post('reset', 'ResetPasswordController@reset')->name('password.reset');
+});
 
 //Patient Page
 Route::get('patient', function () {
@@ -102,8 +103,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
 		Route::resource('roles','RoleController');
 		Route::resource('users','UserController');
-		Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-		Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
+		Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index']);
+		Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:can_add_users']]);
 		Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
 		Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
 		Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);

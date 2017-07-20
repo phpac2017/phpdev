@@ -100,6 +100,34 @@ class AuthController extends Controller
         ]);
     }
 
+
+    /** 
+     * Get Login
+	 * Login Method
+	 * @param  none
+     * @return User
+	 */
+
+    public function getLogin(){
+    	if(auth()->user()){
+    		$getName = auth()->user()->name;
+    		if(auth()->user()->hasRole('admin')){
+				Log::info('Logged User is Admin - '.$getName);
+				return Redirect::to('admin/users');
+			}elseif(auth()->user()->hasRole('doctor')){
+				Log::info('Logged User is Doctor - '.$getName);
+				return Redirect::to('doctor/profile');
+			}else{
+				Log::info('Logged User is Patient - '.$getName);
+				return Redirect::to('patient/profile');
+			}
+    	}else{
+    		return view('Login');
+    	}
+    }
+
+
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -109,10 +137,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 		Log::info('AJAX Call - Login Process..');
-		if($request->ajax()) {
+		if($request->ajax()) {			
 			//Get Form Values
 			$email = $request->input('email');
 			$password = $request->input('password');
+			$remember = $request->get('remember');
 			Log::info('Email is '.$email);
 			
 			//AJAX Implementation
@@ -127,7 +156,7 @@ class AuthController extends Controller
 				return 2;
 			}
 			
-			if(auth()->attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), $request->get('remember', 0))){	
+			if(auth()->attempt(array('email' => $request->input('email'), 'password' => $request->input('password')), $remember)){	
 				$getName = auth()->user()->name;
 				if(auth()->user()->is_activated == '0'){
 					Log::info('User Logged - Email not yet verified..');
@@ -167,20 +196,35 @@ class AuthController extends Controller
 			$input = $request->all();	
 			//AJAX Implementation
 			Log::info('AJAX Call - Registration Validation..');
+			$messages = [	
+				'name.required' => 'Please enter Name',
+				'email.required'=>'Please enter email',
+				'email.email' => 'Please enter Valid Email',
+				'email.unique'=>'Email already exist',
+				'password.required'=>'Please enter Password',
+				'country_code.required' => 'Please enter Country Code',
+				'mobile_number.required'=>'Please enter Mobile Number',
+				'nationality.required_if' => 'Please select nationality',
+				'language.required_if'=>'Please select language',
+				'qualification.required_if' => 'Please select qualification',
+				'speciality.required_if'=>'Please select speciality',
+				'experience.required_if'=>'Please enter Experience',
+				'mrc_no.required_if'=>'Please enter Medical Reference Number',
+			];
 			$validator = Validator::make($request->all(), [
 				'name' => 'required',
 				'gender' => 'required',
-				'email' => 'required|email|max:255',
+				'email' =>'required|email|max:255|unique:users',
 				'password' => 'required',
 				'country_code' => 'required',
-				'mobile_number' => 'required',
-				'nationality' => 'required',
-				'language' => 'required',
-				'qualification' => 'required',
-				'speciality' => 'required',
-				'experience' => 'required',
-				'mrc_no' => 'required',
-			]);
+				'mobile_number' => 'required|unique:users',
+				'nationality' => 'required_if:user_role,2',
+				'language' =>'required_if:user_role,2',
+				'qualification' =>'required_if:user_role,2',
+				'speciality' => 'required_if:user_role,2',
+				'experience' => 'required_if:user_role,2',
+				'mrc_no' => 'required_if:user_role,2',
+			],$messages)->validate();
 
 			/* if ($validator->fails()) {
 				// get the error messages from the validator
@@ -251,5 +295,39 @@ class AuthController extends Controller
         return redirect()->to('account_activation')
                 ->with('status',"NA");
     }
+
+
+    /**
+     * Send Password Reset Link
+     *
+     * @param  string  $data
+     * @return boolean
+     */
+
+    public function sendResetPasswordLink(Request $request)
+    {
+		Log::info('Send Reset Password Link - AJAX Call..');
+		if($request->ajax()) {
+			$email = $request->input('email');
+			Log::info('Email is '.$email);
+			$messages = [	
+				'email.exists' => 'We dont have user associated with this Email',
+				'email.required'=>'Please enter email',
+				'email.email'=>'Please enter valid email'
+			];
+			$validator = Validator::make($request->all(), [
+				'email' => 'required|email|exists:users',
+			],$messages)->validate();
+			try{
+				Password::sendResetLink(['email' => $email]);
+				return 1;
+			}
+			catch(\Exception $e){
+				return 0;					
+			}
+		}else{
+			return 0;
+		}
+	}
 
 }

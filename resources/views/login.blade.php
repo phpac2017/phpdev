@@ -180,38 +180,62 @@
 									</form>
 							</div>
 							<div class="tab-pane login-user" id="profile1">
-								<form id="login_form" method="POST">
-									<p class="login_error"></p>
-										{{ csrf_field() }}
+								<div id="login-div">
+									{!! Form::open(['method' => 'POST', 'id' => 'login_form']) !!}
+											<p class="login_error"></p>
+												{{ csrf_field() }}
+											<div class="form-group">
+												<label for="email">E-Mail Address</label>
+												<div class="">
+													{!! Form::email('login_email', $value = null, ['class' => 'form-control', 'id' => 'login_email']) !!}
+													<span class="login_email"></span>
+													<input type="hidden" name="login_email_err" id="login_email_err"/>
+												</div>
+											</div>
+										
+											<div class="form-group">
+												<label for="password">Password</label>
+												<div class="">
+													{!! Form::password('login_password',['class' => 'form-control', 'id' => 'login_password', 'type' => 'password'])!!}
+												</div>
+											</div>
+
+											
+											<div class="row">
+												<div class="col-md-6 col-sm-6 col-xs-6">
+													<div class="checkbox ch-box">
+														{!! Form::checkbox('agree', null, null, ['id' => 'checkbox2', 'type' => 'checkbox']) !!}
+														<label for="checkbox2">Remember Me</label>												
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+													<p><a href="#" id="forgot-pass-lnk">Forgot Password?</a></p>
+												</div>
+											</div>
+											<button type="submit" class="btn btn-formsubmit" id="login">Submit</button>
+										{!! Form::close()  !!}
+									</div>
+								</div>
+								<div id="forgot-pass-div" style="display:none;">
+								{!! Form::open(array('route' => 'forgot-password','class'=>'form-horizontal','id'=>'forgot-pass-form')) !!}
+									<p id="forgot_error"></p>
+									{{ csrf_field() }}
 									<div class="form-group">
 										<label for="email">E-Mail Address</label>
 										<div class="">
-											<input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('email') }}" required autofocus>
-											<span class="login_email"></span>
-											<input type="hidden" name="login_email_err" id="login_email_err"/>
+										{!! Form::email('forgot_email', old('forgot_email') , ['class' => 'form-control','id'=>'forgot_email']) !!}
 										</div>
 									</div>
-								
-									<div class="form-group">
-										<label for="password">Password</label>
-										<div class="">
-											<input id="login_password" type="password" class="form-control" name="login_password" required>
-										</div>
-									</div>
-									
 									<div class="row">
 										<div class="col-md-6 col-sm-6 col-xs-6">
-											<div class="checkbox ch-box">
-												<input id="checkbox2" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}><label for="checkbox2">Remember Me</label>
-											</div>
+											<p><a href="#" id="bck-to-login">Back to Login</a></p>
 										</div>
 										<div class="col-md-6 col-sm-6 col-xs-6 text-right">
-											<p><a href="#">Forgot Password?</a></p>
+										{!! Form::submit('Send Reset Password Link', array('class' => 'btn btn-formsubmit','id'=>'send-reset-pass-lnk')) !!}}
 										</div>
-									</div>
-									<button type="submit" class="btn btn-formsubmit" id="login">Submit</button>
-								</form>
-							</div>
+									</div>									
+								{!! Form::close()  !!}
+								</div>
 						</div>
 					</div>
 				</div>
@@ -328,6 +352,21 @@
 		@if(session('user_role',2)==3)
 			$(".doctor-fields").hide();
 		@endif
+
+		//Forgot Pasword form hide and login form show
+		$("#bck-to-login").on('click',function(){
+			$("#forgot_error").html('');
+			$("#login-div").fadeIn(1000);
+			$("#forgot-pass-div").fadeOut();			
+		});
+		
+		//Forgot Pasword form show and login form hide
+		$("#forgot-pass-lnk").on('click',function(){
+			$("#forgot_error").html('');
+			$("#login-div").fadeOut();
+			$("#forgot_email").val('');
+			$("#forgot-pass-div").fadeIn(1000);			
+		});
 
 	});
 

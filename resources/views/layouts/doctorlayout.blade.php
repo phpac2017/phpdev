@@ -61,12 +61,12 @@
 					<aside class="leftsidebar">
 						<h4>PROFILE</h4>
 						<ul class="left-profile nav">
-							<li class=""><a href="{{ url('doctor/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Personal & Contact Details</a></li>
-							<li class=""><a href="{{ url('doctor/specialization') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Education & Specialization</a></li>
-							<li class=""><a href="{{ url('doctor/documents') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Registration & Documents</a></li>
-							<li class=""><a href="#"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Clinics (Fees & Timings)</a></li>
-							<li class=""><a href="{{ url('doctor/services') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Services & Experience</a></li>
-							<li class=""><a href="{{ url('doctor/awards') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Award & Memberships</a></li>
+							<li class="{{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{ url('doctor/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Personal & Contact Details</a></li>
+							<li class="{{ Request::segment(2) === 'specialization' ? 'active' : null }}"><a href="{{ url('doctor/specialization') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Education & Specialization</a></li>
+							<li class="{{ Request::segment(2) === 'documents' ? 'active' : null }}"><a href="{{ url('doctor/documents') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Registration & Documents</a></li>
+							<li class="{{ Request::segment(2) === '#' ? 'active' : null }}"><a href="#"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Clinics (Fees & Timings)</a></li>
+							<li class="{{ Request::segment(2) === 'services' ? 'active' : null }}"><a href="{{ url('doctor/services') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Services & Experience</a></li>
+							<li class="{{ Request::segment(2) === 'awards' ? 'active' : null }}"><a href="{{ url('doctor/awards') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Award & Memberships</a></li>
 						</ul>
 					</aside>
 				</div><!-- /#sidebar-wrapper -->
@@ -86,12 +86,6 @@
 	<script src="{{ asset('js/jquery.bootstrap-responsive-tabs.min.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 	<script src="{{ asset('js/sidebar_menu.js') }}"></script>
-	 <script>
-		$(document).ready(function(){
-			$(".nav a").on("click", function(){
-			});
-		});
-	</script>
 	 @yield('scripts')
 </body>
 </html>
