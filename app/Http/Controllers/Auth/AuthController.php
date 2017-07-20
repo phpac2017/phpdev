@@ -45,7 +45,8 @@ class AuthController extends Controller
     public function __construct(User $user)
     {
         //$this->middleware('guest')->except('logout');
-		//$this->user = $user;
+		$this->users = $users;
+    	parent::__construct();
     }
 
     /**

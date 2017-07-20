@@ -56,7 +56,27 @@
 										<option data-content='<span class="flag-icon flag-icon-in"></span> Ind'>Ind</option>
 									</select>
 								</div>
-								<a href="{{ url('login') }}" class="login_register doctor_login_register">Login / Register</a>
+								@if(Auth::guest())
+									<a href="{{ url('login') }}" class="login_register">Login / Register</a>
+								@else
+									<div class="login_details">
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="images/dropdown.png" alt="" /></span></button>
+										<ul class="dropdown-menu">
+											<li><div class="u-user-head"><img class="profile-img" src="https://accounts.practo.com/profile_picture/3065973/medium_thumbnail" alt="" width="40" height="40">
+											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
+											<li><a href="#">My Appointments</a></li>
+											<li><a href="#">My Medical Records</a></li>
+											<li><a href="#">My Online Consultation</a></li>
+											<li><a href="#">My Feedback</a></li>
+											<li><a href="#">View / Update Profile</a></li>
+											<li><a href="#">Change Password</a></li>
+											<li><button type="button" class="btn-logout"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</button></li>
+											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												{{ csrf_field() }}
+											</form>
+										</ul>
+									</div>
+								@endif
 							</div>
 						</div>
 					</div>
@@ -316,6 +336,10 @@
 		</div>
 	</footer>
 
+	<p id="back-top">
+		<a href="#top"><span>&nbsp;</span></a>
+	</p>
+
 	<!-- jQuery -->
 	<script src="{{ asset('js/jquery.js') }}"></script>
 
@@ -328,6 +352,23 @@
 
 	<script>
 		$(document).ready(function(){
+			$("#back-top").hide();
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 100) {
+					$('#back-top').fadeIn();
+				} else {
+					$('#back-top').fadeOut();
+				}
+			});
+
+			// scroll body to 0px on click
+			$('#back-top a').click(function () {
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});
+
 			$('.search-filter-in').hide();
 			$('.doctors-search-filter a').click(function (e) {
 				$('.search-filter-in').stop(true).slideToggle();

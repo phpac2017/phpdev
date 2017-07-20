@@ -44,26 +44,29 @@
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="home1">
-								<form id="register_form" method="POST">
+								{{ Form::open(array('method' => 'POST','id'=>'register_form')) }}
 									<p class="reg_error"></p>
 										{{ csrf_field() }}
 										<div class="form-group">
 											<label for="pwd">User Type<span class="mandatory">*</span></label>
-											<select class="form-control" name="user_role" id="user_role">
-												<option value="2" <?php echo (session('user_role',2)==2)?'selected':'';?>>Doctor</option>
-												<option value="3"<?php echo (session('user_role',2)==3)?'selected':'';?>>Patient</option>
-											</select>
+											@if(session('user_role',2)==3)
+												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'), 3, ['class' => 'form-control','id'=>'user_role']) }}
+											@else
+												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'),2, ['class' => 'form-control','id'=>'user_role']) }}
+											@endif
 										</div>
 										
 										<div class="form-group">
 											<label for="usr">Name: <span class="mandatory">*</span></label>
-											<input type="text" name="name" value="" class="form-control" id="name" autofocus>
+											{{ Form::text('name','',array('class'=> 'form-control','id'=>'name')) }}
 										</div>
 										
 										<div class="form-group">
 											<div class="radio-box">
-											 <input id="radio1" type="radio" name="gender[]" checked="checked" value="M"><label for="radio1">Male</label>
-											 <input id="radio2" type="radio" name="gender[]" value="F"><label for="radio2">Female</label>
+											{{ Form::radio('gender','M',true,array('id'=>'radio1')) }}
+											 <label for="radio1">Male</label>
+											 {{ Form::radio('gender','F',array('id'=>'radio2')) }}
+											 <label for="radio2">Female</label>
 											</div>
 										</div>
 										
@@ -71,113 +74,67 @@
 											<div class="col-md-3 col-sm-3 col-xs-12">
 												<div class="form-group">
 													<label for="pwd">Country Code: <span class="mandatory">*</span></label>
-													<select class="form-control" name="country_code" id="country_code">
-														<option value="+91" selected>+91</option>
-														<option value="+241">+241</option>
-														<option value="+285">+285</option>
-														<option value="+84">+84</option>
-													</select>
+													{{ Form::select('country_code', array('+91'=>'+91','+241'=>'+241','+285'=>'+285','+84'=>'+84'),+91, ['class' => 'form-control','id'=>'country_code']) }}
 												</div>
 											</div>
 											<div class="col-md-9 col-sm-9 col-xs-12">
 												<div class="form-group">
 													<label for="pwd">Mobile No: <span class="mandatory">*</span></label>
-													<input type="text" name="mobile_number" value="" class="form-control" id="mobile_number">
+													{{ Form::text('mobile_number','',array('class'=> 'form-control','id'=>'mobile_number')) }}
 												</div>
 											</div>
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Nationality<span class="mandatory">*</span></label>
-											<select class="form-control" name="nationality" id="nationality">
-												<option value="1" selected>Indian</option>
-												<option value="2">Pakistan</option>
-												<option value="3">Japan</option>
-												<option value="4">Srilanka</option>
-											</select>
+											{{ Form::select('nationality', array('1'=>'Indian','2'=>'Pakistan','3'=>'Japan','4'=>'Srilanka'),1, ['class' => 'form-control','id'=>'nationality']) }}
+											
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Language<span class="mandatory">*</span></label>
-											<select class="form-control" name="language" id="language" multiple="multiple">
-												<option value="1" selected>Tamil</option>
-												<option value="2">English</option>
-												<option value="3">Hindi</option>
-												<option value="4">Malayalam</option>
-											</select>
+											{{ Form::select('language', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),1, ['class' => 'form-control','id'=>'language','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group">
 											<label for="pwd">Email: <span class="mandatory">*</span></label>
-											<input type="email" name="email" value="" class="form-control" id="email" onBlur="validateEmail(this.id);">
+											{{ Form::email('email','',array('class'=> 'form-control','id'=>'email','onBlur'=>'validateEmail(this.id);')) }}
 											<span class="email"></span>
 										</div>
 										
 										<div class="form-group">
 											<label for="pwd">Password: <span class="mandatory">*</span></label>
-											<input type="password" name="password" value="" class="form-control" id="password">
+											{{ Form::password('password',array('class'=>'form-control','id'=>'password')) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Qualification<span class="mandatory">*</span></label>
-											<select class="form-control" name="qualification" id="qualification" multiple="multiple">
-												<option value="1" selected>M.B.B.S</option>
-												<option value="2">B.D.S</option>
-												<option value="3">B.P.T</option>
-												<option value="4">B.O.T</option>
-												<option value="5">B.A.M.S</option>
-												<option value="6">B.H.M.S</option>
-												<option value="7">B.U.M.S</option>
-												<option value="8">MS</option>
-												<option value="9">MD</option>
-												<option value="10">Mch</option>
-											</select>
+											{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',						'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),1, ['class' => 'form-control','id'=>'qualification','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Speciality<span class="mandatory">*</span></label>
-											<select class="form-control" name="speciality" id="speciality" multiple="multiple">
-												<option value="1" selected>Anesthesiologist</option>
-												<option value="2">Obstetrician</option>
-												<option value="3">Cardiologist</option>
-												<option value="4">Dermatologist</option>
-												<option value="5">Gastroenterologist</option>
-												<option value="6">Gynecologist</option>
-												<option value="7">Hematologist</option>
-												<option value="8">Neonatologist</option>
-												<option value="9">Nephrologist</option>
-												<option value="10">Oncologist</option>
-											</select>
+												{{ Form::select('speciality',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),1, ['class' => 'form-control','id'=>'speciality','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Experience<span class="mandatory">*</span></label>
-											<select class="form-control" name="experience" id="experience">
-												<option value="1" selected>1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-												<option value="6">5+</option>
-												<option value="7">10+</option>
-												<option value="8">15+</option>
-												<option value="9">20+</option>
-												<option value="10">25+</option>
-											</select>
+											{{ Form::select('experience',array('1'=>'1','2'=>'2','3'=>'3','4'=>'4',				'5'=>'5','6'=>'5+','7'=>'10+','8'=>'15+','9'=>'20+','10'=>'25+'),1, ['class' => 'form-control','id'=>'experience']) }}
+											
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Medical Registration Number <span class="mandatory">*</span></label>
-											<input type="text" name ="mrc_no" placeholder="Medical Registration Number" class="form-control" id="mrc_no">
+												{{ Form::text('mrc_no','',array('class'=> 'form-control','id'=>'mrc_no','placeholder'=>'Medical Registration')) }}
 										</div>
 										
 										<div class="checkbox ch-box">
-											<input id="accept_terms" type="checkbox" name="accept_terms"><label for="accept_terms">I agree to the terms & conditions</label>
+										{{ Form::checkbox('accept_terms', 1, null, ['class' => 'field','id'=>'accept_terms']) }}
+											<label for="accept_terms">I agree to the terms & conditions</label>
 										</div>
-										
-										<input type="hidden" name="email_err" id="email_err"/>
-										<button type="submit" class="btn btn-formsubmit" id="register">Let's Get Started</button>
-									</form>
+										{{ Form::hidden('email_err', '', array('id' => 'email_err')) }}
+										{{ Form::submit('Lets Get Started', array('class' => 'btn btn-formsubmit','id'=>'register')) }}
+								{{Form::close()}}
 							</div>
 							<div class="tab-pane login-user" id="profile1">
 								<div id="login-div">
