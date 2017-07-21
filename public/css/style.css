@@ -5132,6 +5132,8 @@ ul.breadcrumbs-right li {
 }
 .multiselect-container.dropdown-menu {
 	width: 100%;
+    max-height: 150px;
+    overflow-y: scroll;
 }
 .open>.dropdown-toggle.btn-default:focus, 
 .open>.dropdown-toggle.btn-default:hover, 
@@ -5207,3 +5209,7 @@ html[xmlns] .clearfix {	display: block; }
   text-align: left;
   width: 100%;
 }
+label.error{
+	font-size:13px;
+	color:red;
+} 

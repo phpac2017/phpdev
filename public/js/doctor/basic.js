@@ -1,6 +1,36 @@
 /*Document Ready Function*/
 $(document).ready(function(){	
-	$('#mobile_number').mask('(000) 000-0000');
+	$('.responsive-tabs').responsiveTabs({
+	  accordionOn: ['xs']
+	});
+
+	<!-- Multiselect -->
+    $('#qualification').multiselect({
+      buttonWidth: '100%'
+    });
+	
+	 $('#blood-group').multiselect({
+      buttonWidth: '100%'
+    });
+	$('#language').multiselect({
+      buttonWidth: '100%'
+    });
+	$('#nationality').multiselect({
+      buttonWidth: '100%'
+    });
+	$('#country_code').multiselect({
+      buttonWidth: '100%'
+    });
+	$('#experience').multiselect({
+      buttonWidth: '100%'
+    });
+ 
+	$("#datepicker").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true
+	}).datepicker('update', new Date());;
+
+	$('#contact_number').mask('(000) 000-0000');
 });
 
 //Check Null / Undefined Value
@@ -72,44 +102,7 @@ $(function(){
 				},
 			} 
 		},
-		messages:{
-			name: {
-				required: 'Please enter name',
-			},
-			gender:{
-				required:'Please select gender',
-			},
-			mobile_number: {
-				required: 'Please enter Mobile Number',
-			},
-			nationality: {
-				required:'Please select Nationality',
-			},
-			language:{
-				required: 'Please select Language',
-			},
-			email: {
-				required: 'Please enter email',
-				email:'Please enter valid email',
-			},
-			password: {
-				required: 'Please enter password',
-				minlength:'Please enter minimum six characters'
-			},
-			qualification:{
-				required: 'Please select Qualification',
-			},
-			speciality: {
-				required: 'Please select Speciality',
-			},
-			experience:{
-				required: 'Please select Experience',
-			},
-			mrc_no:{
-				required: 'Please enter Medical Registration Number',
-			} 
-			
-		},
+		errorPlacement: function(error, element) {},
 		submitHandler:function(){
 				
 			//Validate Checkbox
@@ -220,15 +213,7 @@ $(function(){
 				required: true
 			}
 		},
-		messages:{
-			login_email:{
-				required:'Please enter Email',
-				email:'Please enter valid Email'
-			},
-			login_password:{
-				required:'Please enter password'
-			}
-		},
+		errorPlacement: function(error, element) {} ,
 		submitHandler:function(){
 			var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/login';
 		   //var setAjaxUrl  =  'http://localhost/demoapp/poc/public/login';
@@ -378,12 +363,7 @@ $(function(){
 				email: true
 			}
 		},
-		messages:{
-			forgot_email:{
-				required:'Please enter Email',
-				email:'Please enter valid Email'
-			}
-		},
+		errorPlacement: function(error, element) {} ,
 		submitHandler:function(){
 			var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/forgot-password';
 		   //var setAjaxUrl  =  'http://localhost/demoapp2/poc/public/forgot-password';

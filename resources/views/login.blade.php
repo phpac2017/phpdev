@@ -87,13 +87,15 @@
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Nationality<span class="mandatory">*</span></label>
-											{{ Form::select('nationality', array('1'=>'Indian','2'=>'Pakistan','3'=>'Japan','4'=>'Srilanka'),1, ['class' => 'form-control','id'=>'nationality']) }}
+											<?php $nationalities = call_user_func('getNationalities');?>
+											{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),'',array('class'=>'form-control','id'=>'nationality'));!!}
 											
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Language<span class="mandatory">*</span></label>
-											{{ Form::select('language', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),1, ['class' => 'form-control','id'=>'language','multiple'=>true]) }}
+											<?php $languages = call_user_func('getLanguages');?>
+											{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),'',array('class'=>'form-control','multiple'=>'multiple','id'=>'language'));!!}
 										</div>
 										
 										<div class="form-group">

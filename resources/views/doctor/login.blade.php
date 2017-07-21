@@ -84,9 +84,7 @@
 										<input type="text" value="" class="form-control" id="pwd" required>
 									</div>
 								</div>
-							</div>
-								
-							
+							</div>					
 						
 							
 							<div class="form-group">
@@ -119,25 +117,6 @@
 								<label for="pwd">Password: <span class="mandatory">*</span></label>
 								<input type="password" value="" class="form-control" id="pwd" required>
 							</div>
-							<!--<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label for="pwd">Country Code: <span class="mandatory">*</span></label>
-										<select class="form-control">
-											<option value="">select 1</option>
-											<option value="">select 2</option>
-											<option value="">select 3</option>
-											<option value="">select 4</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group">
-										<label for="pwd">Mobile No: <span class="mandatory">*</span></label>
-										<input type="number" value="Mobile No" class="form-control" id="pwd">
-									</div>
-								</div>
-							</div> -->
 							
 							<div class="form-group">
 								<label for="pwd">Qualification<span class="mandatory">*</span></label>

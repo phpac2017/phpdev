@@ -21,7 +21,7 @@
 			<div class="breadcrumbs">
 				<div class="row">
 					<div class="dr-name-details col-md-4">
-						<h5>Dr.Manikandan</h5>
+						<h5>Dr. {{ Auth::user()->name }}</h5>
 						<p>
 							<span>
 								<a href="#">NOT LIVE</a>
@@ -82,39 +82,35 @@
 					<div class="col-md-8">
 						<div class="form-group">
 							<label for="usr">Name : <span class="mandatory">*</span></label>
-							<input type="text" value="Name :" class="form-control" id="usr">
+							<input type="text" value="{{ Auth::user()->name }}" class="form-control" id="usr">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
-								<label for="pwd">Gender<span class="mandatory">*</span></label>
-								<div class="radio-box">
-								 <input id="radio1" type="radio" name="Checkbox" value="Box"><label for="radio1">Male</label>
-								 <input id="radio2" type="radio" name="Checkbox" value="Box"><label for="radio2">Female</label>
-								</div>
+							<label for="pwd">Gender<span class="mandatory">*</span></label>								
+							<div class="radio-box">
+								 <input id="radio1" type="radio" name="Checkbox" value="M" <?php echo (Auth::user()->gender==='M' ? ' checked' : ''); ?>><label for="radio1">Male</label>
+								 <input id="radio2" type="radio" name="Checkbox" value="F" <?php echo (Auth::user()->gender==='F' ? ' checked' : ''); ?>><label for="radio2">Female</label>
 							</div>
+						</div>
 					</div>
 					
 					
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
 								<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-								<select class="form-control" id="nationality">
-									<option value="Indian">Chennai</option>
-									<option value="Pakistan">Bangalore</option>
-									<option value="Japan">Uttar Pradesh</option>
-									<option value="Srilanka">kerala</option>
-								</select>
+								<?php $cities = call_user_func('getCitiesList');?>
+								{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control','id'=>'city'));!!}
 							</div>
 					</div>
 					
 					
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
-							<label for="usr">Years of Experience : <span class="mandatory">*</span>  <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-							<input type="text" value="Enter number of years" class="form-control" id="usr">
+							<label for="exp">Years of Experience : <span class="mandatory">*</span>  <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
+							<input type="text" placeholder="Enter number of years" value="" class="form-control" id="exp">
 						</div>
 					</div>
 				</div>	
@@ -123,24 +119,20 @@
 					<div class="col-lg-6 col-md-6">
 							<div class="form-group">
 								<label for="pwd">Language<span class="mandatory">*</span></label>
-								<select class="form-control" id="language" multiple="multiple">
-									<option value="Tamil">Tamil</option>
-									<option value="English">English</option>
-									<option value="Hindi">Hindi</option>
-									<option value="Malayalam">Malayalam</option>
-								</select>
+								<?php 
+									$languages = call_user_func('getLanguages');
+									$lang = Auth::user()->language; 
+									$getLang = call_user_func('getLang', $lang);
+								?>
+								{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),$getLang->toArray(),array('class'=>'form-control','multiple'=>'multiple','id'=>'language'));!!}
 							</div>
 					</div>
 					
 					<div class="col-lg-6 col-md-6">
 						<div class="form-group">
 								<label for="pwd">Nationality<span class="mandatory">*</span></label>
-								<select class="form-control" id="nationality">
-									<option value="Indian">Indian</option>
-									<option value="Pakistan">Pakistan</option>
-									<option value="Japan">Japan</option>
-									<option value="Srilanka">Srilanka</option>
-								</select>
+								<?php $nationalities = call_user_func('getNationalities'); $nationality = Auth::user()->nationality; ?>
+								{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),$nationality,array('class'=>'form-control','id'=>'nationality'));!!}
 							</div>
 					</div>				
 				</div>
@@ -159,7 +151,7 @@
 								<div class="form-group">
 									<label for="usr">Contact Number :<span class="mandatory">*</span></label>
 									<div class="verify-number">
-										<input type="text" value="Enter Contact Number" class="form-control" id="usr">
+										<input type="text" placeholder="Enter Contact Number" value="{{ Auth::user()->mobile_number }}" class="form-control" name="contact_number" id="contact_number">
 										<span class="verify-num"><a href="#">Verify</a></span>
 										<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>
 									</div>
@@ -172,7 +164,7 @@
 								<div class="form-group">
 									<label for="usr">Email Address :<span class="mandatory">*</span></label>
 									<div class="verify-number">
-										<input type="text" value="Enter Email Address" class="form-control" id="usr">
+										<input type="text" placeholder="Enter Email Address" value="{{ Auth::user()->email }}" class="form-control" id="doctor_email" onBlur = validateEmail(this.id);>
 										<span class="verify-num"><a href="#">Verify</a></span>
 										<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>
 									</div>
@@ -196,42 +188,5 @@
         <!-- /#page-content-wrapper -->
 		@endsection
 @section('scripts')
-
-<script>
-$(document).ready(function(){
-
-$('.responsive-tabs').responsiveTabs({
-  accordionOn: ['xs']
-});
-
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
-    });
-	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });
- 
-	$("#datepicker").datepicker({ 
-        autoclose: true, 
-        todayHighlight: true
-	}).datepicker('update', new Date());;
-
-
-});
-
-</script>
+<script src="{{ asset('js/doctor/basic.js') }}"></script>
 @stop
