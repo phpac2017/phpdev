@@ -1,38 +1,172 @@
 /*Document Ready Function*/
 $(document).ready(function(){	
+	
 	$('.responsive-tabs').responsiveTabs({
 	  accordionOn: ['xs']
 	});
-
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
+	$("#cnc_count").val(0);
+	//Select2 JS
+	var placeholder = '';//Define Placeholder Value
+    $('.select2, .select2-multiple').select2({
+        //placeholder: placeholder
     });
-	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });	
-
-	$('#contact_number').mask('(000) 000-0000');
+    
 });
+
+
+//Function to remove Education
+
+function remReg(id){
+	$.confirm({
+		icon: 'fa fa-warning',
+		title: 'Are you sure you want to remove this registration?',
+		content: 'This operation is irreversible.',
+		type: 'red',
+		typeAnimated: true,
+		buttons: {
+			tryAgain: {
+				text: 'Delete',
+				btnClass: 'btn-red',
+				action: function(){
+					deleteReg(id);
+				}
+			},
+			close: function () {					
+									
+			}
+		}
+	});
+}
+
+
+//Function to Delete the Education (AJAX Operation)
+function deleteReg(id){
+	$("#divLoading").addClass('show');
+	$("#cd_"+id).remove();
+	var getCount = $("#cnc_count").val();
+	var remCount = parseInt(getCount)-1;
+	var totalCount = $("#cnc_count").val(remCount);
+	$("#divLoading").removeClass('show');
+}
+
 
 //Check Null / Undefined Value
 function isEmpty(value) {
 	return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 	
+
+//Script for Adding Dynamic Items (Education Details)
+	$(".dr-add-reg").on('click', function(){	
+		$("#divLoading").addClass('show');
+		var cells = "";
+		var getCount = $("#cnc_count").val();
+		var addCount = parseInt(getCount)+1;
+		var totalCount = $("#cnc_count").val(addCount);
+		var filePath  =  window.location.protocol+'//'+window.location.host+'/images/';
+		//Limit the rows //Max 10 Allowed
+		if(getCount>8){
+			$(".dr-add-reg").prop('disabled',true);
+			noty({
+				text     : '<div><strong>You Have Reached Maximum Limit !</div>',
+				layout   : 'bottomCenter',
+				closeWith: ['click'],
+				type	 :  'error'
+			});
+			$("#edu_count").val(10);
+			$("#divLoading").removeClass('show');
+			return false;
+		}else{	
+			//Dynamic HTML Content
+			var html = '<div class="row"  id="cd_'+addCount+'">'+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="usr">Council Registration Number: <span class="mandatory">*</span></label>'+
+									'<input type="text" name="cr_no[]" placeholder="Enter Council Registration Number" class="form-control" id="cr_no_'+addCount+'">'+
+								'</div>'+
+							'</div>'+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">Select Council Name<span class="mandatory">*</span></label>'+
+									'<select class="form-control select2" id="cn_'+addCount+'">'+
+										'<option value="1">Andhra Pradesh Medical Council</option>'+
+										'<option value="2">Arunachal Pradesh Medical Council</option>'+
+										'<option value="3">Assam Medical Council</option>'+
+										'<option value="27">Bareilly Medical Council</option>'+
+										'<option value="28">Bhopal Medical Council</option>'+
+										'<option value="4">Bihar Medical Council</option>'+
+										'<option value="29">Bombay Medical Council</option>'+
+										'<option value="30">Chandigarh Medical Council</option>'+
+										'<option value="5">Chattisgarh Medical Council</option>'+
+										'<option value="6">Delhi Medical Council</option>'+
+										'<option value="31">Dental Council of India</option>'+
+										'<option value="39">General Medical Council</option>'+
+										'<option value="7">Goa Medical Council</option>'+
+										'<option value="8">Gujarat Medical Council</option>'+
+										'<option value="9">Haryana Dental &amp; Medical Councils</option>'+
+										'<option value="10">Himanchal Pradesh Medical Council</option>'+
+										'<option value="45">Hyderabad Medical Council</option>'+
+										'<option value="11">Jammu &amp; Kashmir Medical Council</option>'+
+										'<option value="12">Jharkhand Medical Council</option>'+
+										'<option value="13">Karnataka Medical Council</option>'+
+										'<option value="14">Kerala Medical Council</option>'+
+										'<option value="15">Madhya Pradesh Medical Council</option>'+
+										'<option value="36">Madras Medical Council</option>'+
+										'<option value="35">Mahakoshal Medical Council</option>'+
+										'<option value="16">Maharashtra Medical Council</option>'+
+										'<option value="26">Manipur Medical Council</option>'+
+										'<option value="46">Medical Council of India</option>'+
+										'<option value="47">Medical Council of Tanganyika</option>'+
+										'<option value="42">Mizoram Medical Council</option>'+
+										'<option value="37">Mysore Medical Council</option>'+
+										'<option value="41">Nagaland Medical Council</option>'+
+										'<option value="17">Orissa Council of Medical Registration</option>'+
+										'<option value="38">Pondicherry Medical Council</option>'+
+										'<option value="18">Punjab Medical Council</option>'+
+										'<option value="19">Rajasthan Medical Council</option>'+
+										'<option value="20">Sikkim Medical Council</option>'+
+										'<option value="21">Tamil Nadu Medical Council</option>'+
+										'<option value="43">Telangana State Medical Council</option>'+
+										'<option value="33">Travancore Cochin Medical Council</option>'+
+										'<option value="22">Tripura State Medical Council </option>'+
+										'<option value="23">Uttar Pradesh Medical Council</option>'+
+										'<option value="24">Uttarakhand Medical Council</option>'+
+										'<option value="40">Vidharba Medical Council</option>'+
+										'<option value="25">West Bengal Medical Council</option>'+
+									'</select>'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-3 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">Year<span class="mandatory">*</span></label>'+	
+									'<select name="year" id="y_'+addCount+'" class="form-control select2">'+										
+									'</select>'+	
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
+									'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remReg(this.id);" />'+
+								'</div>'+
+
+						'</div>';	
+						
+			$('.addCncDetails').append(html);
+			$("#y_"+addCount).select2();
+			$("#cn_"+addCount).select2();
+			$("#divLoading").removeClass('show');				
+			//$(".dr-edu-add").prop('disabled',true);
+			//Display Year From 1980
+			for (i = 1980; i <= new Date().getFullYear(); i++)
+			{
+			    $("#y_"+addCount).append($('<option />').val(i).html(i));
+			}
+
+			$("#y_"+addCount).select2();
+		}
+	});
+
+
 /***************************** Registration Validation and Submission ***************************************/
 $(function(){
 	jQuery("#register_form").validate({

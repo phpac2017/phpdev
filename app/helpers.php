@@ -28,8 +28,16 @@ if(! function_exists('getLang')){
 	function getLang($id)
 	{
 		$ids = explode(",", $id);
-		$tt = DB::table("languages")->whereIn('id',$ids)->pluck("id");
-		return $tt;
+		$lang = DB::table("languages")->whereIn('id',$ids)->pluck("id");
+		return $lang;
+	}
+}
+
+if(! function_exists('getYear')){
+	function getYear()
+	{
+		$year = range(1980,date("Y"));
+		return $year;
 	}
 }
 

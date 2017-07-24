@@ -1,38 +1,218 @@
 /*Document Ready Function*/
 $(document).ready(function(){	
+	
 	$('.responsive-tabs').responsiveTabs({
 	  accordionOn: ['xs']
 	});
-
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
-    });
+	$("#ser_count").val(0);
+	$("#exp_count").val(0);
 	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
+	//Select2 JS
+	var placeholder = '';//Define Placeholder Value
+    $('.select2, .select2-multiple').select2({
+        //placeholder: placeholder
     });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });	
-
-	$('#contact_number').mask('(000) 000-0000');
+    
+    $("#duration").daterangepicker();
 });
+
+
+//Function to remove Education
+
+function remSer(id){
+	$.confirm({
+		icon: 'fa fa-warning',
+		title: 'Are you sure you want to remove this service?',
+		content: 'This operation is irreversible.',
+		type: 'red',
+		typeAnimated: true,
+		buttons: {
+			tryAgain: {
+				text: 'Delete',
+				btnClass: 'btn-red',
+				action: function(){
+					deleteSer(id);
+				}
+			},
+			close: function () {					
+									
+			}
+		}
+	});
+}
+
+//Function to Delete the Education (AJAX Operation)
+function deleteSer(id){
+	$("#divLoading").addClass('show');
+	$("#sr_"+id).remove();
+	var getCount = $("#ser_count").val();
+	var remCount = parseInt(getCount)-1;
+	var totalCount = $("#ser_count").val(remCount);
+	$("#divLoading").removeClass('show');
+}
+
+
+//Function to remove Education
+
+function remExp(id){
+	$.confirm({
+		icon: 'fa fa-warning',
+		title: 'Are you sure you want to remove this experience?',
+		content: 'This operation is irreversible.',
+		type: 'red',
+		typeAnimated: true,
+		buttons: {
+			tryAgain: {
+				text: 'Delete',
+				btnClass: 'btn-red',
+				action: function(){
+					deleteExp(id);
+				}
+			},
+			close: function () {					
+									
+			}
+		}
+	});
+}
+
+//Function to Delete the Education (AJAX Operation)
+function deleteExp(id){
+	$("#divLoading").addClass('show');
+	$("#sr_"+id).remove();
+	var getCount = $("#exp_count").val();
+	var remCount = parseInt(getCount)-1;
+	var totalCount = $("#ser_count").val(remCount);
+	$("#divLoading").removeClass('show');
+}
+
+
+
+
 
 //Check Null / Undefined Value
 function isEmpty(value) {
 	return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 	
+
+//Script for Adding Dynamic Items (Education Details)
+	$(".dr-add-service").on('click', function(){	
+		$("#divLoading").addClass('show');
+		var cells = "";
+		var getCount = $("#ser_count").val();
+		var addCount = parseInt(getCount)+1;
+		var totalCount = $("#ser_count").val(addCount);
+		var filePath  =  window.location.protocol+'//'+window.location.host+'/images/';
+		//Limit the rows //Max 10 Allowed
+		if(getCount>8){
+			$(".dr-add-service").prop('disabled',true);
+			noty({
+				text     : '<div><strong>You Have Reached Maximum Limit !</div>',
+				layout   : 'bottomCenter',
+				closeWith: ['click'],
+				type	 :  'error'
+			});
+			$("#edu_count").val(10);
+			$("#divLoading").removeClass('show');
+			return false;
+		}else{	
+			//Dynamic HTML Content
+			var html = '<div class="row"  id="sr_'+addCount+'">'+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">Select Service<span class="mandatory">*</span></label>'+
+									'<select class="form-control select2" id="srv_'+addCount+'" name="service[]">'+
+										'<option value="1">Allergists</option>'+
+										'<option value="2">Cardiologists</option>'+
+										'<option value="3">Dentists</option>'+
+										'<option value="4">Dermatologist</option>'+
+										'<option value="5">Ophthalmologists</option>'+
+										'<option value="6">Orthodontists</option>'+
+										'<option value="7">Pediatricians</option>'+
+										'<option value="8">Psychiatrists</option>'+
+										'<option value="9">Pulmonary</option>'+
+										'<option value="10">Rheumatologist</option>'+
+									'</select>'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
+								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remSer(this.id);" />'+
+							'</div>'+
+						'</div>';	
+					
+			$('.addServiceDetails').append(html);
+			$("#srv_"+addCount).select2();
+			$("#divLoading").removeClass('show');				
+			//$(".dr-edu-add").prop('disabled',true);
+		}
+	});
+
+
+	//Script for Adding Dynamic Items (Education Details)
+	$(".dr-add-exp").on('click', function(){	
+		$("#divLoading").addClass('show');
+		var cells = "";
+		var getCount = $("#exp_count").val();
+		var addCount = parseInt(getCount)+1;
+		var totalCount = $("#exp_count").val(addCount);
+		var filePath  =  window.location.protocol+'//'+window.location.host+'/images/';
+		//Limit the rows //Max 10 Allowed
+		if(getCount>8){
+			$(".dr-add-exp").prop('disabled',true);
+			noty({
+				text     : '<div><strong>You Have Reached Maximum Limit !</div>',
+				layout   : 'bottomCenter',
+				closeWith: ['click'],
+				type	 :  'error'
+			});
+			$("#edu_count").val(10);
+			$("#divLoading").removeClass('show');
+			return false;
+		}else{	
+			//Dynamic HTML Content
+			var html = '<div class="row">'+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="usr">Duration (Select year & month) <span class="mandatory">*</span></label>'+
+									'<div class="input-group">'+
+										'<div class="input-group-addon">'+
+											'<i class="fa fa-calendar"></i>'+
+										'</div>'+
+										'<input type="text" class="form-control pull-right" id="duration_'+addCount+'" />'+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="usr">Role: <span class="mandatory">*</span></label>'+
+									'<input type="text" placeholder="Enter your Role" class="form-control" id="role_'+addCount+'">'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>'+
+									
+								'</div>'+
+							'</div>'+
+							'<div class="form-group">'+
+								'<label for="pwd">Clinic / Hospital Name</label>'+
+								'<input type="text" placeholder="Enter Clinic / Hospital Name" class="form-control" id="hosp_'+addCount+'">'+						
+							'</div>'+
+						'</div>';	
+					
+			$('.addExperienceDetails').append(html);
+			$("#srv_"+addCount).select2();
+			$("#divLoading").removeClass('show');
+			$("#duration_"+addCount).daterangepicker();				
+			//$(".dr-edu-add").prop('disabled',true);
+		}
+	});
+
+
 /***************************** Registration Validation and Submission ***************************************/
 $(function(){
 	jQuery("#register_form").validate({

@@ -2089,6 +2089,9 @@ table.payments-table tr:nth-child(even) {
 .memberships-recognitions {
 	margin-bottom: 15px;
 }
+.delete_icon img {
+	margin-top: 23px;
+}
 .awards-note {
 	margin-top: 5px
 }

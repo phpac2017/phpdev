@@ -100,10 +100,10 @@
 					
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
-								<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-								<?php $cities = call_user_func('getCitiesList');?>
-								{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control','id'=>'city'));!!}
-							</div>
+							<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
+							<?php $cities = call_user_func('getCitiesList');?>
+							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control','id'=>'city'));!!}
+						</div>
 					</div>
 					
 					

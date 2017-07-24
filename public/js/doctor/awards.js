@@ -1,38 +1,207 @@
 /*Document Ready Function*/
 $(document).ready(function(){	
+	
 	$('.responsive-tabs').responsiveTabs({
 	  accordionOn: ['xs']
 	});
-
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
-    });
+	$("#awd_count").val(0);
+	$("#mem_count").val(0);
 	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });	
-
-	$('#contact_number').mask('(000) 000-0000');
+	//Select2 JS
+	var placeholder = '';//Define Placeholder Value
+    $('.select2, .select2-multiple').select2({
+        //placeholder: placeholder
+    });   
+    
 });
+
+
+//Function to remove Education
+
+function remAwd(id){
+	$.confirm({
+		icon: 'fa fa-warning',
+		title: 'Are you sure you want to remove this award?',
+		content: 'This operation is irreversible.',
+		type: 'red',
+		typeAnimated: true,
+		buttons: {
+			tryAgain: {
+				text: 'Delete',
+				btnClass: 'btn-red',
+				action: function(){
+					deleteAwd(id);
+				}
+			},
+			close: function () {					
+									
+			}
+		}
+	});
+}
+
+//Function to Delete the Education (AJAX Operation)
+function deleteAwd(id){
+	$("#divLoading").addClass('show');
+	$("#ar_"+id).remove();
+	var getCount = $("#awd_count").val();
+	var remCount = parseInt(getCount)-1;
+	var totalCount = $("#awd_count").val(remCount);
+	$("#divLoading").removeClass('show');
+}
+
+
+//Function to remove Education
+
+function remMem(id){
+	$.confirm({
+		icon: 'fa fa-warning',
+		title: 'Are you sure you want to remove this mmebership?',
+		content: 'This operation is irreversible.',
+		type: 'red',
+		typeAnimated: true,
+		buttons: {
+			tryAgain: {
+				text: 'Delete',
+				btnClass: 'btn-red',
+				action: function(){
+					deleteMem(id);
+				}
+			},
+			close: function () {					
+									
+			}
+		}
+	});
+}
+
+//Function to Delete the Education (AJAX Operation)
+function deleteMem(id){
+	$("#divLoading").addClass('show');
+	$("#mr_"+id).remove();
+	var getCount = $("#mem_count").val();
+	var remCount = parseInt(getCount)-1;
+	var totalCount = $("#mem_count").val(remCount);
+	$("#divLoading").removeClass('show');
+}
+
+
+
+
 
 //Check Null / Undefined Value
 function isEmpty(value) {
 	return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 	
+
+//Script for Adding Dynamic Items (Education Details)
+	$(".dr-add-award").on('click', function(){	
+		$("#divLoading").addClass('show');
+		var cells = "";
+		var getCount = $("#awd_count").val();
+		var addCount = parseInt(getCount)+1;
+		var totalCount = $("#awd_count").val(addCount);
+		var filePath  =  window.location.protocol+'//'+window.location.host+'/images/';
+		//Limit the rows //Max 10 Allowed
+		if(getCount>8){
+			$(".dr-add-award").prop('disabled',true);
+			noty({
+				text     : '<div><strong>You Have Reached Maximum Limit !</div>',
+				layout   : 'bottomCenter',
+				closeWith: ['click'],
+				type	 :  'error'
+			});
+			$("#awd_count").val(10);
+			$("#divLoading").removeClass('show');
+			return false;
+		}else{	
+			//Dynamic HTML Content
+			var html = '<div class="row"  id="ar_'+addCount+'">'+
+							'<div class="col-lg-8 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="usr">Awards / Recognitions<span class="mandatory">*</span></label>'+
+									'<input type="text" name="awd[]" placeholder="Enter Awards / Recognition" class="form-control" id="awd_'+addCount+'">'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-3 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">Year<span class="mandatory">*</span></label>'+	
+									'<select name="year" id="y_'+addCount+'" class="form-control select2">'+										
+									'</select>'+	
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
+									'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remAwd(this.id);" />'+
+								'</div>'+
+
+						'</div>';		
+					
+			$('.addAwardDetails').append(html);
+			$("#y_"+addCount).select2();
+			$("#divLoading").removeClass('show');				
+			//$(".dr-edu-add").prop('disabled',true);
+			for (i = 1980; i <= new Date().getFullYear(); i++)
+			{
+			    $("#y_"+addCount).append($('<option />').val(i).html(i));
+			}
+
+			$("#y_"+addCount).select2();
+		}
+	});
+
+
+	//Script for Adding Dynamic Items (Education Details)
+	$(".dr-add-mem").on('click', function(){	
+		$("#divLoading").addClass('show');
+		var cells = "";
+		var getCount = $("#mem_count").val();
+		var addCount = parseInt(getCount)+1;
+		var totalCount = $("#mem_count").val(addCount);
+		var filePath  =  window.location.protocol+'//'+window.location.host+'/images/';
+		//Limit the rows //Max 10 Allowed
+		if(getCount>8){
+			$(".dr-add-mem").prop('disabled',true);
+			noty({
+				text     : '<div><strong>You Have Reached Maximum Limit !</div>',
+				layout   : 'bottomCenter',
+				closeWith: ['click'],
+				type	 :  'error'
+			});
+			$("#mem_count").val(10);
+			$("#divLoading").removeClass('show');
+			return false;
+		}else{	
+			//Dynamic HTML Content
+			var html = '<div class="row"  id="mr_'+addCount+'">'+
+							'<div class="col-lg-4 col-md-6">'+
+								'<div class="form-group">'+
+									'<label for="pwd">Memberships<span class="mandatory">*</span></label>'+
+									'<select class="form-control select2" id="mem_'+addCount+'" name="qualification">'+
+									   '<option value="1" selected="selected">Government Doctors Association</option>'+
+									   '<option value="2">Association of Women Doctors Singapore</option>'+
+									   '<option value="3">Karnataka Qualified Homoeopathic Doctors Association(KQHDA)</option>'+
+									   '<option value="4">B.O.T</option>'+
+									   '<option value="5">B.A.M.S</option>'+
+									'</select>'+
+								'</div>'+
+							'</div>'+
+
+							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
+								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remMem(this.id);" />'+
+							'</div>'+
+						'</div>';	
+					
+			$('.addMemDetails').append(html);
+			$("#mem_"+addCount).select2();
+			$("#divLoading").removeClass('show');			
+			//$(".dr-edu-add").prop('disabled',true);
+		}
+	});
+
+
 /***************************** Registration Validation and Submission ***************************************/
 $(function(){
 	jQuery("#register_form").validate({

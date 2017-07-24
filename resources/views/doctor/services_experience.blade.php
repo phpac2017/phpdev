@@ -1,4 +1,6 @@
 @extends('layouts.doctorlayout')
+<!-- daterange picker -->
+<link href="{{ asset('css/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
 @section('content')
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -21,7 +23,7 @@
 			<div class="breadcrumbs">
 				<div class="row">
 					<div class="dr-name-details col-md-4">
-						<h5>Dr.Manikandan</h5>
+						<h5>Dr.{{ Auth::user()->name }}</h5>
 						<p>
 							<span>
 								<a href="#">NOT LIVE</a>
@@ -49,63 +51,67 @@
 			</div>
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
 				<h2>Services & Experience</h2>
+
 					<div class="awards-recognitions">
 						<h4>Services <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
 						<label class="services-sel">0 Services Selected</label>
-							<div class="form-group">
-								<label for="pwd">Add Service</label>
-								<select class="form-control" id="dr">
-									<option value="Indian">Search and Add Services</option>
-									<option value="Pakistan">Services 1</option>
-									<option value="Japan">Services 2</option>
-									<option value="Srilanka">Services 3</option>
-								</select>
+						<div class="add-award">
+							<button class="add-schedule dr-add-schedule dr-add-service"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Service</button>
+						</div>
+							<div class="row">
+								<div class="col-lg-4 col-md-6">
+									<div class="form-group">
+										<label for="pwd">Select Service</label>
+										{{ Form::select('service',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),1, ['class' => 'form-control select2','id'=>'service']) }}
+									</div>
+								</div>
 							</div>
+							<div class="addServiceDetails"></div>
+							<input type="hidden" name="ser_count" id="ser_count"/>	
 					</div>
 					
 					<div class="memberships-recognitions">
 						<h4>Experience <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
-						
-					<div class="row">
-						<div class="col-lg-4 col-md-6">
-							<div class="form-group">
-								<label for="usr">Duration (Select year & month) <span class="mandatory">*</span></label>
-								<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-									<input class="form-control" type="text" readonly />
-									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								</div>
-							</div>
-						</div>
-					
-						<div class="col-lg-4 col-md-6">
-							<div class="form-group">
-								<label for="usr">Role: <span class="mandatory">*</span></label>
-								<input type="text" value="Enter your Role" class="form-control" id="usr">
-							</div>
-						</div>
-					
-						<div class="col-lg-4 col-md-6">
-							<div class="form-group">
-									<label for="pwd">City<span class="mandatory">*</span></label>
-									<select class="form-control" id="nationality">
-										<option value="Indian">Enter City</option>
-										<option value="Indian">Chennai</option>
-										<option value="Pakistan">Bangalore</option>
-										<option value="Japan">Uttar Pradesh</option>
-										<option value="Srilanka">kerala</option>
-									</select>
-								</div>
-						</div>
-					</div>	
-						
+						<label class="awards-note">*Complete your previous Experience details</label>
 						<div class="add-award">
-							<button class="add-schedule dr-add-schedule"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Experience</button>
+							<button class="add-schedule dr-add-schedule dr-add-exp"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Experience</button>
 						</div>
-						<div class="form-group">
-							<label for="pwd">Clinic / Hospital Name</label>
-							<input type="text" value="Enter Clinic / Hospital Name" class="form-control" id="usr">
-							<label class="awards-note">*Complete your previous Experience details</label>
-						</div>
+						
+						<div class="row">
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="usr">Duration (Select year & month) <span class="mandatory">*</span></label>
+									<div class="input-group">
+	                                    <div class="input-group-addon">
+	                                        <i class="fa fa-calendar"></i>
+	                                    </div>
+	                                    <input type="text" class="form-control pull-right" id="duration_0" />
+	                                </div>
+								</div>
+							</div>
+						
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="usr">Role: <span class="mandatory">*</span></label>
+									<input type="text" placeholder="Enter your Role" class="form-control" id="usr">
+								</div>
+							</div>
+						
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
+									<?php $cities = call_user_func('getCitiesList');?>
+									{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control select2','id'=>'city'));!!}
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Clinic / Hospital Name</label>
+								<input type="text" placeholder="Enter Clinic / Hospital Name" class="form-control" id="usr">						
+							</div>
+						</div>	
+						<div class="addExperienceDetails"></div>
+						<input type="hidden" name="exp_count" id="exp_count"/>
+						
 					</div>
 				
 					<div class="next-page-btn">
@@ -127,40 +133,9 @@
         <!-- /#page-content-wrapper -->
 @endsection
 @section('scripts')
-<script>
-$(document).ready(function(){
 
-$('.responsive-tabs').responsiveTabs({
-  accordionOn: ['xs']
-});
-
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
-    });
-	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });
- 
-  $("#datepicker").datepicker({ 
-        autoclose: true, 
-        todayHighlight: true
-  }).datepicker('update', new Date());;
-
-});
-
-</script>
+<!-- date-range-picker -->
+<script src="{{ asset('js/moment.min.js') }}" ></script>
+<script src="{{ asset('js/daterangepicker.js') }}"  type="text/javascript"></script>	
+<script src="{{ asset('js/doctor/service.js') }}"></script>
 @stop

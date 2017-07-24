@@ -11,10 +11,13 @@
 	<link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+	<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />-->
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/jquery-confirm.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet" />
 
 	<!-- <link rel="stylesheet" href="css/bootstrap-responsive-tabs.css"> -->
 
@@ -85,11 +88,13 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.bootstrap-responsive-tabs.min.js') }}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>-->
 	<script src="{{ asset('js/sidebar_menu.js') }}"></script>
 	
 	<script src="{{ asset('js/mask.min.js') }}"></script>
 	<script src="{{ asset('js/jquery-confirm.js') }}"></script>
+	<script src="{{ asset('js/select2.js') }}"></script>
+	<script src="{{ asset('js/jquery.noty.packaged.min.js') }}"></script>
 	 @yield('scripts')
 </body>
 </html>

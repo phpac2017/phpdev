@@ -111,7 +111,7 @@
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Qualification<span class="mandatory">*</span></label>
-											{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',						'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),1, ['class' => 'form-control','id'=>'qualification','multiple'=>true]) }}
+											{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',		'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),1, ['class' => 'form-control','id'=>'qualification','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
