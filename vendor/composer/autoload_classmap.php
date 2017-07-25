@@ -67,6 +67,7 @@ return array(
     'CreateCitiesTable' => $baseDir . '/database/migrations/2017_07_21_064643_create_cities_table.php',
     'CreateCountriesTable' => $baseDir . '/database/migrations/2017_07_21_064612_create_countries_table.php',
     'CreateDocTimeslotTable' => $baseDir . '/database/migrations/2017_05_31_163228_create_doc_timeslot_table.php',
+    'CreateDoctorProfile' => $baseDir . '/database/migrations/2017_07_25_084045_create_doctor_profile.php',
     'CreateDoctorTable' => $baseDir . '/database/migrations/2017_05_31_162811_create_doctor_table.php',
     'CreateLanguagesTable' => $baseDir . '/database/migrations/2017_07_21_085659_create_languages_table.php',
     'CreateNationalityTable' => $baseDir . '/database/migrations/2017_07_21_075704_create_nationality_table.php',

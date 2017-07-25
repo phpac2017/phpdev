@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Doctor;
+use App\doctor_profile;
+use App\User;
+use File;
+use Hash;
+use Lang;
+use Mail;
+use Redirect;
+use URL;
+use View;
 
 class DoctorController extends Controller
 {
@@ -56,6 +62,63 @@ class DoctorController extends Controller
 				
                ),200);
    }
+
+   /**
+     * User update form processing page.
+     *
+     * @param  User $user
+     * @param UserRequest $request
+     * @return Redirect
+     */
+    public function updateProfile(User $user, Request $request)
+    {
+
+        $this->validate($request, [
+            'profile_pic' => 'required | mimes:jpeg,jpg,png',
+            'title' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'city' => 'required',
+            'experience' => 'required',
+            'language' => 'required',
+            'nationality' => 'required',
+            'description' => 'required',
+        ]);
+
+        $id = $request->get('id');
+        $doctor = doctor_profile::select('user_id')->where('user_id', $id)->get()->toArray();
+        $update_user = [
+          'name'     => $tblDF_LID,
+          'gender'   => 4,
+          'nationality'     => $form_user_id,
+          'language'    => $today,
+        ];
+                
+        if($doctor===array()){
+           User::find($id)->update($update_user);
+        }
+        echo "<pre>";print_r($doctor);exit;
+        echo "DP ".$doctor->profile_pic;
+        exit;
+
+        // is new image uploaded?
+        if ($file = $request->file('profile_pic')) {
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $folderName = '/uploads/doctors/profile/';
+            $destinationPath = public_path() . $folderName;
+            $safeName = str_random(10) . '.' . $extension;
+            $file->move($destinationPath, $safeName);
+            //delete old pic if exists
+            if (File::exists(public_path() . $folderName . $doctor->profile_pic)) {
+                File::delete(public_path() . $folderName . $doctor->profile_pic);
+            }
+
+            //save new file path into db
+            $doctor->profile_pic = $safeName;
+
+        }
+
+    }
    /**
     * Display the specified resource.
     *

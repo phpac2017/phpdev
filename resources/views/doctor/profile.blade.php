@@ -48,6 +48,17 @@
 				</div>
 			</div>
 
+			@if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
+
+			{{ Form::open(array('method' => 'POST','id'=>'doctor_profile', 'enctype'=>'multipart/form-data')) }}
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
 				<h2>Personal contact details</h2>
 				<div class="row">					
@@ -58,7 +69,7 @@
 							<div class="change-photo-up">
 								<label class="btn-bs-file btn btn-xs btn-success browse-btn">
 									Choose Photo
-									<input type="file" />
+									{{ Form::file('profile_pic', old('profile_pic') ,['class' => 'form-control']) }}
 								</label>
 								<span class="browse-computer">Browse file from the computer</span>							
 							</div>
@@ -76,7 +87,9 @@
 					<div class="col-md-8">
 						<div class="form-group">
 							<label for="usr">Name : <span class="mandatory">*</span></label>
-							<input type="text" name="user_name" value="{{ Auth::user()->name }}" class="form-control" id="user_name">
+							<?php $user_name = Auth::user()->name; $user_id = Auth::user()->id;?>
+							{{ Form::text('name', $user_name, array('class' => 'form-control', 'id' => 'name')) }}
+							{{ Form::hidden('id', $user_id, array('class' => 'form-control', 'id' => 'id')) }}
 						</div>
 					</div>
 				</div>
@@ -97,7 +110,7 @@
 						<div class="form-group">
 							<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
 							<?php $cities = call_user_func('getCitiesList');?>
-							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control select2','id'=>'city'));!!}
+							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(), old('city') ,array('class'=>'form-control select2','id'=>'city'));!!}
 						</div>
 					</div>
 					
@@ -105,7 +118,7 @@
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
 							<label for="exp">Years of Experience : <span class="mandatory">*</span>  <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-							<input type="text" id="experience" name="experience" placeholder="Enter number of years" class="form-control"  maxlength="2" onkeyup="validateNumerics(this.id);">
+							{{ Form::text('experience', null, array('class' => 'form-control', 'id' => 'user_name','placeholder' => 'Enter number of years', 'maxlength' => '2', 'onkeyup' => 'validateNumerics(this.id)')) }}
 							<div class="experience"></div>
 						</div>
 					</div>
@@ -147,7 +160,9 @@
 						<div class="form-group">
 							<label for="usr">Contact Number :<span class="mandatory">*</span></label>
 							<div class="verify-number">
-								<input type="text" placeholder="Enter Contact Number" value="{{ Auth::user()->mobile_number }}" class="form-control" name="contact_number" id="contact_number" readonly="true"/>
+								<?php $mob_no = Auth::user()->mobile_number;?>
+								{{ Form::text('contact_number', $mob_no, array('class' => 'form-control', 'id' => 'contact_number','readonly' => 'true')) }}
+							<div class="experience"></div>
 								<!--<span class="verify-num"><a href="#">Verify</a></span>
 								<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>-->
 							</div>
@@ -160,7 +175,9 @@
 						<div class="form-group">
 							<label for="usr">Email Address :<span class="mandatory">*</span></label>
 							<div class="verify-number">
-								<input type="text" name="doctor_email" placeholder="Enter Email Address" value="{{ Auth::user()->email }}" class="form-control" id="doctor_email" onBlur = validateEmail(this.id); readonly="true"/>
+								<?php $email = Auth::user()->email;?>
+								{{ Form::text('doctor_email', $email, array('class' => 'form-control', 'id' => 'doctor_email','readonly' => 'true')) }}
+							<div class="experience"></div>
 								<!--<span class="verify-num"><a href="#">Verify</a></span>
 								<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>-->
 							</div>
@@ -174,7 +191,9 @@
 						<button class="btn btn-formsubmit password-btn">Next</button>
 					</div>
 				</div>
-			</div>				
+			</div>
+
+			{{ Form::close() }}
 			
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>

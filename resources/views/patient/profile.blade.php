@@ -49,185 +49,172 @@
 			</div>
 			<div class="edit-profile-photo login-register-tab">
 				<h2>Edit Profile</h2>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group">
-							<label for="usr" class="usr-photo-change">Change Photo</label>
-							<span class="change-profile-img"></span>
-							<div class="change-photo-up">
-								<label class="btn-bs-file btn btn-xs btn-success browse-btn">
-									Choose Photo
-									<input type="file" />
-								</label>
-								<span class="browse-computer">Browse file from the computer</span>
-								
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Full Name: <span class="mandatory">*</span></label>
-							<input type="text" value="Full Name" class="form-control" id="usr">
-						</div>
-					</div>
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-								<label for="pwd">Country<span class="mandatory">*</span></label>
-								<select class="form-control" id="nationality">
-									<option value="Indian">Indian</option>
-									<option value="Pakistan">Pakistan</option>
-									<option value="Japan">Japan</option>
-									<option value="Srilanka">Srilanka</option>
-								</select>
-							</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Age : <span class="mandatory">*</span></label>
-							<input type="text" value="Age" class="form-control" id="usr">
-						</div>
-					</div>
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-								<label for="pwd">State<span class="mandatory">*</span></label>
-								<select class="form-control" id="nationality">
-									<option value="Indian">TamilNadu</option>
-									<option value="Pakistan">TamilNadu</option>
-									<option value="Japan">TamilNadu</option>
-									<option value="Srilanka">TamilNadu</option>
-								</select>
-							</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-								<label for="pwd">Gender<span class="mandatory">*</span></label>
-								<div class="radio-box">
-								 <input id="radio1" type="radio" name="Checkbox" value="Box"><label for="radio1">Male</label>
-								 <input id="radio2" type="radio" name="Checkbox" value="Box"><label for="radio2">Female</label>
-								  <input id="radio3" type="radio" name="Checkbox" value="Box"><label for="radio3">Others</label>
-								</div>
-							</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-								<label for="pwd">City<span class="mandatory">*</span></label>
-								<select class="form-control" id="nationality">
-									<option value="Indian">Chennai</option>
-									<option value="Pakistan">Bangalore</option>
-									<option value="Japan">Uttar Pradesh</option>
-									<option value="Srilanka">kerala</option>
-								</select>
-							</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Date of Birth: <span class="mandatory">*</span></label>
-							<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-								<input class="form-control" type="text" readonly />
-								<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							</div>
-						</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Address: <span class="mandatory">*</span></label>
-							<input type="text" value="Address" class="form-control" id="usr">
-						</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-								<label for="pwd">Blood Group<span class="mandatory">*</span></label>
-								<select class="form-control" id="blood-group" multiple="multiple">
-									<option value="Tamil">O+ive</option>
-									<option value="English">O-ive</option>
-									<option value="Hindi">AB+ive</option>
-									<option value="Malayalam">B+ive</option>
-								</select>
-							</div>
-					</div>
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Zip Code : <span class="mandatory">*</span></label>
-							<input type="text" value="Zip Code " class="form-control" id="usr">
-						</div>
-					</div>
-					
-					<div class="col-lg-4 col-md-6">
+				
+				{{ Form::open(array('method' => 'POST','id'=>'edit_profile_form')) }}
+					<div class="row">
+						<div class="col-md-12">
 							<div class="form-group">
-								<label for="pwd">Language<span class="mandatory">*</span></label>
-								<select class="form-control" id="language" multiple="multiple">
-									<option value="Tamil">Tamil</option>
-									<option value="English">English</option>
-									<option value="Hindi">Hindi</option>
-									<option value="Malayalam">Malayalam</option>
-								</select>
-							</div>
-					</div>
-					
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Mobile Number : <span class="mandatory">*</span></label>
-							<input type="text" value="Mobile Number" class="form-control" id="Mobile Number">
-						</div>
-					</div>
-					
-					<div class="col-lg-4 col-md-6 dis-flex">
-						
-							<div class="verification">
-								<div class="form-group">
-									<label for="usr">Verification: <span class="mandatory">*</span></label>
-									<input type="text" value="Verification" class="form-control" id="Mobile Number">
+								<label for="usr" class="usr-photo-change">Change Photo</label>
+								<span class="change-profile-img"></span>
+								<div class="change-photo-up">
+									<label class="btn-bs-file btn btn-xs btn-success browse-btn">
+										Choose Photo
+										{{ Form::file('profile_image', ['class' => 'field exception-fields','id'=>'profile_image']) }}
+									</label>
+									<span class="browse-computer">Browse file from the computer</span>
+																	
 								</div>
 							</div>
-							<div class="browse-btn-verifi">
-								 <label class="btn-bs-file btn btn-xs btn-success browse-btn">
-									Browse
-									<input type="file" />
-								</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Full Name: <span class="mandatory">*</span></label>
+									{{ Form::text('name','',array('class'=> 'form-control','id'=>'name')) }}
+
 							</div>
+						</div>
 						
-					</div>
-					
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Alternate Number: <span class="mandatory">*</span></label>
-							<input type="text" value="Alternate Number" class="form-control" id="Mobile Number">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+									<label for="pwd">Country<span class="mandatory">*</span></label>
+									{{ Form::select('country', array('1'=>'India','2'=>'Pakistan','3'=>'Japan','4'=>'Srilanka'),1, ['class' => 'form-control','id'=>'country']) }}
+								</div>
 						</div>
 					</div>
 					
-					<!--<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Weight : <span class="mandatory">*</span></label>
-							<input type="text" value="Weight" class="form-control" id="Weight">
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Age : <span class="mandatory">*</span></label>
+								{{ Form::text('age','',array('class'=> 'form-control','id'=>'age','readonly'=>'true')) }}
+							</div>
 						</div>
-					</div> -->
-					<div class="col-lg-4 col-md-6">
-						<div class="form-group">
-							<label for="usr">Email id : <span class="mandatory">*</span></label>
-							<input type="text" value="Email id" class="form-control" id="Email id">
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+									<label for="pwd">State<span class="mandatory">*</span></label>
+									{{ Form::select('state', array('1'=>'TamilNadu','2'=>'Bihar','3'=>'Karnataka','4'=>'Kerala'),1, ['class' => 'form-control','id'=>'state']) }}
+								</div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+									<label for="pwd">Gender<span class="mandatory">*</span></label>
+										<div class="radio-box">
+											{{ Form::radio('gender','M',true,array('id'=>'radio1')) }}
+											 <label for="radio1">Male</label>
+											 {{ Form::radio('gender','F',array('id'=>'radio2')) }}
+											 <label for="radio2">Female</label>
+										</div>
+								</div>
+						</div>
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+									<label for="pwd">City<span class="mandatory">*</span></label>
+									{{ Form::select('city', array('1'=>'Chennai','2'=>'Bangalore','3'=>'Mumbai','4'=>'Kolkatta'),1, ['class' => 'form-control','id'=>'city']) }}
+								</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Date of Birth: <span class="mandatory">*</span></label>
+								<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+									{{ Form::text('dob','',array('class'=> 'form-control','id'=>'dob','readonly'=>true)) }}
+									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Address: <span class="mandatory">*</span></label>
+								{{ Form::text('address','',array('class'=> 'form-control','id'=>'address')) }}
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+									<label for="pwd">Blood Group<span class="mandatory">*</span></label>
+									{{ Form::select('blood_group', array('1'=>'A+ve','2'=>'B+ve','3'=>'O-ve','4'=>'AB+ve'),1, ['class' => 'form-control','id'=>'blood_group']) }}
+								</div>
+						</div>
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Zip Code : <span class="mandatory">*</span></label>
+								{{ Form::text('zip_code','',array('class'=> 'form-control','id'=>'zip_code')) }}
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="pwd">Language<span class="mandatory">*</span></label>
+									{{ Form::select('language', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),1, ['class' => 'form-control','id'=>'language','multiple'=>true]) }}
+								</div>
+						</div>
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Mobile Number : <span class="mandatory">*</span></label>
+								{{ Form::text('mobile_number','',array('class'=> 'form-control','id'=>'mobile_number')) }}
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-lg-4 col-md-6 dis-flex">
+							
+								<div class="verification">
+									<div class="form-group">
+										<label for="usr">Verification Doc: <span class="mandatory">*</span></label>
+											{{ Form::text('verification_doc_type','',array('class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
+										</div>
+								</div>
+								<div class="browse-btn-verifi">
+									 <label class="btn-bs-file btn btn-xs btn-success browse-btn">
+										Browse
+										{{ Form::file('verification_doc', ['class' => 'field exception-fields','id'=>'verification_doc']) }}
+									</label>
+									<span id="verif_doc_name"></span>
+								</div>
+							
+						</div>
+						
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Alternate Number: <span class="mandatory">*</span></label>
+								{{ Form::text('alt_mobile_no','',array('class'=> 'form-control','id'=>'alt_mobile_no')) }}
+							</div>
+						</div>
+					</div>
+						
+					<div class="row">	
+						<div class="col-lg-4 col-md-6">
+							<div class="form-group">
+								<label for="usr">Email id : <span class="mandatory">*</span></label>
+								{{ Form::email('email','',array('class'=> 'form-control','id'=>'email')) }}
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6"></div>
+					</div>
+					
 					<div class="password-save-btn">
-						<button class="btn btn-formsubmit password-btn">Change Password</button>
-						<button class="btn btn-formsubmit save-btn">Save Profile</button>
+						<button type="button" class="btn btn-formsubmit password-btn">Change Password</button>
+						{{ Form::submit('Save Profile', array('class' => 'btn btn-formsubmit save-btn','id'=>'save_profile')) }}
 					</div>
+					{{ Form::close()}}
 				</div>
 			</div>
 			
@@ -243,40 +230,73 @@
         <!-- /#page-content-wrapper -->
 @endsection
 @section('scripts')
-<script>
-$(document).ready(function(){
+<script src="{{ asset('js/patient_profile.js') }}"></script>
 
-$('.responsive-tabs').responsiveTabs({
-  accordionOn: ['xs']
-});
+<script>
+function getAge(dateString) 
+{
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}
+function readURL(input) {
+	
+		if(input.name=='verification_doc' && input.files && input.files[0]){
+			$('span#verif_doc_name').html(input.files[0].name);
+			return false;
+		}
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('span.change-profile-img').css('background','url('+e.target.result+') no-repeat')
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+}
+$(document).ready(function(){
+	$('#alt_mobile_no').mask('(000) 000-0000');
+	$('#mobile_number').mask('(000) 000-0000');
+	$('.responsive-tabs').responsiveTabs({
+	  accordionOn: ['xs']
+	});
 
 	<!-- Multiselect -->
-    $('#qualification').multiselect({
+    $('#state').multiselect({
       buttonWidth: '100%'
     });
 	
-	 $('#blood-group').multiselect({
+	 $('#blood_group').multiselect({
       buttonWidth: '100%'
     });
 	$('#language').multiselect({
       buttonWidth: '100%'
     });
-	$('#nationality').multiselect({
+	$('#country').multiselect({
       buttonWidth: '100%'
     });
-	$('#country_code').multiselect({
+	$('#city').multiselect({
       buttonWidth: '100%'
     });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });
-	
  
   $("#datepicker").datepicker({ 
         autoclose: true, 
-        todayHighlight: true
-  }).datepicker('update', new Date());;
-
+        todayHighlight: true,
+		endDate:"0d",
+		clearBtn:true
+  }).datepicker().on('changeDate', function(e) {
+	  $("#age").val(getAge(e.date));
+    });
+  
+	$("#profile_image,#verification_doc").change(function(){
+		readURL(this);
+	});
+	
   
  
 

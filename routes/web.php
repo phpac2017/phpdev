@@ -95,6 +95,8 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('awards', function () {
 			return view('doctor/awards_membership');
 		});
+
+		Route::post('profile', [ 'as' => 'checkEmail', 'uses' => 'DoctorController@updateProfile']);
 		
 	});
 });
