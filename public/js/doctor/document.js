@@ -88,7 +88,7 @@ function isEmpty(value) {
 							'<div class="col-lg-4 col-md-6">'+
 								'<div class="form-group">'+
 									'<label for="pwd">Select Council Name<span class="mandatory">*</span></label>'+
-									'<select class="form-control select2" id="cn_'+addCount+'">'+
+									'<select class="form-control select2" name="council[]" id="council_'+addCount+'">'+
 										'<option value="1">Andhra Pradesh Medical Council</option>'+
 										'<option value="2">Arunachal Pradesh Medical Council</option>'+
 										'<option value="3">Assam Medical Council</option>'+
@@ -140,29 +140,29 @@ function isEmpty(value) {
 							'<div class="col-lg-3 col-md-6">'+
 								'<div class="form-group">'+
 									'<label for="pwd">Year<span class="mandatory">*</span></label>'+	
-									'<select name="year" id="y_'+addCount+'" class="form-control select2">'+										
+									'<select name="year[]" id="year_'+addCount+'" class="form-control select2">'+										
 									'</select>'+	
 								'</div>'+
 							'</div>'+
 
 							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
-									'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remReg(this.id);" />'+
-								'</div>'+
+								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remReg(this.id);" />'+
+							'</div>'+
 
 						'</div>';	
 						
 			$('.addCncDetails').append(html);
-			$("#y_"+addCount).select2();
-			$("#cn_"+addCount).select2();
+			$("#year_"+addCount).select2();
+			$("#council_"+addCount).select2();
 			$("#divLoading").removeClass('show');				
 			//$(".dr-edu-add").prop('disabled',true);
 			//Display Year From 1980
 			for (i = 1980; i <= new Date().getFullYear(); i++)
 			{
-			    $("#y_"+addCount).append($('<option />').val(i).html(i));
+			    $("#year_"+addCount).append($('<option />').val(i).html(i));
 			}
 
-			$("#y_"+addCount).select2();
+			$("#year_"+addCount).select2();
 		}
 	});
 

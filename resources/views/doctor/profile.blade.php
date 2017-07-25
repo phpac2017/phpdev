@@ -47,10 +47,10 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
 				<h2>Personal contact details</h2>
-				<div class="row">
-					
+				<div class="row">					
 					<div class="col-md-12">
 						<div class="form-group">
 							<label for="usr" class="usr-photo-change">Change Photo</label>
@@ -60,39 +60,34 @@
 									Choose Photo
 									<input type="file" />
 								</label>
-								<span class="browse-computer">Browse file from the computer</span>
-								
-								
+								<span class="browse-computer">Browse file from the computer</span>							
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<div class="form-group">
-								<label for="pwd">Title</label>
-								<select class="form-control" id="dr">
-									<option value="Indian">Dr</option>
-									<option value="Pakistan">Dr</option>
-									<option value="Japan">Dr</option>
-									<option value="Srilanka">Dr</option>
-								</select>
-							</div>
+							<label for="pwd">Title</label>
+							{{ Form::select('title',array('1'=>'Dr','2'=>'Ph.D.','3'=>'M.D','4'=>'DrPh'),1, ['class' => 'form-control select2','id'=>'title']) }}
+						</div>
 					</div>
 					<div class="col-md-8">
 						<div class="form-group">
 							<label for="usr">Name : <span class="mandatory">*</span></label>
-							<input type="text" value="{{ Auth::user()->name }}" class="form-control" id="usr">
+							<input type="text" name="user_name" value="{{ Auth::user()->name }}" class="form-control" id="user_name">
 						</div>
 					</div>
 				</div>
+
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
 							<label for="pwd">Gender<span class="mandatory">*</span></label>								
 							<div class="radio-box">
-								 <input id="radio1" type="radio" name="Checkbox" value="M" <?php echo (Auth::user()->gender==='M' ? ' checked' : ''); ?>><label for="radio1">Male</label>
-								 <input id="radio2" type="radio" name="Checkbox" value="F" <?php echo (Auth::user()->gender==='F' ? ' checked' : ''); ?>><label for="radio2">Female</label>
+								 <input id="radio1" type="radio" name="gender" value="M" <?php echo (Auth::user()->gender==='M' ? ' checked' : ''); ?>><label for="radio1">Male</label>
+								 <input id="radio2" type="radio" name="gender" value="F" <?php echo (Auth::user()->gender==='F' ? ' checked' : ''); ?>><label for="radio2">Female</label>
 							</div>
 						</div>
 					</div>
@@ -102,7 +97,7 @@
 						<div class="form-group">
 							<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
 							<?php $cities = call_user_func('getCitiesList');?>
-							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control','id'=>'city'));!!}
+							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control select2','id'=>'city'));!!}
 						</div>
 					</div>
 					
@@ -110,83 +105,85 @@
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
 							<label for="exp">Years of Experience : <span class="mandatory">*</span>  <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-							<input type="text" placeholder="Enter number of years" value="" class="form-control" id="exp">
+							<input type="text" id="experience" name="experience" placeholder="Enter number of years" class="form-control"  maxlength="2" onkeyup="validateNumerics(this.id);">
+							<div class="experience"></div>
 						</div>
 					</div>
+					
 				</div>	
 					
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
-							<div class="form-group">
-								<label for="pwd">Language<span class="mandatory">*</span></label>
-								<?php 
-									$languages = call_user_func('getLanguages');
-									$lang = Auth::user()->language; 
-									$getLang = call_user_func('getLang', $lang);
-								?>
-								{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),$getLang->toArray(),array('class'=>'form-control','multiple'=>'multiple','id'=>'language'));!!}
-							</div>
+						<div class="form-group">
+							<label for="pwd">Language<span class="mandatory">*</span></label>
+							<?php 
+								$languages = call_user_func('getLanguages');
+								$lang = Auth::user()->language; 
+								$getLang = call_user_func('getLang', $lang);
+							?>
+							{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),$getLang->toArray(),array('class'=>'form-control select2-multiple','multiple' => 'multiple','id'=>'language'));!!}
+						</div>
 					</div>
 					
 					<div class="col-lg-6 col-md-6">
 						<div class="form-group">
-								<label for="pwd">Nationality<span class="mandatory">*</span></label>
-								<?php $nationalities = call_user_func('getNationalities'); $nationality = Auth::user()->nationality; ?>
-								{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),$nationality,array('class'=>'form-control','id'=>'nationality'));!!}
-							</div>
+							<label for="pwd">Nationality<span class="mandatory">*</span></label>
+							<?php $nationalities = call_user_func('getNationalities'); $nationality = Auth::user()->nationality; ?>
+							{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),$nationality,array('class'=>'form-control select2','id'=>'nationality'));!!}
+						</div>
 					</div>				
 				</div>
 				
-					
+				<div class="row">	
 					<div class="form-group">
-					  <label for="comment">About Me: <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-					  <textarea class="form-control" rows="5" id="comment"></textarea>
-					  <label>Please don’t include email address or phone number in this section. Changes made here requires verification, if not reflected in
-48 hours then please contact support.</label>
+						<label for="comment">About Me: <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
+						<textarea class="form-control" rows="5" name="description" id="description"></textarea>
+						<label>Please don’t include email address or phone number in this section. Changes made here requires verification, if not reflected in 48 hours then please contact support.</label>
 					</div>
+				</div>	
 					
-					
-					<div class="row">
-							<div class="col-lg-4 col-md-5">
-								<div class="form-group">
-									<label for="usr">Contact Number :<span class="mandatory">*</span></label>
-									<div class="verify-number">
-										<input type="text" placeholder="Enter Contact Number" value="{{ Auth::user()->mobile_number }}" class="form-control" name="contact_number" id="contact_number">
-										<span class="verify-num"><a href="#">Verify</a></span>
-										<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>
-									</div>
-								</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-5">
+						<div class="form-group">
+							<label for="usr">Contact Number :<span class="mandatory">*</span></label>
+							<div class="verify-number">
+								<input type="text" placeholder="Enter Contact Number" value="{{ Auth::user()->mobile_number }}" class="form-control" name="contact_number" id="contact_number" readonly="true"/>
+								<!--<span class="verify-num"><a href="#">Verify</a></span>
+								<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>-->
 							</div>
-					</div>
-					
-					<div class="row">
-							<div class="col-lg-4 col-md-5">
-								<div class="form-group">
-									<label for="usr">Email Address :<span class="mandatory">*</span></label>
-									<div class="verify-number">
-										<input type="text" placeholder="Enter Email Address" value="{{ Auth::user()->email }}" class="form-control" id="doctor_email" onBlur = validateEmail(this.id);>
-										<span class="verify-num"><a href="#">Verify</a></span>
-										<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>
-									</div>
-								</div>
-							</div>
-					</div>
-					<div class="next-page-btn">
-						<div class="text-right">
-							<button class="btn btn-formsubmit password-btn">Save</button>
-							<button class="btn btn-formsubmit password-btn">Next</button>
 						</div>
 					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col-lg-4 col-md-5">
+						<div class="form-group">
+							<label for="usr">Email Address :<span class="mandatory">*</span></label>
+							<div class="verify-number">
+								<input type="text" name="doctor_email" placeholder="Enter Email Address" value="{{ Auth::user()->email }}" class="form-control" id="doctor_email" onBlur = validateEmail(this.id); readonly="true"/>
+								<!--<span class="verify-num"><a href="#">Verify</a></span>
+								<span class="num-close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></span>-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="next-page-btn">
+					<div class="text-right">
+						<button class="btn btn-formsubmit password-btn">Save</button>
+						<button class="btn btn-formsubmit password-btn">Next</button>
+					</div>
+				</div>
 			</div>				
 			
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>
-			</div>
-			
+			</div>	
+
 		</aside>
         </div>
         <!-- /#page-content-wrapper -->
-		@endsection
+@endsection
 @section('scripts')
 <script src="{{ asset('js/doctor/basic.js') }}"></script>
 @stop

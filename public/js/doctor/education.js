@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 
 //Function to remove Education
-
 function remEdu(id){
 	$.confirm({
 		icon: 'fa fa-warning',
@@ -115,7 +114,7 @@ function isEmpty(value) {
 								'<div class="col-lg-3 col-md-6">'+
 									'<div class="form-group">'+
 										'<label for="pwd">Qualification<span class="mandatory">*</span></label>'+
-										'<select class="form-control select2" id="q_'+addCount+'" name="qualification">'+
+										'<select class="form-control select2" id="q_'+addCount+'" name="qualification[]">'+
 										   '<option value="1" selected="selected">M.B.B.S</option>'+
 										   '<option value="2">B.D.S</option>'+
 										   '<option value="3">B.P.T</option>'+
@@ -133,7 +132,7 @@ function isEmpty(value) {
 								'<div class="col-lg-5 col-md-6">'+
 									'<div class="form-group">'+
 										'<label for="pwd">College<span class="mandatory">*</span></label>'+
-										'<select class="form-control select2" id="c_'+addCount+'" name="college">'+
+										'<select class="form-control select2" id="c_'+addCount+'" name="college[]">'+
 										   '<option value="1"> All India Institute of Medical Sciences - [AIIMS], New Delhi</option>'+
 										   '<option value="2">Christian Medical College - [CMC], Vellore</option>'+
 										   '<option value="3">Sri Manakula Vinayagar Medical College and Hospital - [SMVMCH], Pondicherry</option>'+
@@ -151,13 +150,13 @@ function isEmpty(value) {
 								'<div class="col-lg-3 col-md-6">'+
 									'<div class="form-group">'+
 										'<label for="pwd">Completion Year<span class="mandatory">*</span></label>'+
-										'<select name="year" id="y_'+addCount+'" class="form-control select2">'+										
+										'<select name="year[]" id="y_'+addCount+'" class="form-control select2">'+										
 										'</select>'+
 									'</div>'+
 								'</div>'+
 								
 								'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
-									'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remSpl(this.id);" />'+
+									'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remEdu(this.id);" />'+
 								'</div>'+
 								
 							'</div>'+
@@ -204,7 +203,7 @@ function isEmpty(value) {
 							'<div class="col-lg-6">'+
 								'<div class="form-group">'+
 									'<label for="pwd">Add Specialization<span class="mandatory">*</span></label>'+
-									'<select class="form-control select2" id="sp_'+addCount+'" name="qualification">'+
+									'<select class="form-control select2" id="sp_'+addCount+'" name="speciality[]">'+
 									   '<option value="1" selected="selected">Anesthesiologist</option>'+
 									   '<option value="2">Obstetrician</option>'+
 									   '<option value="3">Cardiologist</option>'+
@@ -220,7 +219,7 @@ function isEmpty(value) {
 							'</div>'+						
 							
 							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
-								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remEdu(this.id);" />'+
+								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remSpl(this.id);" />'+
 							'</div>'+				
 						'</div>';
 			$('.addSplDetails').append(html);

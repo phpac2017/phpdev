@@ -13,12 +13,13 @@
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
-				<i class="fa fa-bars fa-lg" aria-hidden="true"></i></button></li>
-                            </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
+							<i class="fa fa-bars fa-lg" aria-hidden="true"></i></button>
+						</li>
+                    </ul>
                 </div>
-				</div>
+			</div>
 		
 			<div class="breadcrumbs">
 				<div class="row">
@@ -49,25 +50,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
-				<h2>Services & Experience</h2>
 
+			
+			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
+
+				<h2>Services & Experience</h2>
 					<div class="awards-recognitions">
-						<h4>Services <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
+						<h4>Services <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>						
+						<label class="awards-note">*Complete your previous Service details</label>
 						<label class="services-sel">0 Services Selected</label>
 						<div class="add-award">
 							<button class="add-schedule dr-add-schedule dr-add-service"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Service</button>
 						</div>
-							<div class="row">
-								<div class="col-lg-4 col-md-6">
-									<div class="form-group">
-										<label for="pwd">Select Service</label>
-										{{ Form::select('service',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),1, ['class' => 'form-control select2','id'=>'service']) }}
-									</div>
+						<div class="row">
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="pwd">Select Service</label>
+									{{ Form::select('service',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),1, ['class' => 'form-control select2','id'=>'srv_0']) }}
 								</div>
 							</div>
-							<div class="addServiceDetails"></div>
-							<input type="hidden" name="ser_count" id="ser_count"/>	
+						</div>
+						<div class="addServiceDetails"></div>
+						<input type="hidden" name="ser_count" id="ser_count"/>	
 					</div>
 					
 					<div class="memberships-recognitions">
@@ -85,7 +89,7 @@
 	                                    <div class="input-group-addon">
 	                                        <i class="fa fa-calendar"></i>
 	                                    </div>
-	                                    <input type="text" class="form-control pull-right" id="duration_0" />
+	                                    <input type="text" name="duration[]" class="form-control pull-right" id="duration_0" />
 	                                </div>
 								</div>
 							</div>
@@ -93,7 +97,7 @@
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="usr">Role: <span class="mandatory">*</span></label>
-									<input type="text" placeholder="Enter your Role" class="form-control" id="usr">
+									<input type="text" name="role[]" placeholder="Enter your Role" class="form-control" id="role_0">
 								</div>
 							</div>
 						
@@ -101,14 +105,15 @@
 								<div class="form-group">
 									<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
 									<?php $cities = call_user_func('getCitiesList');?>
-									{!! Form::select('city', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control select2','id'=>'city'));!!}
+									{!! Form::select('city[]', ['' => 'Select'] +$cities->toArray(),'',array('class'=>'form-control select2','id'=>'city_0'));!!}
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="col-lg-8 col-md-8">
 								<label for="pwd">Clinic / Hospital Name</label>
-								<input type="text" placeholder="Enter Clinic / Hospital Name" class="form-control" id="usr">						
+								<input type="text" name="hosp_name[]" placeholder="Enter Clinic / Hospital Name" class="form-control" id="hosp_0">				
 							</div>
 						</div>	
+						<br/>
 						<div class="addExperienceDetails"></div>
 						<input type="hidden" name="exp_count" id="exp_count"/>
 						

@@ -59,7 +59,7 @@
 							<div class="col-md-8">
 								<div class="form-group">
 									<label for="usr">Awards / Recognitions <span class="mandatory">*</span></label>
-									<input type="text" placeholder="Enter Awards / Recognition" class="form-control" id="usr">
+									<input type="text" name="award[]" placeholder="Enter Awards / Recognition" class="form-control" id="award_0">
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -68,7 +68,7 @@
 									<?php 
 										$year = call_user_func('getYear');
 									?>
-									{!! Form::select('year', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>'year'));!!}					
+									{!! Form::select('year[]', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>'year_0'));!!}					
 								</div>
 							</div>
 						</div>
@@ -86,7 +86,7 @@
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="pwd">Memberships</label>
-									<select class="form-control select2" id="mem_0">
+									<select class="form-control select2" name="membership[]" id="mem_0">
 										<option value="Indian">Government Doctors Association</option>
 										<option value="Pakistan">Association of Women Doctors Singapore</option>
 										<option value="Japan">Karnataka Qualified Homoeopathic Doctors Association(KQHDA)</option>

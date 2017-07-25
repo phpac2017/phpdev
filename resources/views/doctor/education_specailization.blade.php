@@ -72,7 +72,7 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="form-group">
 										<label for="pwd">Qualification<span class="mandatory">*</span></label>
-										{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',		'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),$qual, ['class' => 'form-control select2','id'=>$qual_key]) }}
+										{{ Form::select('qualification[]',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',		'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),$qual, ['class' => 'form-control select2','id'=>$qual_key]) }}
 									</div>
 									
 								</div>
@@ -80,7 +80,7 @@
 								<div class="col-lg-5 col-md-6">
 									<div class="form-group">
 										<label for="pwd">College<span class="mandatory">*</span></label>
-										{{ Form::select('college',array('1'=>' All India Institute of Medical Sciences - [AIIMS], New Delhi','2'=>'Christian Medical College - [CMC], Vellore','3'=>'Sri Manakula Vinayagar Medical College and Hospital - [SMVMCH], Pondicherry','4'=>'Armed Forces Medical College - [AFMC], Pune','5'=>'Kasturba Medical College - [KMC], Mangalore','6'=>'Maulana Azad Medical College - [MAMC], New Delhi','7'=>'Jawaharlal Institute of Post Graduate Medical Education and Research - [JIPMER], Pondicherry','8'=>'Lady Hardinge Medical College - [LHMC], New Delhi','9'=>'Madras Medical College - [MMC], Chennai','10'=>'Grant Medical College - [GMC], Mumbai'),null, ['class' => 'form-control select2','id'=>$col_key]) }}
+										{{ Form::select('college[]',array('1'=>' All India Institute of Medical Sciences - [AIIMS], New Delhi','2'=>'Christian Medical College - [CMC], Vellore','3'=>'Sri Manakula Vinayagar Medical College and Hospital - [SMVMCH], Pondicherry','4'=>'Armed Forces Medical College - [AFMC], Pune','5'=>'Kasturba Medical College - [KMC], Mangalore','6'=>'Maulana Azad Medical College - [MAMC], New Delhi','7'=>'Jawaharlal Institute of Post Graduate Medical Education and Research - [JIPMER], Pondicherry','8'=>'Lady Hardinge Medical College - [LHMC], New Delhi','9'=>'Madras Medical College - [MMC], Chennai','10'=>'Grant Medical College - [GMC], Mumbai'),null, ['class' => 'form-control select2','id'=>$col_key]) }}
 									</div>
 								</div>
 								
@@ -90,7 +90,7 @@
 										<?php 
 											$year = call_user_func('getYear');
 										?>
-										{!! Form::select('year', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>$yr_key));!!}
+										{!! Form::select('year[]', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>$yr_key));!!}
 									</div>
 								</div>
 								<?php if($qkey > 0){?>
@@ -132,7 +132,7 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<label for="pwd">Add Specialization<span class="mandatory">*</span></label>
-									{{ Form::select('speciality',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),$speciality, ['class' => 'form-control select2','id'=>$sp_key]) }}
+									{{ Form::select('speciality[]',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),$speciality, ['class' => 'form-control select2','id'=>$sp_key]) }}
 								</div>
 							</div>
 							<?php if($spkey > 0){?>

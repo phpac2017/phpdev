@@ -56,7 +56,7 @@ function deleteAwd(id){
 function remMem(id){
 	$.confirm({
 		icon: 'fa fa-warning',
-		title: 'Are you sure you want to remove this mmebership?',
+		title: 'Are you sure you want to remove this membership?',
 		content: 'This operation is irreversible.',
 		type: 'red',
 		typeAnimated: true,
@@ -121,14 +121,14 @@ function isEmpty(value) {
 							'<div class="col-lg-8 col-md-6">'+
 								'<div class="form-group">'+
 									'<label for="usr">Awards / Recognitions<span class="mandatory">*</span></label>'+
-									'<input type="text" name="awd[]" placeholder="Enter Awards / Recognition" class="form-control" id="awd_'+addCount+'">'+
+									'<input type="text" name="award[]" placeholder="Enter Awards / Recognition" class="form-control" id="award_'+addCount+'">'+
 								'</div>'+
 							'</div>'+
 
 							'<div class="col-lg-3 col-md-6">'+
 								'<div class="form-group">'+
 									'<label for="pwd">Year<span class="mandatory">*</span></label>'+	
-									'<select name="year" id="y_'+addCount+'" class="form-control select2">'+										
+									'<select name="year[]" id="year_'+addCount+'" class="form-control select2">'+										
 									'</select>'+	
 								'</div>'+
 							'</div>'+
@@ -140,15 +140,15 @@ function isEmpty(value) {
 						'</div>';		
 					
 			$('.addAwardDetails').append(html);
-			$("#y_"+addCount).select2();
+			$("#year_"+addCount).select2();
 			$("#divLoading").removeClass('show');				
 			//$(".dr-edu-add").prop('disabled',true);
 			for (i = 1980; i <= new Date().getFullYear(); i++)
 			{
-			    $("#y_"+addCount).append($('<option />').val(i).html(i));
+			    $("#year_"+addCount).append($('<option />').val(i).html(i));
 			}
 
-			$("#y_"+addCount).select2();
+			$("#year_"+addCount).select2();
 		}
 	});
 
@@ -179,7 +179,7 @@ function isEmpty(value) {
 							'<div class="col-lg-4 col-md-6">'+
 								'<div class="form-group">'+
 									'<label for="pwd">Memberships<span class="mandatory">*</span></label>'+
-									'<select class="form-control select2" id="mem_'+addCount+'" name="qualification">'+
+									'<select class="form-control select2" id="mem_'+addCount+'" name="membership[]">'+
 									   '<option value="1" selected="selected">Government Doctors Association</option>'+
 									   '<option value="2">Association of Women Doctors Singapore</option>'+
 									   '<option value="3">Karnataka Qualified Homoeopathic Doctors Association(KQHDA)</option>'+

@@ -4,26 +4,10 @@ $(document).ready(function(){
 	  accordionOn: ['xs']
 	});
 
-	<!-- Multiselect -->
-    $('#qualification').multiselect({
-      buttonWidth: '100%'
+	var placeholder = '';//Define Placeholder Value
+    $('.select2, .select2-multiple').select2({
+        //placeholder: placeholder
     });
-	
-	 $('#blood-group').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#language').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#nationality').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#country_code').multiselect({
-      buttonWidth: '100%'
-    });
-	$('#experience').multiselect({
-      buttonWidth: '100%'
-    });	
 
 	$('#contact_number').mask('(000) 000-0000');
 });
@@ -33,6 +17,23 @@ function isEmpty(value) {
 	return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
 }
 	
+
+//Script to validate Numerics Only
+function validateNumerics(id){
+	var number = $('#'+id).val();
+	if(number==""){
+		$('.'+id).html('');
+	}		
+	var valid = /^[0-9_\b]+$/.test(number) && number.length;
+	if(!valid && number!=""){
+		$('.'+id).html('This Field Accepts Numbers Only');
+		$('.'+id).css('color','red');
+		$('#'+id).focus();
+		$('#'+id).val('');
+	} else{
+		$('.'+id).html('');
+	}
+}
 /***************************** Registration Validation and Submission ***************************************/
 $(function(){
 	jQuery("#register_form").validate({

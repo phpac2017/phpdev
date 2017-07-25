@@ -61,7 +61,7 @@
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="usr">Council Registration Number: <span class="mandatory">*</span></label>
-									<input type="text" name="cr_no" placeholder="Enter Council Registration Number" class="form-control" id="cr_no">
+									<input type="text" name="cr_no[]" placeholder="Enter Council Registration Number" class="form-control" id="cr_no_0">
 									
 								</div>
 							</div>
@@ -69,7 +69,7 @@
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="pwd">Select Council Name<span class="mandatory">*</span></label>
-										{{ Form::select('council',array(	'1' => 'Andhra Pradesh Medical Council','2' => 'Arunachal Pradesh 	Medical Council','3' => 'Assam Medical Council','27' => 'Bareilly Medical Council',	'28' => 'Bhopal Medical Council','4' => 'Bihar Medical Council','29' => 'Bombay Medical Council','30' => 'Chandigarh Medical Council',	'5' => 'Chattisgarh Medical Council','6' => 'Delhi Medical Council','31' => 'Dental Council of India','39' => 'General Medical Council','7' => 'Goa Medical Council','8' => 'Gujarat Medical Council','9' => 'Haryana Dental &amp; Medical Councils','10' => 'Himanchal Pradesh Medical Council',	'45' => 'Hyderabad Medical Council','11' => 'Jammu &amp; Kashmir Medical Council','12' => 'Jharkhand Medical Council','13' => 'Karnataka Medical Council',	'14' => 'Kerala Medical Council','15' => 'Madhya Pradesh Medical Council','36' => 'Madras Medical Council','35' => 'Mahakoshal Medical Council',	'16' => 'Maharashtra Medical Council','26' => 'Manipur Medical Council','46' => 'Medical Council of India',	'47' => 'Medical Council of Tanganyika','42' => 'Mizoram Medical Council','37' => 'Mysore Medical Council',	'41' => 'Nagaland Medical Council','17' => 'Orissa Council of Medical Registration','38' => 'Pondicherry Medical Council',	'18' => 'Punjab Medical Council','19' => 'Rajasthan Medical Council','20' => 'Sikkim Medical Council',	'21' => 'Tamil Nadu Medical Council','43' => 'Telangana State Medical Council','33' => 'Travancore Cochin Medical Council',	'22' => 'Tripura State Medical Council ','23' => 'Uttar Pradesh Medical Council','24' => 'Uttarakhand Medical Council',	'40' => 'Vidharba Medical Council','25' => 'West Bengal Medical Council',),null, ['class' => 'form-control select2','id'=>'council']) }}
+										{{ Form::select('council[]',array(	'1' => 'Andhra Pradesh Medical Council','2' => 'Arunachal Pradesh 	Medical Council','3' => 'Assam Medical Council','27' => 'Bareilly Medical Council',	'28' => 'Bhopal Medical Council','4' => 'Bihar Medical Council','29' => 'Bombay Medical Council','30' => 'Chandigarh Medical Council',	'5' => 'Chattisgarh Medical Council','6' => 'Delhi Medical Council','31' => 'Dental Council of India','39' => 'General Medical Council','7' => 'Goa Medical Council','8' => 'Gujarat Medical Council','9' => 'Haryana Dental &amp; Medical Councils','10' => 'Himanchal Pradesh Medical Council',	'45' => 'Hyderabad Medical Council','11' => 'Jammu &amp; Kashmir Medical Council','12' => 'Jharkhand Medical Council','13' => 'Karnataka Medical Council',	'14' => 'Kerala Medical Council','15' => 'Madhya Pradesh Medical Council','36' => 'Madras Medical Council','35' => 'Mahakoshal Medical Council',	'16' => 'Maharashtra Medical Council','26' => 'Manipur Medical Council','46' => 'Medical Council of India',	'47' => 'Medical Council of Tanganyika','42' => 'Mizoram Medical Council','37' => 'Mysore Medical Council',	'41' => 'Nagaland Medical Council','17' => 'Orissa Council of Medical Registration','38' => 'Pondicherry Medical Council',	'18' => 'Punjab Medical Council','19' => 'Rajasthan Medical Council','20' => 'Sikkim Medical Council',	'21' => 'Tamil Nadu Medical Council','43' => 'Telangana State Medical Council','33' => 'Travancore Cochin Medical Council',	'22' => 'Tripura State Medical Council ','23' => 'Uttar Pradesh Medical Council','24' => 'Uttarakhand Medical Council',	'40' => 'Vidharba Medical Council','25' => 'West Bengal Medical Council',),null, ['class' => 'form-control select2','id'=>'council_0']) }}
 								</div>
 							</div>
 							
@@ -79,7 +79,7 @@
 									<?php 
 										$year = call_user_func('getYear');
 									?>
-									{!! Form::select('year', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>'year'));!!}
+									{!! Form::select('year[]', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>'year_0'));!!}
 								</div>
 							</div>							
 						</div>	
