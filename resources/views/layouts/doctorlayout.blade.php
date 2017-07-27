@@ -41,7 +41,11 @@
 		<div class="user-profile">			
 			<ul class="user-img dr-user-img">
 				<li>
-					<span><img src="{{ asset('images/random-avatar7.jpg') }}" alt="" /></span>
+					<?php 
+						$userid = Auth::user()->id;
+						$imgsrc = call_user_func('getProfilePic', $userid);
+					?>
+					<span><img src="{{ asset('uploads/doctors/profile/').'/'.$imgsrc}}" alt="" /></span>
 				</li>
 				<li>
 					Welcome,

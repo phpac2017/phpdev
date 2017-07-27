@@ -58,18 +58,43 @@
 			    </div>
 			@endif
 
-			{{ Form::open(array('method' => 'POST','id'=>'doctor_profile', 'enctype'=>'multipart/form-data')) }}
+			{{ Form::open(array('method' => 'POST','id'=>'dr_profile_form', 'enctype'=>'multipart/form-data')) }}
+
+			<?php 
+
+				
+				if($doc!=array()){
+				    $doc_id = $doc['id'];
+					$doc_uid = $doc['user_id'];
+					$doc_title = $doc['title'];
+					$doc_city = $doc['city'];
+					$doc_exp = $doc['experience'];
+					$doc_des = $doc['description'];
+					$imgsrc = $doc['profile_pic'];
+					$img = $doc['profile_pic'];
+
+				}else{
+					$doc_id = "";
+					$doc_uid = "";
+					$doc_title = "";
+					$doc_city = "";
+					$doc_exp = "";
+					$doc_des = "";
+					$imgsrc = "def_img.png";
+					$img = '';
+				}
+			?>
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
 				<h2>Personal contact details</h2>
 				<div class="row">					
 					<div class="col-md-12">
 						<div class="form-group">
 							<label for="usr" class="usr-photo-change">Change Photo</label>
-							<span class="change-profile-img"></span>
+							<span class="change-profile-img"><img id="ch_img" src="{{ asset('uploads/doctors/profile/').'/'.$imgsrc}}"/></span>
 							<div class="change-photo-up">
 								<label class="btn-bs-file btn btn-xs btn-success browse-btn">
 									Choose Photo
-									{{ Form::file('profile_pic', old('profile_pic') ,['class' => 'form-control']) }}
+									<input name="profile_pic" type="file" id="profile_pic" accept="image/*" value = "{{ $img }}" onchange="loadFile(event);">
 								</label>
 								<span class="browse-computer">Browse file from the computer</span>							
 							</div>
@@ -81,7 +106,7 @@
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="pwd">Title</label>
-							{{ Form::select('title',array('1'=>'Dr','2'=>'Ph.D.','3'=>'M.D','4'=>'DrPh'),1, ['class' => 'form-control select2','id'=>'title']) }}
+							{{ Form::select('title',array('1'=>'Dr','2'=>'Ph.D.','3'=>'M.D','4'=>'DrPh'),$doc_title, ['class' => 'form-control select2','id'=>'title']) }}
 						</div>
 					</div>
 					<div class="col-md-8">
@@ -110,7 +135,7 @@
 						<div class="form-group">
 							<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
 							<?php $cities = call_user_func('getCitiesList');?>
-							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(), old('city') ,array('class'=>'form-control select2','id'=>'city'));!!}
+							{!! Form::select('city', ['' => 'Select'] +$cities->toArray(), $doc_city ,array('class'=>'form-control select2','id'=>'city'));!!}
 						</div>
 					</div>
 					
@@ -118,7 +143,7 @@
 					<div class="col-lg-4 col-md-6">
 						<div class="form-group">
 							<label for="exp">Years of Experience : <span class="mandatory">*</span>  <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-							{{ Form::text('experience', null, array('class' => 'form-control', 'id' => 'user_name','placeholder' => 'Enter number of years', 'maxlength' => '2', 'onkeyup' => 'validateNumerics(this.id)')) }}
+							{{ Form::text('experience', $doc_exp, array('class' => 'form-control', 'id' => 'user_name','placeholder' => 'Enter number of years', 'maxlength' => '2', 'onkeyup' => 'validateNumerics(this.id)')) }}
 							<div class="experience"></div>
 						</div>
 					</div>
@@ -134,7 +159,7 @@
 								$lang = Auth::user()->language; 
 								$getLang = call_user_func('getLang', $lang);
 							?>
-							{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),$getLang->toArray(),array('class'=>'form-control select2-multiple','multiple' => 'multiple','id'=>'language'));!!}
+							{!! Form::select('language[]', ['' => 'Select'] +$languages->toArray(),$getLang->toArray(),array('class'=>'form-control select2-multiple','multiple' => 'multiple','id'=>'language'));!!}
 						</div>
 					</div>
 					
@@ -150,7 +175,7 @@
 				<div class="row">	
 					<div class="form-group">
 						<label for="comment">About Me: <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
-						<textarea class="form-control" rows="5" name="description" id="description"></textarea>
+						<textarea class="form-control" rows="5" name="description" id="description"><?php echo $doc_des;?></textarea>
 						<label>Please don’t include email address or phone number in this section. Changes made here requires verification, if not reflected in 48 hours then please contact support.</label>
 					</div>
 				</div>	
@@ -188,7 +213,7 @@
 				<div class="next-page-btn">
 					<div class="text-right">
 						<button class="btn btn-formsubmit password-btn">Save</button>
-						<button class="btn btn-formsubmit password-btn">Next</button>
+						<a href="{{ url('doctor/specialization') }}" class="btn btn-formsubmit password-btn">Next</a>
 					</div>
 				</div>
 			</div>

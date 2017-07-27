@@ -51,7 +51,7 @@
 				</div>
 			</div>
 
-			
+			{{ Form::open(array('method' => 'POST','id'=>'dr_exp_form')) }}
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
 
 				<h2>Services & Experience</h2>
@@ -60,16 +60,39 @@
 						<label class="awards-note">*Complete your previous Service details</label>
 						<label class="services-sel">0 Services Selected</label>
 						<div class="add-award">
-							<button class="add-schedule dr-add-schedule dr-add-service"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Service</button>
+							<button type="button" class="add-schedule dr-add-schedule dr-add-service"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Service</button>
 						</div>
+						<?php if($doctor_service==array()){?>
 						<div class="row">
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="pwd">Select Service</label>
-									{{ Form::select('service',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),1, ['class' => 'form-control select2','id'=>'srv_0']) }}
+									{{ Form::select('service[]',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),1, ['class' => 'form-control select2','id'=>'srv_0']) }}
 								</div>
 							</div>
 						</div>
+						<?php }else{
+							foreach ($doctor_service as $dskey => $ds) {
+								$ds_key = 'srv_'.$dskey;
+								$ds_val = $ds['service'];
+								$sid = $ds['id'];
+						?>
+						<div class="row" id="sr_<?php echo $dskey;?>">
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="pwd">Select Service</label>
+									{{ Form::select('service[]',array('1'=>'Allergists','2'=>'Cardiologists','3'=>'Dentists','4'=>'Dermatologist','5'=>'Ophthalmologists','6'=>'Orthodontists','7'=>'Pediatricians','8'=>'Psychiatrists','9'=>'Pulmonary','10'=>'Rheumatologist'),$ds_val, ['class' => 'form-control select2','id'=>$ds_key]) }}
+								</div>
+							</div>
+							<?php if($dskey>0){?>
+								<div class="col-lg-1 col-md-1 text-center delete_icon">
+									<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $dskey;?>" onclick="remSer(this.id,'d','<?php echo $ds_val;?>','<?php echo $sid;?>');" />
+								</div>
+							<?php }?>
+						</div>
+						<input type="hidden" name="stid[]" class="form-control pull-right" value="<?php echo $sid;?>"/>
+						
+						<?php } }?>
 						<div class="addServiceDetails"></div>
 						<input type="hidden" name="ser_count" id="ser_count"/>	
 					</div>
@@ -78,9 +101,10 @@
 						<h4>Experience <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
 						<label class="awards-note">*Complete your previous Experience details</label>
 						<div class="add-award">
-							<button class="add-schedule dr-add-schedule dr-add-exp"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Experience</button>
+							<button type="button" class="add-schedule dr-add-schedule dr-add-exp"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Experience</button>
 						</div>
 						
+						<?php if($doctor_experience==array()){?>
 						<div class="row">
 							<div class="col-lg-4 col-md-6">
 								<div class="form-group">
@@ -114,16 +138,73 @@
 							</div>
 						</div>	
 						<br/>
+
+						<?php }else{
+							foreach ($doctor_experience as $dekey => $de) {
+								$det_key = 'etid_'.$dskey;
+								$ded_key = 'duration_'.$dskey;
+								$der_key = 'role_'.$dskey;
+								$dec_key = 'city_'.$dskey;
+								$deh_key = 'hosp_'.$dskey;
+								$de_duration = $de['duration'];
+								$de_role = $de['role'];
+								$de_city = $de['city'];
+								$de_clinic = $de['clinic_name'];
+								$exid = $de['id'];
+						?>
+						<div class="row" id="er_<?php echo $dekey?>">
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="usr">Duration (Select year & month) <span class="mandatory">*</span></label>
+									<div class="input-group">
+	                                    <div class="input-group-addon">
+	                                        <i class="fa fa-calendar"></i>
+	                                    </div>
+	                                    <input type="text" name="duration[]" class="form-control pull-right" value="<?php echo $de_duration;?>" id="<?php echo $ded_key;?>" />          
+	                                    <input type="hidden" name="etid[]" class="form-control pull-right" value="<?php echo $exid;?>" id="<?php echo $det_key;?>" />
+	                                </div>
+								</div>
+							</div>
+						
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="usr">Role: <span class="mandatory">*</span></label>
+									<input type="text" name="role[]" placeholder="Enter your Role" class="form-control" value="<?php echo $de_role;?>" id="<?php echo $der_key;?>">
+								</div>
+							</div>
+						
+							<div class="col-lg-4 col-md-6">
+								<div class="form-group">
+									<label for="pwd">City<span class="mandatory">*</span> <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></label>
+									<?php $cities = call_user_func('getCitiesList');?>
+									{!! Form::select('city[]', ['' => 'Select'] +$cities->toArray(),$de_city,array('class'=>'form-control select2','id'=>$dec_key));!!}
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-8">
+								<label for="pwd">Clinic / Hospital Name</label>
+								<input type="text" name="hosp_name[]" placeholder="Enter Clinic / Hospital Name" class="form-control" value="<?php echo $de_clinic;?>" id="<?php echo $deh_key;?>">				
+							</div>
+
+							<?php if($dekey>0){?>
+								<div class="col-lg-1 col-md-1 text-center delete_icon">
+									<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $dekey;?>" onclick="remExp(this.id,'d','<?php echo $de_role;?>','<?php echo $exid;?>');" />
+								</div>
+							<?php }?>
+						</div>	
+						<br/>
+						<?php } }?>
+
+
 						<div class="addExperienceDetails"></div>
 						<input type="hidden" name="exp_count" id="exp_count"/>
 						
 					</div>
-				
+				{{ Form::close() }}
 					<div class="next-page-btn">
 						<div class="text-right">
 							<button class="btn btn-formsubmit password-btn">Save</button>
-							<button class="btn btn-formsubmit password-btn">Previous</button>
-							<button class="btn btn-formsubmit password-btn">Next</button>
+							<a href="{{ url('doctor/documents') }}" class="btn btn-formsubmit password-btn">Previous</a>
+							<a href="{{ url('doctor/awards') }}" class="btn btn-formsubmit password-btn">Next</a>
 						</div>
 					</div>
 					

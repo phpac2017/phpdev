@@ -72,31 +72,39 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'doctor', 'middleware' => ['role:doctor']], function() {
 		
 		//Doctor Personal & Contact Details Page
-		Route::get('profile', function () {
-			return view('doctor/profile');
-		});
+		Route::get('profile', [ 'as' => 'profile', 'uses' => 'DoctorController@getProfile']);
+		Route::post('profile', [ 'as' => 'profile', 'uses' => 'DoctorController@updateProfile']);
 		
 		//Doctor Education & Specialization Page
-		Route::get('specialization', function () {
-			return view('doctor/education_specailization');
-		});
+		Route::get('specialization', [ 'as' => 'specialization', 'uses' => 'DoctorController@getEducation']);
+		Route::post('specialization', [ 'as' => 'specialization', 'uses' => 'DoctorController@updateEducation']);
+
+		//AJAX Call
+		Route::post('updateQualification', [ 'as' => 'updateQualification', 'uses' => 'DoctorController@updateQualification']);
+		Route::post('updateSpecialization', [ 'as' => 'updateSpecialization', 'uses' => 'DoctorController@updateSpecialization']);
 
 		//Doctor Registration & Documents Page
-		Route::get('documents', function () {
-			return view('doctor/registration_documents');
-		});
+		Route::get('documents', [ 'as' => 'documents', 'uses' => 'DoctorController@getDocuments']);
+		Route::post('documents', [ 'as' => 'documents', 'uses' => 'DoctorController@updateDocuments']);
+
+		//AJAX Call
+		Route::post('updateDocument', [ 'as' => 'updateDocument', 'uses' => 'DoctorController@updateDocument']);
 
 		//Doctor Services & Experience Page
-		Route::get('services', function () {
-			return view('doctor/services_experience');
-		});
+		Route::get('services', [ 'as' => 'services', 'uses' => 'DoctorController@getServices']);
+		Route::post('services', [ 'as' => 'services', 'uses' => 'DoctorController@updateServices']);
+
+		//AJAX Call
+		Route::post('updateService', [ 'as' => 'updateService', 'uses' => 'DoctorController@updateService']);
+		Route::post('updateExperience', [ 'as' => 'updateExperience', 'uses' => 'DoctorController@updateExperience']);
 
 		//Doctor Award & Memberships Page
-		Route::get('awards', function () {
-			return view('doctor/awards_membership');
-		});
+		Route::get('awards', [ 'as' => 'awards', 'uses' => 'DoctorController@getAwards']);
+		Route::post('awards', [ 'as' => 'awards', 'uses' => 'DoctorController@updateAwards']);
 
-		Route::post('profile', [ 'as' => 'checkEmail', 'uses' => 'DoctorController@updateProfile']);
+		//AJAX Call
+		Route::post('updateAward', [ 'as' => 'updateAward', 'uses' => 'DoctorController@updateAward']);
+		Route::post('updateMembership', [ 'as' => 'updateMembership', 'uses' => 'DoctorController@updateMembership']);
 		
 	});
 });

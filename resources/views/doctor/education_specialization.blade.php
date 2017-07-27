@@ -47,22 +47,25 @@
 					</div>
 				</div>
 			</div>
+			{{ Form::open(array('method' => 'POST','id'=>'dr_edu_form')) }}
 			<div class="edit-profile-photo dr-edit-profile-photo login-register-tab">
-				<h2>Education & Specailization</h2>
+				<h2>Education & Specialization</h2>
 				
 					<div class="awards-recognitions">
 						<h4>Education * <i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
 						<div class="add-award">
-							<button class="add-schedule dr-add-schedule dr-edu-add"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Education</button>
+							<button type="button" class="add-schedule dr-add-schedule dr-edu-add"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Education</button>
 							<label class="awards-note">*Complete your previous education details</label>
 						</div>
 						<?php
 							$qualification = Auth::user()->qualification;
 							$qualification_details = explode(",", $qualification);
 							$qualification_count = count($qualification_details);
-							$qualification_count;
+							$uid = Auth::user()->id;
 						
 							foreach($qualification_details as $qkey => $qual){
+								$getCollegeId = call_user_func('getCollegeId', $qual, $uid);
+								$getCompletedYear = call_user_func('getCompletedYear', $qual, $uid);
 								$qual_key = 'q_'.$qkey;
 								$col_key = 'c_'.$qkey;
 								$yr_key   = 'y_'.$qkey;
@@ -80,7 +83,7 @@
 								<div class="col-lg-5 col-md-6">
 									<div class="form-group">
 										<label for="pwd">College<span class="mandatory">*</span></label>
-										{{ Form::select('college[]',array('1'=>' All India Institute of Medical Sciences - [AIIMS], New Delhi','2'=>'Christian Medical College - [CMC], Vellore','3'=>'Sri Manakula Vinayagar Medical College and Hospital - [SMVMCH], Pondicherry','4'=>'Armed Forces Medical College - [AFMC], Pune','5'=>'Kasturba Medical College - [KMC], Mangalore','6'=>'Maulana Azad Medical College - [MAMC], New Delhi','7'=>'Jawaharlal Institute of Post Graduate Medical Education and Research - [JIPMER], Pondicherry','8'=>'Lady Hardinge Medical College - [LHMC], New Delhi','9'=>'Madras Medical College - [MMC], Chennai','10'=>'Grant Medical College - [GMC], Mumbai'),null, ['class' => 'form-control select2','id'=>$col_key]) }}
+										{{ Form::select('college[]',array('1'=>' All India Institute of Medical Sciences - [AIIMS], New Delhi','2'=>'Christian Medical College - [CMC], Vellore','3'=>'Sri Manakula Vinayagar Medical College and Hospital - [SMVMCH], Pondicherry','4'=>'Armed Forces Medical College - [AFMC], Pune','5'=>'Kasturba Medical College - [KMC], Mangalore','6'=>'Maulana Azad Medical College - [MAMC], New Delhi','7'=>'Jawaharlal Institute of Post Graduate Medical Education and Research - [JIPMER], Pondicherry','8'=>'Lady Hardinge Medical College - [LHMC], New Delhi','9'=>'Madras Medical College - [MMC], Chennai','10'=>'Grant Medical College - [GMC], Mumbai'),$getCollegeId, ['class' => 'form-control select2','id'=>$col_key]) }}
 									</div>
 								</div>
 								
@@ -88,16 +91,26 @@
 									<div class="form-group">
 										<label for="pwd">Completion Year<span class="mandatory">*</span></label>
 										<?php 
-											$year = call_user_func('getYear');
+											$getYear = Date('Y');
 										?>
-										{!! Form::select('year[]', ['' => 'Select'] +$year,0,array('class'=>'form-control select2','id'=>$yr_key));!!}
+										{{ Form::selectYear('year[]', 1980, $getYear,$getCompletedYear,array('class'=>'form-control select2','id'=>$yr_key)) }}
 									</div>
 								</div>
-								<?php if($qkey > 0){?>
-								<div class="col-lg-1 col-md-1 text-center delete_icon">
-									<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $qkey;?>" onclick="remEdu(this.id);" />
-								</div>	
-								<?php }?>					
+								<?php if($qkey > 0){
+									if($doctor_education===array()){
+								?>
+									<div class="col-lg-1 col-md-1 text-center delete_icon">
+										<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $qkey;?>" onclick="remEdu(this.id,'u','<?php echo $qual;?>',0);" />
+									</div>	
+									<?php }else{
+										$qual = $doctor_education[$qkey]['degree'];
+										$eid = $doctor_education[$qkey]['id'];
+										?>
+										<div class="col-lg-1 col-md-1 text-center delete_icon">
+											<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $qkey;?>" onclick="remEdu(this.id,'d','<?php echo $qual;?>','<?php echo $eid;?>');" />
+										</div>
+									<?php } ?>
+								<?php }	?>					
 							</div>
 						</div>
 						<?php }?>	
@@ -110,7 +123,7 @@
 					<div class="memberships-recognitions">
 						<h4>Specialization *<i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i></h4>
 						<div class="add-award">
-							<button class="add-schedule dr-add-schedule dr-spl-add"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Specialization</button>
+							<button type="button" class="add-schedule dr-add-schedule dr-spl-add"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add Specialization</button>
 						</div>
 						
 						<label class="know-more">
@@ -135,10 +148,21 @@
 									{{ Form::select('speciality[]',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),$speciality, ['class' => 'form-control select2','id'=>$sp_key]) }}
 								</div>
 							</div>
-							<?php if($spkey > 0){?>
-								<div class="col-lg-1 col-md-1 text-center delete_icon">
-									<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $spkey;?>" onclick="remSpl(this.id);"/>
-								</div>							
+							<?php if($spkey > 0){
+								if($doctor_specialization===array()){
+							?>
+									<div class="col-lg-1 col-md-1 text-center delete_icon">
+										<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $spkey;?>" onclick="remSpl(this.id,'u','<?php echo $speciality;?>',0);"/>
+									</div>	
+								<?php }else{
+									$speciality = $doctor_specialization[$spkey]['speciality'];
+									$sid = $doctor_specialization[$spkey]['id'];
+								?>		
+									<div class="col-lg-1 col-md-1 text-center delete_icon">
+										<img src="{{ asset('images/delete.png') }}" alt="" id="<?php echo $spkey;?>" onclick="remSpl(this.id,'d','<?php echo $speciality;?>','<?php echo $sid;?>');"/>
+									</div>
+
+								<?php }?>				
 							<?php }?>
 						</div>	
 						<?php }?>	
@@ -149,13 +173,13 @@
 					<div class="next-page-btn">
 						<div class="text-right">
 							<button class="btn btn-formsubmit password-btn">Save</button>
-							<button class="btn btn-formsubmit password-btn">Previous</button>
-							<button class="btn btn-formsubmit password-btn">Next</button>
+							<a href="{{ url('doctor/profile') }}" class="btn btn-formsubmit password-btn">Previous</a>
+							<a href="{{ url('doctor/documents') }}" class="btn btn-formsubmit password-btn">Next</a>
 						</div>
 						
 					</div>
 			</div>				
-			
+			{{ Form::close() }}
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>
 			</div>

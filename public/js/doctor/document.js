@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 //Function to remove Education
 
-function remReg(id){
+function remReg(id,type,val,tid){
 	$.confirm({
 		icon: 'fa fa-warning',
 		title: 'Are you sure you want to remove this registration?',
@@ -28,7 +28,7 @@ function remReg(id){
 				text: 'Delete',
 				btnClass: 'btn-red',
 				action: function(){
-					deleteReg(id);
+					deleteReg(id,type,val,tid);
 				}
 			},
 			close: function () {					
@@ -40,13 +40,76 @@ function remReg(id){
 
 
 //Function to Delete the Education (AJAX Operation)
-function deleteReg(id){
+function deleteReg(id,type,val,tid){
 	$("#divLoading").addClass('show');
-	$("#cd_"+id).remove();
+	//$("#cd_"+id).remove();
 	var getCount = $("#cnc_count").val();
 	var remCount = parseInt(getCount)-1;
 	var totalCount = $("#cnc_count").val(remCount);
 	$("#divLoading").removeClass('show');
+
+	if(type!='j'){
+
+		var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/doctor/updateDocument';
+			
+		$.ajax({
+			type: "POST",
+			url: setAjaxUrl,
+			data: {id:id, type:type, val:val,tid:tid},
+			dataType: 'json',
+			async : false,
+			cache: false,
+			beforeSend: function (xhr) {
+				var token = $('meta[name="_token"]').attr('content');
+				if (token) {
+					return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+				}				
+			},
+			error: function ( xhr, ajaxOptions, thrownError )
+			{
+				if (xhr.status == 500){
+					$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError+', Please check your log file for more information');				
+					$("#divLoading").css('display','block');
+					$("#divLoading").css('text-align','center');
+					$("#divLoading").css('color','red');
+					$("#divLoading").removeClass('show');
+				}else {
+					$('#divLoading').html('Error code:- '+xhr.status+', Error Description:- '+thrownError);				
+					$("#divLoading").css('display','block');
+					$("#divLoading").css('text-align','center');
+					$("#divLoading").css('color','red');
+					$("#divLoading").removeClass('show');
+				}
+			},
+			success: function(data) {
+				if(data==0){				
+					$("#divLoading").removeClass('show');
+
+					noty({
+						text     : '<div><strong>There was a problem while updating your Registration Details !</div>',
+						layout   : 'center',
+						closeWith: ['click'],
+						type	 :  'error'
+					});				
+				}else{
+					$("#divLoading").removeClass('show');
+					$("#cd_"+id).remove();
+					noty({
+						text     : '<div><strong>Your Registration Details Updated Successfully !</div>',
+						layout   : 'center',
+						closeWith: ['click'],
+						type	 :  'success'
+					});					
+				}
+
+			//form clear
+			$(".refresh-after-ajax").load(window.location + " .refresh-after-ajax");
+				//location.reload();	
+			}
+		});
+	}else{
+		$("#cd_"+id).remove();
+	}
 }
 
 
@@ -78,6 +141,9 @@ function isEmpty(value) {
 			return false;
 		}else{	
 			//Dynamic HTML Content
+			var v1 = 'j';
+			var v2 = 0;
+			var v3 = 0;
 			var html = '<div class="row"  id="cd_'+addCount+'">'+
 							'<div class="col-lg-4 col-md-6">'+
 								'<div class="form-group">'+
@@ -146,7 +212,7 @@ function isEmpty(value) {
 							'</div>'+
 
 							'<div class="col-lg-1 col-md-1 text-center delete_icon">'+
-								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remReg(this.id);" />'+
+								'<img src="'+filePath+'delete.png" alt="" id="'+addCount+'" onclick="remReg(this.id,\'' + v1 + '\',\'' + v2 + '\',\'' + v3 + '\');" />'+
 							'</div>'+
 
 						'</div>';	
