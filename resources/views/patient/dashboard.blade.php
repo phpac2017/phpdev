@@ -46,7 +46,7 @@
 							<div class="dr_appointment_details">
 								<div class="row">
 									<div class="col-md-3 col-sm-3 text-center">
-										<img src="images/dr.jpg" alt="" />
+										<img src="{{ asset('images/dr.jpg') }}" alt="" />
 									</div>
 									<div class="col-md-9 col-sm-9">
 										<h4>Michael Linden <span>37 years</span></h4>
@@ -63,7 +63,7 @@
 								<div class="owl-carousel owl-theme">
 									<div class="upcoming_appointment_details">
 										<div class="dr-img">
-											<span class="dr-circular"><img src="images/dr.jpg" alt=""></span>
+											<span class="dr-circular"><img src="{{ asset('images/dr.jpg') }}" alt=""></span>
 										</div>
 										<h5>24 march 2017 <span>2:30 Pm</span></h5>
 										<p>John Michael Linden</p>
@@ -71,7 +71,7 @@
 									</div>
 									<div class="upcoming_appointment_details">
 										<div class="dr-img">
-											<span class="dr-circular"><img src="images/dr.jpg" alt=""></span>
+											<span class="dr-circular"><img src="{{ asset('images/dr.jpg') }}" alt=""></span>
 										</div>
 										<h5>24 march 2017 <span>2:30 Pm</span></h5>
 										<p>John Michael Linden</p>
@@ -79,7 +79,7 @@
 									</div>
 									<div class="upcoming_appointment_details">
 										<div class="dr-img">
-											<span class="dr-circular"><img src="images/dr.jpg" alt=""></span>
+											<span class="dr-circular"><img src="{{ asset('images/dr.jpg') }}" alt=""></span>
 										</div>
 										<h5>24 march 2017 <span>2:30 Pm</span></h5>
 										<p>John Michael Linden</p>
@@ -141,7 +141,7 @@
 									<div class="col-md-8">
 										<div class="row appointment_breakout_graph">
 											<div class="col-md-5 col-sm-12 col-xs-12 text-center">
-												<img src="images/breakout_graph.jpg" alt="" />
+												<img src="{{ asset('images/breakout_graph.jpg') }}" alt="" />
 											</div>
 											<div class="col-md-7 col-sm-12 col-xs-12">
 												<h4>Appointment Breakout</h4>
@@ -156,7 +156,7 @@
 									</div>
 									<div class="col-md-4 text-center">
 										<div class="unscheduled_appointment_graph">
-											<img src="images/unscheduled.jpg" alt="" />
+											<img src="{{ asset('images/unscheduled.jpg') }}" alt="" />
 											<ul>
 												<li><span class="colorone"></span><p>1 Confirmed Appointment</p></li>
 												<li><span class="colortwo"></span><p>1 Requested Appointment</p></li>

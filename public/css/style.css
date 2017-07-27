@@ -5216,3 +5216,42 @@ label.error{
 	font-size:13px;
 	color:red;
 } 
+.div-chart{
+	margin-top:15px;
+}
+.doctor-dash h2 {
+    font-size: 42px;
+	font-weight:700;
+	color:#fff;
+}
+.doctor-dash p {    
+	font-weight:600;
+	color:#fff;
+	
+}
+.doctor-dash {
+    border-radius: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.bg-dash-01{
+	background: #448dba;  /* fallback for old browsers */	
+}
+.bg-dash-02{
+	background: #f15e54;  /* fallback for old browsers */	
+}
+.bg-dash-03{
+	background: #8b59a0;  /* fallback for old browsers */
+}
+.bg-dash-04{
+	background: #ed8622;  /* fallback for old browsers */
+}
+.bg-dash-05{
+	background: #edb522;  /* fallback for old browsers */
+}
+.bg-dash-06{
+	background: #448dba;  /* fallback for old browsers */	
+}
+.top-space{
+margin-top:10px;
+}

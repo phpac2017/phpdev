@@ -117,10 +117,10 @@ class AuthController extends Controller
 				return Redirect::to('admin/users');
 			}elseif(auth()->user()->hasRole('doctor')){
 				Log::info('Logged User is Doctor - '.$getName);
-				return Redirect::to('doctor/profile');
+				return Redirect::to('doctor/dashboard');
 			}else{
 				Log::info('Logged User is Patient - '.$getName);
-				return Redirect::to('patient/profile');
+				return Redirect::to('patient/dashboard');
 			}
     	}else{
     		return view('Login');

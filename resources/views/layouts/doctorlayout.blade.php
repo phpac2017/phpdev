@@ -68,6 +68,7 @@
 					<aside class="leftsidebar">
 						<h4>PROFILE</h4>
 						<ul class="left-profile nav">
+							<li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{ url('doctor/dashboard') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Dashboard</a></li>
 							<li class="{{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{ url('doctor/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Personal & Contact Details</a></li>
 							<li class="{{ Request::segment(2) === 'specialization' ? 'active' : null }}"><a href="{{ url('doctor/specialization') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Education & Specialization</a></li>
 							<li class="{{ Request::segment(2) === 'documents' ? 'active' : null }}"><a href="{{ url('doctor/documents') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Registration & Documents</a></li>

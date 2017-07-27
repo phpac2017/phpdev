@@ -285,13 +285,13 @@ $(function(){
 					}else if(data=='D'){
 						console.log("Data"+data);
 						$("#divLoading").removeClass('show');
-						var URL  =  window.location.protocol+'//'+window.location.host+'/doctor/profile';
+						var URL  =  window.location.protocol+'//'+window.location.host+'/doctor/dashboard';
 						location.href = URL;						
 
 					}else if(data=='P'){
 						console.log("Data"+data);
 						$("#divLoading").removeClass('show');
-						var URL  =  window.location.protocol+'//'+window.location.host+'/patient/profile';
+						var URL  =  window.location.protocol+'//'+window.location.host+'/patient/dashboard';
 						location.href = URL;
 					}else{
 						console.log("Data"+data);

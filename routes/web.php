@@ -70,6 +70,11 @@ Route::get('doctor', function () {
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'doctor', 'middleware' => ['role:doctor']], function() {
+
+		//Dashboard Page
+		Route::get('dashboard', function () {
+		    return view('doctor/dashboard');
+		});
 		
 		//Doctor Personal & Contact Details Page
 		Route::get('profile', [ 'as' => 'profile', 'uses' => 'DoctorController@getProfile']);

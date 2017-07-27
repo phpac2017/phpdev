@@ -66,6 +66,7 @@
 				<aside class="leftsidebar">
 					<h4>PROFILE</h4>
 					<ul class="left-profile">
+						<li class="{{ Request::segment(2) === 'dashboard' ? 'active' : null }}"><a href="{{ url('patient/dashboard') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span> Dashboard</a></li>
 						<li class="{{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{ url('patient/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>View / Update Profile</a></li>
 						<li class="{{ Request::segment(2) === 'book_appointment' ? 'active' : null }}"><a href="{{ url('patient/book_appointment') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Appointment</a></li>
 						<li class="{{ Request::segment(2) === 'medical_records' ? 'active' : null }}"><a href="{{ url('patient/medical_records') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Medical Records</a></li>
