@@ -41,6 +41,7 @@ class CalendarEventController extends Controller
         $calendar_event = new CalendarEvent();
 
         $calendar_event->title            = $request->input("title");
+        $calendar_event->user_id          = $request->input("user_id");
         $calendar_event->start            = $request->input("start");
         $calendar_event->end              = $request->input("end");
         $calendar_event->is_all_day       = $request->input("is_all_day");
@@ -89,6 +90,7 @@ class CalendarEventController extends Controller
         $calendar_event = CalendarEvent::findOrFail($id);
 
         $calendar_event->title            = $request->input("title");
+        $calendar_event->user_id          = $request->input("user_id");
         $calendar_event->start            = $request->input("start");
         $calendar_event->end              = $request->input("end");
         $calendar_event->is_all_day       = $request->input("is_all_day");

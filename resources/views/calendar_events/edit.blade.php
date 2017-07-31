@@ -54,7 +54,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-
+					<?php echo $user_id = Auth::user()->id;?>
 					<form action="{{ route('calendar_events.update', $calendar_event->id) }}" method="POST">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -84,7 +84,7 @@
 							 <input type="text" name="background_color" class="form-control" value="{{$calendar_event->background_color}}"/>
 						</div>
 
-
+						{{ Form::hidden('user_id', $user_id, array('class' => 'form-control', 'id' => 'id')) }}
 
 					<a class="btn btn-default" href="{{ route('calendar_events.index') }}">Back</a>
 					<button class="btn btn-primary" type="submit" >Save</button>

@@ -145,6 +145,22 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('profile',['as'=>'profile','uses'=>'PatientProfileController@patientProfile']);
         Route::post('profile',['as'=>'profile','uses'=>'PatientProfileController@patientUpdate']);
 
+        //Self Assessment Male Page
+		Route::get('self_assessment_male',['as'=>'self_assessment_male','uses'=>'PatientAssessmentController@getSelfAssessmentMale']);
+		Route::post('self_assessment_male',['as'=>'self_assessment_male','uses'=>'PatientAssessmentController@postSelfAssessmentMale']);
+
+		//Self Assessment Female Page
+		Route::get('self_assessment_female',['as'=>'self_assessment_female','uses'=>'PatientAssessmentController@getSelfAssessmentFemale']);
+		Route::post('self_assessment_female',['as'=>'self_assessment_female','uses'=>'PatientAssessmentController@postSelfAssessmentFemale']);
+
+		//Self Assessment Male QA Page
+		Route::get('self_assessment_male_qa',['as'=>'self_assessment_male_qa','uses'=>'PatientAssessmentController@getSelfAssessmentMaleQA']);
+		Route::post('self_assessment_male_qa',['as'=>'self_assessment_male_qa','uses'=>'PatientAssessmentController@postSelfAssessmentMaleQA']);
+
+		//Self Assessment Female QA Page
+		Route::get('self_assessment_female_qa',['as'=>'self_assessment_female_qa','uses'=>'PatientAssessmentController@getSelfAssessmentFemaleQA']);
+		Route::post('self_assessment_female_qa',['as'=>'self_assessment_female_qa','uses'=>'PatientAssessmentController@postSelfAssessmentFemaleQA']);
+
 		//Patient Appointment Page
 		Route::get('book_appointment', function () {
 			return view('patient/appointment');
