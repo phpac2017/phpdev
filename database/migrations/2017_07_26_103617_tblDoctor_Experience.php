@@ -17,9 +17,9 @@ class TblDoctorExperience extends Migration
             $table->increments("id");
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string("duration",100);
-            $table->string("role",100);
-            $table->string('city',100);
+            $table->string("duration",100)->nullable();
+            $table->string("role",100)->nullable();
+            $table->string('city',100)->nullable();
             $table->string('clinic_name');
             $table->timestamps();
         });

@@ -49,17 +49,24 @@
 			</div>
 			<div class="edit-profile-photo login-register-tab">
 				<h2>Edit Profile</h2>
-				
-				{{ Form::open(array('method' => 'POST','id'=>'edit_profile_form')) }}
+                                <div class="flash-message">
+                                  @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                    @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                                    @endif
+                                  @endforeach
+                                </div>                                
+				{{ Form::open(array('enctype' => 'multipart/form-data','method' => 'POST','id'=>'patient_form')) }}		
+                                {{ Form::hidden('user_id', Auth::user()->id, array('id' => 'user_id')) }}
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="usr" class="usr-photo-change">Change Photo</label>
-								<span class="change-profile-img"></span>
+								<span class="change-profile-img"><img src="{{URL::asset('/uploads/patients/profile/'.$result->profile_image)}}" alt="profile Pic" height="100" width="100"></span>
 								<div class="change-photo-up">
 									<label class="btn-bs-file btn btn-xs btn-success browse-btn">
 										Choose Photo
-										{{ Form::file('profile_image', ['class' => 'field exception-fields','id'=>'profile_image']) }}
+										{{ Form::file('profile_pic', ['class' => 'field exception-fields','id'=>'profile_pic']) }}
 									</label>
 									<span class="browse-computer">Browse file from the computer</span>
 																	
@@ -71,7 +78,7 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Full Name: <span class="mandatory">*</span></label>
-									{{ Form::text('name','',array('class'=> 'form-control','id'=>'name')) }}
+									{{ Form::text('full_name',$result->full_name,array('maxlength'=>255,'class'=> 'form-control','id'=>'full_name')) }}
 
 							</div>
 						</div>
@@ -79,7 +86,11 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 									<label for="pwd">Country<span class="mandatory">*</span></label>
+                                                                        @if(isset($result->country) && !empty($result->country) && count($result->country)>0)
+                                                                        {{ Form::select('country', array('1'=>'India','2'=>'Pakistan','3'=>'Japan','4'=>'Srilanka'),$result->country, ['class' => 'form-control','id'=>'country']) }}
+                                                                        @else
 									{{ Form::select('country', array('1'=>'India','2'=>'Pakistan','3'=>'Japan','4'=>'Srilanka'),1, ['class' => 'form-control','id'=>'country']) }}
+                                                                        @endif
 								</div>
 						</div>
 					</div>
@@ -88,14 +99,19 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Age : <span class="mandatory">*</span></label>
-								{{ Form::text('age','',array('class'=> 'form-control','id'=>'age','readonly'=>'true')) }}
+								{{ Form::text('age',$result->age,array('maxlength'=>3,'class'=> 'form-control','id'=>'age')) }}
 							</div>
 						</div>
 						
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 									<label for="pwd">State<span class="mandatory">*</span></label>
-									{{ Form::select('state', array('1'=>'TamilNadu','2'=>'Bihar','3'=>'Karnataka','4'=>'Kerala'),1, ['class' => 'form-control','id'=>'state']) }}
+                                                                        @if(isset($result->state) && !empty($result->state) && count($result->state)>0)
+                                                                            {{ Form::select('state', array('1'=>'TamilNadu','2'=>'Bihar','3'=>'Karnataka','4'=>'Kerala'),$result->state, ['class' => 'form-control','id'=>'state']) }}
+                                                                        @else
+                                                                            {{ Form::select('state', array('1'=>'TamilNadu','2'=>'Bihar','3'=>'Karnataka','4'=>'Kerala'),1, ['class' => 'form-control','id'=>'state']) }}
+                                                                        @endif
+									
 								</div>
 						</div>
 					</div>
@@ -105,9 +121,17 @@
 							<div class="form-group">
 									<label for="pwd">Gender<span class="mandatory">*</span></label>
 										<div class="radio-box">
+                                                                                    @if(isset($result->gender) && !empty($result->gender) && $result->gender == 'M')
 											{{ Form::radio('gender','M',true,array('id'=>'radio1')) }}
+                                                                                    @else
+                                                                                        {{ Form::radio('gender','M','',array('id'=>'radio1')) }}
+                                                                                    @endif
 											 <label for="radio1">Male</label>
-											 {{ Form::radio('gender','F',array('id'=>'radio2')) }}
+                                                                                    @if(isset($result->gender) && !empty($result->gender) && $result->gender == 'F')
+                                                                                        {{ Form::radio('gender','F',true,array('id'=>'radio2')) }}
+                                                                                    @else
+											 {{ Form::radio('gender','F','',array('id'=>'radio2')) }}
+                                                                                    @endif     
 											 <label for="radio2">Female</label>
 										</div>
 								</div>
@@ -116,7 +140,12 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 									<label for="pwd">City<span class="mandatory">*</span></label>
-									{{ Form::select('city', array('1'=>'Chennai','2'=>'Bangalore','3'=>'Mumbai','4'=>'Kolkatta'),1, ['class' => 'form-control','id'=>'city']) }}
+                                                                        @if(isset($result->city) && !empty($result->city) && count($result->city)>0)
+                                                                            {{ Form::select('city', array('1'=>'Chennai','2'=>'Bangalore','3'=>'Mumbai','4'=>'Kolkatta'),$result->city, ['class' => 'form-control','id'=>'city']) }}
+                                                                        @else
+                                                                            {{ Form::select('city', array('1'=>'Chennai','2'=>'Bangalore','3'=>'Mumbai','4'=>'Kolkatta'),1, ['class' => 'form-control','id'=>'city']) }}
+                                                                        @endif  
+									
 								</div>
 						</div>
 					</div>
@@ -124,11 +153,9 @@
 					<div class="row">
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
-								<label for="usr">Date of Birth: <span class="mandatory">*</span></label>
-								<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-									{{ Form::text('dob','',array('class'=> 'form-control','id'=>'dob','readonly'=>true)) }}
-									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-								</div>
+								<label for="usr">Date of Birth: <span class="mandatory">*</span></label>								
+								{{ Form::text('dob',$result->dob,array('class'=> 'form-control','id'=>'datepicker','readonly'=>true)) }}								
+								
 							</div>
 						</div>
 						
@@ -136,7 +163,7 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Address: <span class="mandatory">*</span></label>
-								{{ Form::text('address','',array('class'=> 'form-control','id'=>'address')) }}
+								{{ Form::text('address',$result->address,array('class'=> 'form-control','id'=>'address')) }}
 							</div>
 						</div>
 					</div>
@@ -145,14 +172,18 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 									<label for="pwd">Blood Group<span class="mandatory">*</span></label>
-									{{ Form::select('blood_group', array('1'=>'A+ve','2'=>'B+ve','3'=>'O-ve','4'=>'AB+ve'),1, ['class' => 'form-control','id'=>'blood_group']) }}
+                                                                        @if(isset($result->blood_group) && !empty($result->blood_group) && count($result->blood_group)>0)
+                                                                            {{ Form::select('blood_group', array('1'=>'A+ve','2'=>'B+ve','3'=>'O-ve','4'=>'AB+ve'),$result->blood_group, ['class' => 'form-control','id'=>'blood_group']) }}
+                                                                        @else
+                                                                            {{ Form::select('blood_group', array('1'=>'A+ve','2'=>'B+ve','3'=>'O-ve','4'=>'AB+ve'),1, ['class' => 'form-control','id'=>'blood_group']) }}
+                                                                        @endif 
 								</div>
 						</div>
 						
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Zip Code : <span class="mandatory">*</span></label>
-								{{ Form::text('zip_code','',array('class'=> 'form-control','id'=>'zip_code')) }}
+								{{ Form::text('zip_code',$result->zip_code,array('maxlength'=>10,'class'=> 'form-control','id'=>'zip_code')) }}
 							</div>
 						</div>
 					</div>
@@ -161,14 +192,18 @@
 						<div class="col-lg-4 col-md-6">
 								<div class="form-group">
 									<label for="pwd">Language<span class="mandatory">*</span></label>
-									{{ Form::select('language', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),1, ['class' => 'form-control','id'=>'language','multiple'=>true]) }}
+                                                                        @if(isset($result->lang) && !empty($result->lang) && count($result->lang)>0)
+                                                                            {{ Form::select('lang', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),$result->lang, ['class' => 'form-control lang','id'=>'lang','multiple'=>true]) }}
+                                                                        @else
+                                                                            {{ Form::select('lang', array('1'=>'Tamil','2'=>'English','3'=>'Hindi','4'=>'Malayalam'),1, ['class' => 'form-control lang','id'=>'lang','multiple'=>true]) }}
+                                                                        @endif  
 								</div>
 						</div>
 						
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Mobile Number : <span class="mandatory">*</span></label>
-								{{ Form::text('mobile_number','',array('class'=> 'form-control','id'=>'mobile_number')) }}
+								{{ Form::text('mobile',$result->mobile,array('maxlength'=>10,'class'=> 'form-control','id'=>'mobile_number')) }}
 							</div>
 						</div>
 					</div>
@@ -179,13 +214,13 @@
 								<div class="verification">
 									<div class="form-group">
 										<label for="usr">Verification Doc: <span class="mandatory">*</span></label>
-											{{ Form::text('verification_doc_type','',array('class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
+											{{ Form::text('verification_doc_type',$result->document,array('maxlength'=>255,'class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
 										</div>
 								</div>
 								<div class="browse-btn-verifi">
 									 <label class="btn-bs-file btn btn-xs btn-success browse-btn">
 										Browse
-										{{ Form::file('verification_doc', ['class' => 'field exception-fields','id'=>'verification_doc']) }}
+										{{ Form::file('document', ['class' => 'field exception-fields','id'=>'document']) }}
 									</label>
 									<span id="verif_doc_name"></span>
 								</div>
@@ -195,7 +230,7 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Alternate Number: <span class="mandatory">*</span></label>
-								{{ Form::text('alt_mobile_no','',array('class'=> 'form-control','id'=>'alt_mobile_no')) }}
+								{{ Form::text('alternate_no',$result->alternate_no,array('maxlength'=>10,'class'=> 'form-control','id'=>'alternate_no')) }}
 							</div>
 						</div>
 					</div>
@@ -204,7 +239,7 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Email id : <span class="mandatory">*</span></label>
-								{{ Form::email('email','',array('class'=> 'form-control','id'=>'email')) }}
+								{{ Form::email('email_id',$result->email_id,array('maxlength'=>255,'class'=> 'form-control','id'=>'email_id')) }}
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6"></div>
@@ -230,9 +265,90 @@
         <!-- /#page-content-wrapper -->
 @endsection
 @section('scripts')
-<script src="{{ asset('js/patient_profile.js') }}"></script>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/responsive-tabs.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
+  
 <script>
+$( function() {
+$( "#patient_form" ).validate({
+  rules: {
+    full_name: {
+      required: true,
+      minlength: 1
+    },
+    country: {
+      required: true      
+    },
+    age: {
+      required: true,
+      digits: true
+    },
+    dob: {
+      required: true
+    },
+    address: {
+      required: true
+    },
+    zip_code: {
+      required: true,
+      digits: true
+    },
+    mobile: {
+      required: true     
+    },
+    alternate_no: {
+      required: true
+    },
+    verification_doc_type: {
+      required: true
+    },
+    email_id: {
+      required: true,
+      email: true
+    }
+ },
+ messages: {
+    full_name: {
+      required: "You forgot to give your Full Name",
+      minlength: "Your name is too small to save"
+    },
+    age: {
+      required: "You forgot to give your Age",
+      digits: "Your Age should be in numbers"
+    },
+    dob: {
+      required: "You forgot to give your Date Of Birth"
+    },
+    address: {
+      required: "Can we have your address please"
+    },
+    zip_code: {
+      required: "You forgot to give your Zipcode",
+      digits: "Your Zipcode should be in numbers"
+    },
+    mobile: {
+      required: "We need your mobile number to contact you"
+    },
+    alternate_no: {
+      required: "We need your alternate number to contact you in-case of emergency"
+    },
+    verification_doc_type: {
+      required: "Please provide your verification document details here"
+    },
+    email_id: {
+      required: "We need your email address to contact you",
+      email: "Your email address must be in the format of name@domain.com"
+    }
+ }
+});
+
+});
 function getAge(dateString) 
 {
     var today = new Date();
@@ -260,13 +376,21 @@ function readURL(input) {
 		}
 }
 $(document).ready(function(){
-	$('#alt_mobile_no').mask('(000) 000-0000');
-	$('#mobile_number').mask('(000) 000-0000');
-	$('.responsive-tabs').responsiveTabs({
-	  accordionOn: ['xs']
-	});
-
-	<!-- Multiselect -->
+    $("#datepicker").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true,
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true
+  }).datepicker().on('changeDate', function(e) {alert(1)
+	  $("#age").val(getAge(e.date));
+    });
+	//$('#alternate_no').mask('(000) 000-0000');
+	//$('#mobile_number').mask('(000) 000-0000');
+//	$('.responsive-tabs').responsiveTabs({
+//	  accordionOn: ['xs']
+//	});
+	
     $('#state').multiselect({
       buttonWidth: '100%'
     });
@@ -284,14 +408,7 @@ $(document).ready(function(){
       buttonWidth: '100%'
     });
  
-  $("#datepicker").datepicker({ 
-        autoclose: true, 
-        todayHighlight: true,
-		endDate:"0d",
-		clearBtn:true
-  }).datepicker().on('changeDate', function(e) {
-	  $("#age").val(getAge(e.date));
-    });
+  
   
 	$("#profile_image,#verification_doc").change(function(){
 		readURL(this);

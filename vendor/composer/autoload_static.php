@@ -269,6 +269,10 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
+            'MaddHatter\\LaravelFullcalendar' => 
+            array (
+                0 => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src',
+            ),
         ),
         'J' => 
         array (
@@ -297,6 +301,7 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
     public static $classMap = array (
         'AddNewFieldsUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_13_093306_add_new_fields_users_table.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+        'App\\CalendarEvent' => __DIR__ . '/../..' . '/app/CalendarEvent.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Doctor' => __DIR__ . '/../..' . '/app/Doctor.php',
         'App\\Doctor_timeslot' => __DIR__ . '/../..' . '/app/Doctor_timeslot.php',
@@ -308,6 +313,8 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\CalendarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CalendarController.php',
+        'App\\Http\\Controllers\\CalendarEventController' => __DIR__ . '/../..' . '/app/Http/Controllers/CalendarEventController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DoctorController' => __DIR__ . '/../..' . '/app/Http/Controllers/DoctorController.php',
         'App\\Http\\Controllers\\DoctortimeslotController' => __DIR__ . '/../..' . '/app/Http/Controllers/DoctortimeslotController.php',
@@ -344,6 +351,8 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
         'App\\tblDoctor_Awards' => __DIR__ . '/../..' . '/app/tblDoctor_Awards.php',
         'App\\tblDoctor_Documents' => __DIR__ . '/../..' . '/app/tblDoctor_Documents.php',
         'App\\tblDoctor_Education' => __DIR__ . '/../..' . '/app/tblDoctor_Education.php',
+        'App\\tblDoctor_Experience' => __DIR__ . '/../..' . '/app/tblDoctor_Experience.php',
+        'App\\tblDoctor_Memberships' => __DIR__ . '/../..' . '/app/tblDoctor_Memberships.php',
         'App\\tblDoctor_Services' => __DIR__ . '/../..' . '/app/tblDoctor_Services.php',
         'App\\tblDoctor_Speciality' => __DIR__ . '/../..' . '/app/tblDoctor_Speciality.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
@@ -364,6 +373,8 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
         'CreateDocTimeslotTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_163228_create_doc_timeslot_table.php',
         'CreateDoctorProfile' => __DIR__ . '/../..' . '/database/migrations/2017_07_25_084045_create_doctor_profile.php',
         'CreateDoctorTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_162811_create_doctor_table.php',
+        'CreateEventCalendar' => __DIR__ . '/../..' . '/database/migrations/2017_07_31_065205_create_event_calendar.php',
+        'CreateEventCalendarTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_31_065224_create_event_calendar_table.php',
         'CreateLanguagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_21_085659_create_languages_table.php',
         'CreateNationalityTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_21_075704_create_nationality_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -1651,6 +1662,13 @@ class ComposerStaticInit4974e47bcc4001d4691ff30608fd0a86
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
+        'MaddHatter\\LaravelFullcalendar\\Calendar' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/Calendar.php',
+        'MaddHatter\\LaravelFullcalendar\\Event' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/Event.php',
+        'MaddHatter\\LaravelFullcalendar\\EventCollection' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/EventCollection.php',
+        'MaddHatter\\LaravelFullcalendar\\Facades\\Calendar' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/Facades/Calendar.php',
+        'MaddHatter\\LaravelFullcalendar\\IdentifiableEvent' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/IdentifiableEvent.php',
+        'MaddHatter\\LaravelFullcalendar\\ServiceProvider' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/ServiceProvider.php',
+        'MaddHatter\\LaravelFullcalendar\\SimpleEvent' => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src/MaddHatter/LaravelFullcalendar/SimpleEvent.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

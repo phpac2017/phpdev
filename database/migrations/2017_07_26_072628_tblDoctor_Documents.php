@@ -17,10 +17,10 @@ class TblDoctorDocuments extends Migration
             $table->increments("id");
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string("council_reg_no",100);
-            $table->string("council_name");
-            $table->string("year",10);
-            $table->text("documents");
+            $table->string("council_reg_no",100)->nullable();
+            $table->string("council_name")->nullable();
+            $table->string("year",10)->nullable();
+            $table->text("documents")->nullable();
             $table->timestamps();
         });
     }

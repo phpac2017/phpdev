@@ -57,17 +57,30 @@
 							<div class="col-md-12 text-right mob-icons">
 								<div class="language language-selector">
 									<select class="selectpicker" data-width="fit">
-										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chn'>Chn</option>
-										<option data-content='<span class="flag-icon flag-icon-in"></span> Ind'>Ind</option>
+										<option data-content='<span class="flag-icon flag-icon-in"></span> English (US)'>English (US)</option>
+										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chinese'>Chinese</option>
 									</select>
 								</div>
 								@if(Auth::guest())
 									<a href="{{ url('login') }}" class="login_register">Login / Register</a>
 								@else
-									<div class="login_details">
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="images/dropdown.png" alt="" /></span></button>
+									<div class="login_details">									
+										<?php 
+
+											$userid = Auth::user()->id;
+											$imgsrc = call_user_func('getProfilePic', $userid);
+											$role = Auth::user()->roles->first()->name;
+											if($role==='admin'){
+												$fold = 'admin/profile';
+											}elseif($role==='doctor'){
+												$fold = 'doctors/profile';
+											}else{
+												$fold = 'users/profile';
+											}
+										?>
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
 										<ul class="dropdown-menu">
-											<li><div class="u-user-head"><img class="profile-img" src="https://accounts.practo.com/profile_picture/3065973/medium_thumbnail" alt="" width="40" height="40">
+											<li><div class="u-user-head"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" />
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
 											<li><a href="#">My Appointments</a></li>
 											<li><a href="#">My Medical Records</a></li>

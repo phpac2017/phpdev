@@ -17,7 +17,7 @@ class TblDoctorServices extends Migration
             $table->increments("id");
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string("service",100);
+            $table->string("service",100)->nullable();
             $table->timestamps();
         });
     }

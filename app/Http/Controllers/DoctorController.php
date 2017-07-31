@@ -147,8 +147,8 @@ class DoctorController extends Controller
               return 'Error saving the file.';
           }*/
           //delete old pic if exists
-          if (File::exists(public_path() . $folderName . $doctor[0]['profile_pic'])) {
-              File::delete(public_path() . $folderName . $doctor[0]['profile_pic']);
+          if (File::exists(public_path() . $folderName . $request->get('profile_pic'))) {
+              File::delete(public_path() . $folderName . $request->get('profile_pic'));
           }
 
           //save new file path into db

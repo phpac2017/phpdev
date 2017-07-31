@@ -148,7 +148,7 @@ $(function(){
 			var experience = jQuery("#experience").val();
 			var mrc_no = jQuery("#mrc_no").val();
 			var user_role=jQuery("#user_role").val();
-			//alert(name+"--"+gender+"--"+email+"--"+password+"--"+country_code+"--"+mobile_number+"--"+nationality+"--"+language+"--"+qualification+"--"+speciality+"--"+experience);
+			//alert(name+"--"+gender+"--"+email+"--"+password+"--"+country_code+"--"+mobile_number+"--"+nationality+"--"+language+"--"+qualification+"--"+speciality+"--"+experience);return false;
 			var setAjaxUrl  =  window.location.protocol+'//'+window.location.host+'/register';
 			//var setAjaxUrl  =  'http://localhost/demoapp2/poc/public/register';
 	

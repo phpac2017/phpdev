@@ -76,6 +76,10 @@ Route::group(['middleware' => 'auth'], function() {
 		    return view('doctor/dashboard');
 		});
 		
+		Route::get('availability', [ 'as' => 'availability', 'uses' => 'CalendarController@calendar']);
+
+		Route::resource('calendar_events', 'CalendarEventController');
+
 		//Doctor Personal & Contact Details Page
 		Route::get('profile', [ 'as' => 'profile', 'uses' => 'DoctorController@getProfile']);
 		Route::post('profile', [ 'as' => 'profile', 'uses' => 'DoctorController@updateProfile']);
@@ -138,9 +142,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 
 		//Patient Profile Page
-		Route::get('profile', function () {
-			return view('patient/profile');
-		});
+		Route::get('profile',['as'=>'profile','uses'=>'PatientProfileController@patientProfile']);
+        Route::post('profile',['as'=>'profile','uses'=>'PatientProfileController@patientUpdate']);
 
 		//Patient Appointment Page
 		Route::get('book_appointment', function () {

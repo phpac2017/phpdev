@@ -179,6 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
     ],
 
     /*
@@ -231,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 		'Input' => Illuminate\Support\Facades\Input::class,
-
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
     ],
 
 ];

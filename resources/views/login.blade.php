@@ -16,6 +16,8 @@
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/jquery-confirm.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}" />
 	<!-- <link rel="stylesheet" href="css/bootstrap-responsive-tabs.css"> -->
 
 	<!--script src="js/maxcdn-bootstrap.min.js"></script-->
@@ -50,9 +52,9 @@
 										<div class="form-group">
 											<label for="pwd">User Type<span class="mandatory">*</span></label>
 											@if(session('user_role',2)==3)
-												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'), 3, ['class' => 'form-control','id'=>'user_role']) }}
+												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'), 3, ['class' => 'form-control select2','id'=>'user_role']) }}
 											@else
-												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'),2, ['class' => 'form-control','id'=>'user_role']) }}
+												{{ Form::select('user_role', array('2'=>'Doctor','3'=>'Patient'),2, ['class' => 'form-control select2','id'=>'user_role']) }}
 											@endif
 										</div>
 										
@@ -74,7 +76,7 @@
 											<div class="col-md-3 col-sm-3 col-xs-12">
 												<div class="form-group">
 													<label for="pwd">Country Code: <span class="mandatory">*</span></label>
-													{{ Form::select('country_code', array('+91'=>'+91','+241'=>'+241','+285'=>'+285','+84'=>'+84'),+91, ['class' => 'form-control','id'=>'country_code']) }}
+													{{ Form::select('country_code', array('+91'=>'+91','+241'=>'+241','+285'=>'+285','+84'=>'+84'),+91, ['class' => 'form-control select2','id'=>'country_code']) }}
 												</div>
 											</div>
 											<div class="col-md-9 col-sm-9 col-xs-12">
@@ -88,14 +90,14 @@
 										<div class="form-group doctor-fields">
 											<label for="pwd">Nationality<span class="mandatory">*</span></label>
 											<?php $nationalities = call_user_func('getNationalities');?>
-											{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),'',array('class'=>'form-control','id'=>'nationality'));!!}
+											{!! Form::select('nationality', ['' => 'Select'] +$nationalities->toArray(),'',array('class'=>'form-control select2','id'=>'nationality'));!!}
 											
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Language<span class="mandatory">*</span></label>
 											<?php $languages = call_user_func('getLanguages');?>
-											{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),'',array('class'=>'form-control','multiple'=>'multiple','id'=>'language'));!!}
+											{!! Form::select('language', ['' => 'Select'] +$languages->toArray(),1,array('class'=>'form-control select2','multiple'=>'multiple','id'=>'language'));!!}
 										</div>
 										
 										<div class="form-group">
@@ -111,17 +113,17 @@
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Qualification<span class="mandatory">*</span></label>
-											{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',		'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),1, ['class' => 'form-control','id'=>'qualification','multiple'=>true]) }}
+											{{ Form::select('qualification',array('1'=>'M.B.B.S','2'=>'B.D.S','3'=>'B.P.T','4'=>'B.O.T',		'5'=>'B.A.M.S','6'=>'B.H.M.S','7'=>'B.U.M.S','8'=>'MS','9'=>'MD','10'=>'Mch'),1, ['class' => 'form-control select2','id'=>'qualification','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Speciality<span class="mandatory">*</span></label>
-												{{ Form::select('speciality',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),1, ['class' => 'form-control','id'=>'speciality','multiple'=>true]) }}
+												{{ Form::select('speciality',array('1'=>'Anesthesiologist','2'=>'Obstetrician','3'=>'Cardiologist','4'=>'Dermatologist','5'=>'Gastroenterologist','6'=>'Gynecologist','7'=>'Hematologist','8'=>'Neonatologist','9'=>'Nephrologist','10'=>'Oncologist'),1, ['class' => 'form-control select2','id'=>'speciality','multiple'=>true]) }}
 										</div>
 										
 										<div class="form-group doctor-fields">
 											<label for="pwd">Experience<span class="mandatory">*</span></label>
-											{{ Form::select('experience',array('1'=>'1','2'=>'2','3'=>'3','4'=>'4',				'5'=>'5','6'=>'5+','7'=>'10+','8'=>'15+','9'=>'20+','10'=>'25+'),1, ['class' => 'form-control','id'=>'experience']) }}
+											{{ Form::select('experience',array('1'=>'1','2'=>'2','3'=>'3','4'=>'4',				'5'=>'5','6'=>'5+','7'=>'10+','8'=>'15+','9'=>'20+','10'=>'25+'),1, ['class' => 'form-control select2','id'=>'experience']) }}
 											
 										</div>
 										
@@ -259,6 +261,7 @@
 	<!-- jQuery -->
 	<script src="{{ asset('js/jquery.js') }}"></script>
 	<script src="{{ asset('js/script.js') }}"></script>
+	<script src="{{ asset('js/reg.js') }}"></script>
 	<script src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
 	<script src="{{ asset('js/validate.min.js') }}"></script>
 	<!-- Bootstrap Core JavaScript -->
@@ -266,37 +269,12 @@
 	<script src="{{ asset('js/jquery.bootstrap-responsive-tabs.min.js') }}"></script>
 	<script src="{{ asset('js/mask.min.js') }}"></script>
 	<script src="{{ asset('js/jquery-confirm.js') }}"></script>
+
+	<script src="{{ asset('js/select2.js') }}"></script>
 	<script>
 	$(document).ready(function(){
 
-		$('.responsive-tabs').responsiveTabs({
-		  accordionOn: ['xs']
-		});
-
-		<!-- Multiselect -->
-		$('#qualification').multiselect({
-		  buttonWidth: '100%'
-		});
 		
-		$('#speciality').multiselect({
-		  buttonWidth: '100%'
-		});
-		
-		$('#language').multiselect({
-		  buttonWidth: '100%'
-		});
-		
-		$('#nationality').multiselect({
-		  buttonWidth: '100%'
-		});
-		
-		$('#country_code').multiselect({
-		  buttonWidth: '100%'
-		});
-		
-		$('#experience').multiselect({
-		  buttonWidth: '100%'
-		});
 		
 		$("#user_role").on('change',function(){
 			if($( "#user_role option:selected" ).text()=='Patient'){

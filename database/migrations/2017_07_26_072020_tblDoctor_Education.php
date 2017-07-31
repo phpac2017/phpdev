@@ -17,9 +17,9 @@ class TblDoctorEducation extends Migration
             $table->increments("id");
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string("degree",100);
-            $table->string("college_name");
-            $table->string("year_completed",25);
+            $table->string("degree",100)->nullable();
+            $table->string("college_name")->nullable();
+            $table->string("year_completed",25)->nullable();
             $table->timestamps();
         });
     }
