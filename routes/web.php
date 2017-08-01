@@ -62,6 +62,8 @@ Route::get('patient', function () {
     return view('patient');
 });
 
+Route::get('self_assessment', [ 'as' => 'self_assessment', 'uses' => 'PatientAssessmentController@getSelfAssessment']);
+
 //Doctor Page
 Route::get('doctor', function () {
 	session()->flash('user_role',2);

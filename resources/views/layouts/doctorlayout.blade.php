@@ -72,7 +72,7 @@
 							<li class="{{ Request::segment(2) === 'profile' ? 'active' : null }}"><a href="{{ url('doctor/profile') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Personal & Contact Details</a></li>
 							<li class="{{ Request::segment(2) === 'specialization' ? 'active' : null }}"><a href="{{ url('doctor/specialization') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Education & Specialization</a></li>
 							<li class="{{ Request::segment(2) === 'documents' ? 'active' : null }}"><a href="{{ url('doctor/documents') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Registration & Documents</a></li>
-							<li class="{{ Request::segment(2) === '#' ? 'active' : null }}"><a href="#"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Clinics (Fees & Timings)</a></li>
+							<li class="{{ Request::segment(2) === 'doctor/calendar_events' ? 'active' : null }}"><a href="{{ url('doctor/calendar_events') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Clinics (Fees & Timings)</a></li>
 							<li class="{{ Request::segment(2) === 'services' ? 'active' : null }}"><a href="{{ url('doctor/services') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Services & Experience</a></li>
 							<li class="{{ Request::segment(2) === 'awards' ? 'active' : null }}"><a href="{{ url('doctor/awards') }}"><span><img src="{{ asset('images/commitments-list.png') }}" alt="" /></span>Award & Memberships</a></li>
 						</ul>

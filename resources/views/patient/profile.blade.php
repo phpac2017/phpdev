@@ -62,7 +62,11 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="usr" class="usr-photo-change">Change Photo</label>
-								<span class="change-profile-img"><img src="{{URL::asset('/uploads/patients/profile/'.$result->profile_image)}}" alt="profile Pic" height="100" width="100"></span>
+								<span class="change-profile-img">
+                                                                    @if(isset($result->profile_image) && !empty($result->profile_image) && count($result->profile_image)>0)
+                                                                    <img src="{{URL::asset('/uploads/patients/profile/'.$result->profile_image)}}" alt="profile Pic" height="100" width="100">
+                                                                    @endif
+                                                                </span>
 								<div class="change-photo-up">
 									<label class="btn-bs-file btn btn-xs btn-success browse-btn">
 										Choose Photo
@@ -78,7 +82,12 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Full Name: <span class="mandatory">*</span></label>
-									{{ Form::text('full_name',$result->full_name,array('maxlength'=>255,'class'=> 'form-control','id'=>'full_name')) }}
+                                                                @if(isset($result->full_name) && !empty($result->full_name) && count($result->full_name)>0)
+                                                                    {{ Form::text('full_name',$result->full_name,array('maxlength'=>255,'class'=> 'form-control','id'=>'full_name')) }}
+                                                                @else
+                                                                    {{ Form::text('full_name','',array('maxlength'=>255,'class'=> 'form-control','id'=>'full_name')) }}
+                                                                @endif
+									
 
 							</div>
 						</div>
@@ -99,7 +108,11 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Age : <span class="mandatory">*</span></label>
-								{{ Form::text('age',$result->age,array('maxlength'=>3,'class'=> 'form-control','id'=>'age')) }}
+                                                                @if(isset($result->age) && !empty($result->age) && count($result->age)>0)
+                                                                    {{ Form::text('age',$result->age,array('maxlength'=>3,'class'=> 'form-control','id'=>'age')) }}
+                                                                @else
+                                                                    {{ Form::text('age','',array('maxlength'=>3,'class'=> 'form-control','id'=>'age')) }}
+                                                                @endif                                                                								
 							</div>
 						</div>
 						
@@ -154,7 +167,12 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Date of Birth: <span class="mandatory">*</span></label>								
-								{{ Form::text('dob',$result->dob,array('class'=> 'form-control','id'=>'datepicker','readonly'=>true)) }}								
+                                                                @if(isset($result->dob) && !empty($result->dob) && count($result->dob)>0)
+                                                                    {{ Form::text('dob',$result->dob,array('class'=> 'form-control','id'=>'datepicker','readonly'=>true)) }}
+                                                                @else
+                                                                    {{ Form::text('dob','',array('class'=> 'form-control','id'=>'datepicker','readonly'=>true)) }}
+                                                                @endif                                                                								
+																
 								
 							</div>
 						</div>
@@ -163,7 +181,12 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Address: <span class="mandatory">*</span></label>
-								{{ Form::text('address',$result->address,array('class'=> 'form-control','id'=>'address')) }}
+                                                                @if(isset($result->address) && !empty($result->address) && count($result->address)>0)
+                                                                    {{ Form::text('address',$result->address,array('class'=> 'form-control','id'=>'address')) }}
+                                                                @else
+                                                                    {{ Form::text('address','',array('class'=> 'form-control','id'=>'address')) }}
+                                                                @endif                                                                  
+								
 							</div>
 						</div>
 					</div>
@@ -183,7 +206,11 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Zip Code : <span class="mandatory">*</span></label>
-								{{ Form::text('zip_code',$result->zip_code,array('maxlength'=>10,'class'=> 'form-control','id'=>'zip_code')) }}
+                                                                @if(isset($result->zip_code) && !empty($result->zip_code) && count($result->zip_code)>0)
+                                                                    {{ Form::text('zip_code',$result->zip_code,array('maxlength'=>10,'class'=> 'form-control','id'=>'zip_code')) }}
+                                                                @else
+                                                                    {{ Form::text('zip_code','',array('maxlength'=>10,'class'=> 'form-control','id'=>'zip_code')) }}
+                                                                @endif 								
 							</div>
 						</div>
 					</div>
@@ -203,7 +230,12 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Mobile Number : <span class="mandatory">*</span></label>
-								{{ Form::text('mobile',$result->mobile,array('maxlength'=>10,'class'=> 'form-control','id'=>'mobile_number')) }}
+                                                                @if(isset($result->mobile) && !empty($result->mobile) && count($result->mobile)>0)
+                                                                   {{ Form::text('mobile',$result->mobile,array('maxlength'=>10,'class'=> 'form-control','id'=>'mobile_number')) }}
+                                                                @else
+                                                                    {{ Form::text('mobile','',array('maxlength'=>10,'class'=> 'form-control','id'=>'mobile_number')) }}
+                                                                @endif 
+                                                                
 							</div>
 						</div>
 					</div>
@@ -214,7 +246,12 @@
 								<div class="verification">
 									<div class="form-group">
 										<label for="usr">Verification Doc: <span class="mandatory">*</span></label>
-											{{ Form::text('verification_doc_type',$result->document,array('maxlength'=>255,'class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
+                                                                @if(isset($result->document) && !empty($result->document) && count($result->document)>0)
+                                                                   {{ Form::text('verification_doc_type',$result->document,array('maxlength'=>255,'class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
+                                                                @else
+                                                                   {{ Form::text('verification_doc_type','',array('maxlength'=>255,'class'=> 'form-control exception-fields','id'=>'verification_doc_type','placeholder'=>'Id Proof Name and upload Doc(eg- AAdhar,Passport)')) }}
+                                                                @endif                                                                                 
+											
 										</div>
 								</div>
 								<div class="browse-btn-verifi">
@@ -230,7 +267,11 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Alternate Number: <span class="mandatory">*</span></label>
+                                                                @if(isset($result->alternate_no) && !empty($result->alternate_no) && count($result->alternate_no)>0)
 								{{ Form::text('alternate_no',$result->alternate_no,array('maxlength'=>10,'class'=> 'form-control','id'=>'alternate_no')) }}
+                                                                @else
+                                                                {{ Form::text('alternate_no','',array('maxlength'=>10,'class'=> 'form-control','id'=>'alternate_no')) }}
+                                                                @endif
 							</div>
 						</div>
 					</div>
@@ -239,7 +280,11 @@
 						<div class="col-lg-4 col-md-6">
 							<div class="form-group">
 								<label for="usr">Email id : <span class="mandatory">*</span></label>
+                                                                @if(isset($result->email_id) && !empty($result->email_id) && count($result->email_id)>0)
 								{{ Form::email('email_id',$result->email_id,array('maxlength'=>255,'class'=> 'form-control','id'=>'email_id')) }}
+                                                                @else
+                                                                {{ Form::email('email_id','',array('maxlength'=>255,'class'=> 'form-control','id'=>'email_id')) }}
+                                                                @endif
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-6"></div>
@@ -382,7 +427,7 @@ $(document).ready(function(){
         dateFormat: "yy-mm-dd",
         changeMonth: true,
         changeYear: true
-  }).datepicker().on('changeDate', function(e) {alert(1)
+	}).datepicker().on('changeDate', function(e) {alert(1)
 	  $("#age").val(getAge(e.date));
     });
 	//$('#alternate_no').mask('(000) 000-0000');

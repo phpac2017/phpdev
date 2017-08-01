@@ -68,11 +68,11 @@
 						</div>
 							<div class="form-group">
 							 <label for="start">START</label>
-							 <input type="text" name="start" class="form-control" value="{{$calendar_event->start}}"/>
+							 <input type="text" name="start" class="form-control" value="{{$calendar_event->start}}" id="datepicker" readonly/>
 						</div>
 							<div class="form-group">
 							 <label for="end">END</label>
-							 <input type="text" name="end" class="form-control" value="{{$calendar_event->end}}"/>
+							 <input type="text" name="end" class="form-control" value="{{$calendar_event->end}}" id="datepicker1" readonly/>
 						</div>
 							<div class="form-group">
 							 <label for="is_all_day">IS_ALL_DAY</label>
@@ -101,3 +101,25 @@
 
 
 @endsection
+
+
+@section('scripts')
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/responsive-tabs.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+<script>
+$(document).ready(function(){
+    $("#datepicker, #datepicker1").datepicker({ 
+        autoclose: true, 
+        todayHighlight: true,
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true
+	});
+});
+
+</script>
+@stop

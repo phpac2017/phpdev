@@ -281,12 +281,29 @@ button, select {
 	width: auto;
 	position: relative;
 }
+.img_circular {
+	padding: 0;
+}
+.img_circular span {
+    display: inline-block;
+    margin-left: 10px;
+}
 .login-dropdown {
 	/*position: absolute;
 	right: 0;
 	top: 5px;*/
-	display: inline-block;
-	margin-left: 10px;
+	border-radius: 50%;
+    overflow: hidden;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #fff;
+    -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+.login-dropdown img {
+    display: block;
+    min-height: 100%;
+    width: 100%;
 }
 .login_details button:hover, 
 .login_details button:active, 
@@ -318,10 +335,11 @@ button, select {
 }
 .login_details .dropdown-menu li .u-name {
     display: inline-block;
-    /*width: 115px;*/
-    margin: -5px 0 10px 10px;
+    width: 130px;
+    margin: -2px 0 10px 9px;
     vertical-align: top;
     text-transform: capitalize;
+    line-height: 18px;
 }
 .login_details .dropdown-menu li .u-name a {
 	padding: 0 0 5px 0;

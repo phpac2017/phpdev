@@ -1,4 +1,4 @@
-@extends('layouts.patientlayout')
+@extends('layouts.applayout')
 @section('content')
 <section class="login-bg patient_login_bg">
 	<div id="wrapper">

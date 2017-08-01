@@ -62,7 +62,7 @@
 									</select>
 								</div>
 								@if(Auth::guest())
-									<a href="{{ url('login') }}" class="login_register">Login / Register</a>
+									<a href="{{ url('login') }}" class="login_register doctor_login_register">Login / Register</a>
 								@else
 									<div class="login_details">									
 										<?php 
@@ -75,12 +75,12 @@
 											}elseif($role==='doctor'){
 												$fold = 'doctors/profile';
 											}else{
-												$fold = 'users/profile';
+												$fold = 'patients/profile';
 											}
 										?>
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false"><span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/></span></button>
 										<ul class="dropdown-menu">
-											<li><div class="u-user-head"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" />
+											<li><div class="u-user-head"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/>
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
 											<li><a href="#">My Appointments</a></li>
 											<li><a href="#">My Medical Records</a></li>
@@ -131,7 +131,7 @@
 									<div id="navbar" class="navbar-collapse collapse">
 										<ul class="nav navbar-nav">
 											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">For Patient</a>
+												<a href="{{ url('patient') }}">For Patient</a>
 												<!--ul class="dropdown-menu sub-menus">
 													<li><a href="#">DSP Mixers</a></li>
 													<li><a href="#">Amplifiers</a></li>

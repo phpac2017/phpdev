@@ -57,7 +57,7 @@
 									</select>
 								</div>
 								@if(Auth::guest())
-									<a href="{{ url('login') }}" class="login_register">Login / Register</a>
+									<a href="{{ url('login') }}" class="login_register doctor_login_register">Login / Register</a>
 								@else
 									<?php 
 										$userid = Auth::user()->id;
@@ -72,7 +72,7 @@
 										}
 									?>
 									<div class="login_details">
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
+										<button class="btn btn-default dropdown-toggle img_circular" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false"><span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
 										<ul class="dropdown-menu">
 											<li><div class="u-user-head"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" />
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
@@ -125,7 +125,7 @@
 									<div id="navbar" class="navbar-collapse collapse">
 										<ul class="nav navbar-nav">
 											<li class="dropdown">
-												<a href="{{ url('patient') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">For Patient</a>
+												<a href="{{ url('patient') }}">For Patient</a>
 												<!--ul class="dropdown-menu sub-menus">
 													<li><a href="#">DSP Mixers</a></li>
 													<li><a href="#">Amplifiers</a></li>
@@ -247,7 +247,7 @@
 			<div class="row">
 				<div class="col-md-5 col-sm-12 text-center">
 					<div class="doctor_profile_img_right patient_across">
-						<img src="{{ asset('images/banner/patient_across.png') }}" alt="" />
+						<img src="{{ asset('images/banner/patient_across1.png') }}" alt="" />
 					</div>
 				</div>
 				<div class="col-md-7 col-sm-12">
@@ -273,18 +273,13 @@
 					<div class="doctor_profile_left">
 						<h2>Download and register with the Dr.Online App today! Manage all your appointments, patient records and consutations on one platform. </h2>
 						<h4>Through Doctor Online, the selected doctors can instantly connect with patients anytime, anywhere:</h4>
-						<ul>
-							<li>Get paid quickly; Money directly deposited to your bank account</li>
-							<li>Constant access to patients guarantees steady revenue streams</li>
-							<li>Praesent tincidunt molestie libero mollis porta. Faucibus leo</li>
-							<li>Praesent tincidunt molestie libero mollis porta. Faucibus leo</li>
-						</ul>
+						
 						<img src="{{ asset('images/download_gp - black.png') }}" alt=""> <img src="{{ asset('images/download_app_store - black.png') }}" alt="">
 					</div>
 				</div>
 				<div class="col-md-5 col-sm-12 text-center">
 					<div class="doctor_profile_img_right patient_across">
-						<img src="{{ asset('images/banner/immage.jpg') }}" alt="" />
+						<img src="{{ asset('images/banner/immage.png') }}" alt="" />
 					</div>
 				</div>
 			</div>
@@ -295,8 +290,7 @@
 		<div class="container animated fadeInUpShort">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>If you are a Healthcare provider, Doctor, Psychologist, Nutritionist or a Dietician.We need you!</h2>
-					<h3>Make a difference in the world today by joining hands with "Doctor online". If our platform interests you, please tell us a little something about yourself and your work by dropping in a mail at <a href="mailto:contact@Doctoronline.com"> contact@Doctoronline.com</a>. We would love to hear from you. </h3>
+					<h3>If you are a Healthcare provider, Doctor, Psychologist, Nutritionist or a Dietician.We need you!Make a difference in the world today by joining hands with "Doctor online". If our platform interests you, please tell us a little something about yourself and your work by dropping in a mail at <a href="mailto:contact@Doctoronline.com"> contact@Doctoronline.com</a>. We would love to hear from you. </h3>
 				</div>
 			</div>
 		</div>

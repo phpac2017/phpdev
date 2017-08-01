@@ -24,8 +24,8 @@ class PatientProfileController extends Controller
    public function patientUpdate(Request $request)
    {
        $id = $request->get('user_id');
-       $patient = PatientProfile::select('*')->where('user_id', $id)->first()->toArray();   
-       
+       $patient = PatientProfile::select('*')->where('user_id', $id)->first();   
+       //print_r($patient);exit;
        if ($file = $request->file('document')) {
            $extension = $file->getClientOriginalExtension();
            $folderName = '/uploads/patients/files/';
@@ -35,32 +35,42 @@ class PatientProfileController extends Controller
             if (File::exists(public_path() . $folderName . $request->get("document"))) {
                 File::delete(public_path() . $folderName . $request->get("document"));
             }
-       }else{
-           $safeName_doc = $patient['document'];
+       } 
+       if(!empty($patient->document)){ 
+           $safeName_doc = $patient->document;
        }
-       
+      
        if ($file = $request->file('profile_pic')) {
             $extension = $file->getClientOriginalExtension() ?: 'png';
             $folderName = '/uploads/patients/profile/';
             $destinationPath = public_path() . $folderName;
             $safeName = str_random(10) . '.' . $extension;
             $file->move($destinationPath, $safeName);
+            // Image::make($file)->resize(800, 600)->save($destinationPath);
             //delete old pic if exists
             if (File::exists(public_path() . $folderName . $request->get("profile_pic"))) {
                 File::delete(public_path() . $folderName . $request->get("profile_pic"));
             }
             //save new file path into db
-        }else{             
-            $safeName = $patient['profile_image'];
         }
+        if(!empty($patient->profile_image)){             
+            $safeName = $patient->profile_image;
+        }
+        
         if(empty($patient))
-        {            
-            $request->request->add(['profile_image' => $safeName]);
-            $request->request->add(['document' => $safeName_doc]);
-            PatientProfile::create($request->all());        
+        { 
+            if(!empty($safeName)){  $request->request->add(['profile_image' => $safeName]); }
+            if(!empty($safeName_doc)){                  
+                $data = $request->except('document');
+                $data['document'] = $safeName_doc;
+            }   
+            PatientProfile::create($data);        
             Session::flash('alert-success', 'Patient was successful added!');
             return redirect()->back();
-        }else{            
+        }else{
+            if(empty($safeName)){  $safeName=''; }
+            if(empty($safeName_doc)){  $safeName_doc=''; } 
+           
             $update = [
                 'document' => $safeName_doc,
                 'profile_image' => $safeName,'full_name' => $request->get("full_name"),

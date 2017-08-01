@@ -76,9 +76,9 @@
 										}
 									?>
 									<div class="login_details">
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
+										<button class="btn btn-default dropdown-toggle img_circular" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false"><span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" /></span></button>
 										<ul class="dropdown-menu">
-											<li><div class="u-user-head"><img class="profile-img" src="https://accounts.practo.com/profile_picture/3065973/medium_thumbnail" alt="" width="40" height="40">
+											<li><div class="u-user-head"><img class="profile-img" src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="">
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
 											<li><a href="#">My Appointments</a></li>
 											<li><a href="#">My Medical Records</a></li>
@@ -166,7 +166,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<h1><strong>Are you feeling uneasy today? Want an unbiased second opinion? Let us help you connect with trustworthy and experienced doctors now. </h1>
-									<a href="#" class="btn patient_btn">Self Assesment</a>
+									<a href="{{ url('self_assessment') }}" class="btn patient_btn">Self Assesment</a>
 									<a href="{{ url('patient/book_appointment') }}" class="btn patient_btn">Appointment Now</a>
 									<a href="#" class="btn consult_btn">Consult Now</a>
 								</div>
@@ -482,7 +482,7 @@
 								<img src="{{ asset('images/img-t-2.png') }}" alt="" />
 							</div>
 							<div class="col-md-6 col-sm-8 col-xs-12">
-								<h5>The latest diet pills for men in middle age</h5>
+								<h5>Home care vs Hospital care post surgery</h5>
 								<span>By Admin / 02 March 2015 / 15 Comments</span>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								<a href="#">Read More</a>
@@ -497,7 +497,7 @@
 								<img src="{{ asset('images/img-t-3.png') }}" alt="" />
 							</div>
 							<div class="col-md-6 col-sm-8 col-xs-12">
-								<h5>The latest diet pills for men in middle age</h5>
+								<h5>The truth behind generic medicines</h5>
 								<span>By Admin / 02 March 2015 / 15 Comments</span>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								<a href="#">Read More</a>
@@ -512,7 +512,7 @@
 								<img src="{{ asset('images/img-t-4.png') }}" alt="" />
 							</div>
 							<div class="col-md-6 col-sm-8 col-xs-12">
-								<h5>The latest diet pills for men in middle age</h5>
+								<h5>Tried and tested homemade remedies</h5>
 								<span>By Admin / 02 March 2015 / 15 Comments</span>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								<a href="#">Read More</a>
