@@ -47,14 +47,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="page-header">
-				<h1>CalendarEvents / Edit </h1>
-			</div>
 
+			<div class="calendarevents-create">
+				<h1>CalendarEvents / Edit </h1>
 
 			<div class="row">
 				<div class="col-md-12">
-					<?php echo $user_id = Auth::user()->id;?>
+					<?php $user_id = Auth::user()->id;?>
 					<form action="{{ route('calendar_events.update', $calendar_event->id) }}" method="POST">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,10 +85,11 @@
 
 						{{ Form::hidden('user_id', $user_id, array('class' => 'form-control', 'id' => 'id')) }}
 
-					<a class="btn btn-default" href="{{ route('calendar_events.index') }}">Back</a>
-					<button class="btn btn-primary" type="submit" >Save</button>
+					<a class="btn btn-formsubmit password-btn" href="{{ route('calendar_events.index') }}">Back</a>
+					<button class="btn btn-formsubmit password-btn" type="submit" >Save</button>
 					</form>
 				</div>
+			</div>
 			</div>
 			{{ Form::close() }}
 			<div class="footer-copyrights">

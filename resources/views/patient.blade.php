@@ -56,15 +56,27 @@
 							<div class="col-md-12 text-right mob-icons">
 								<div class="language language-selector">
 									<select class="selectpicker" data-width="fit">
-										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chn'>Chn</option>
-										<option data-content='<span class="flag-icon flag-icon-in"></span> Ind'>Ind</option>
+										<option data-content='<span class="flag-icon flag-icon-in"></span> English (US)'>English (US)</option>
+										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chinese'>Chinese</option>
 									</select>
 								</div>
 								@if(Auth::guest())
 									<a href="{{ url('login') }}" class="login_register">Login / Register</a>
 								@else
+									<?php 
+										$userid = Auth::user()->id;
+										$imgsrc = call_user_func('getProfilePic', $userid);
+										$role = Auth::user()->roles->first()->name;
+										if($role==='admin'){
+											$fold = 'admin/profile';
+										}elseif($role==='doctor'){
+											$fold = 'doctors/profile';
+										}else{
+											$fold = 'users/profile';
+										}
+									?>
 									<div class="login_details">
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="images/dropdown.png" alt="" /></span></button>
+										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false">{{ Auth::user()->name }}<span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt="" width="40" height="40" /></span></button>
 										<ul class="dropdown-menu">
 											<li><div class="u-user-head"><img class="profile-img" src="https://accounts.practo.com/profile_picture/3065973/medium_thumbnail" alt="" width="40" height="40">
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
@@ -153,7 +165,7 @@
 						<div class="slider-overlay patient-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Lorem ipsum dolor sit amet,</strong> consectetur adipiscing elit. Curabitur hend...</h1>
+									<h1><strong>Are you feeling uneasy today? Want an unbiased second opinion? Let us help you connect with trustworthy and experienced doctors now. </h1>
 									<a href="#" class="btn patient_btn">Self Assesment</a>
 									<a href="{{ url('patient/book_appointment') }}" class="btn patient_btn">Appointment Now</a>
 									<a href="#" class="btn consult_btn">Consult Now</a>
@@ -259,7 +271,7 @@
 					<div class="process_steps">
 						<img src="{{ asset('images/icon-1.png') }}" alt="" />
 						<h6>Step 6</h6>
-						<h5>Loreum ipsum</h5>
+						<h5>Rate the doctor</h5>
 						<p>Just login/register to set up your account or download the app on your smartphone or mobile device. You can also call us for account assistance 24/7/365.</p>
 					</div>
 				</div>
@@ -278,7 +290,7 @@
 								<span class="icon-img icon-one"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Dental Surgery</h5>
+								<h5>Consultation with doctor</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -291,7 +303,7 @@
 								<span class="icon-img icon-two"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Pathology</h5>
+								<h5>Post surgery homecare</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -304,7 +316,7 @@
 								<span class="icon-img icon-three"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Pharmacology</h5>
+								<h5>Medical data records</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -317,7 +329,7 @@
 								<span class="icon-img icon-four"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Orthopaedics</h5>
+								<h5>On-time delivery of medicine</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -330,7 +342,7 @@
 								<span class="icon-img icon-five"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Urology</h5>
+								<h5>Health management system</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -343,46 +355,7 @@
 								<span class="icon-img icon-six"></span>
 							</div>
 							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Nursing</h5>
-								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<div class="our_services_description">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-								<span class="icon-img icon-four"></span>
-							</div>
-							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Orthopaedics</h5>
-								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<div class="our_services_description">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-								<span class="icon-img icon-five"></span>
-							</div>
-							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Urology</h5>
-								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<div class="our_services_description">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-								<span class="icon-img icon-six"></span>
-							</div>
-							<div class="col-md-9 col-sm-8 col-xs-9">
-								<h5>Nursing</h5>
+								<h5>Health insurance</h5>
 								<p>Donec vel mi sem. Vivamus dapibus rutrum mi ut aliquam. In hac habitasse platea dictumst. Integer sagittis neque a tortor tempor in porta sem vulputate.</p>
 							</div>
 						</div>
@@ -403,41 +376,41 @@
 					<div class="col-md-12">
 						<div class="doctors_here">
 							<span class="officer-circular"><img src="{{ asset('images/pro-1.png') }}" alt=""></span>
-							<h5>Lauralee Yalden, MD</h5>
-							<span class="department_name">Head of Department</span>
+							<h5>Dr. Jeffrey Samuel Co</h5>
+							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Cum sociis natoque penatibus et magnis dis parturient montesmus.</p>
-							<p>Speaks: <strong>English</strong></p>
+							<p>Dr. Jeffrey Samuel Co. is a General Surgeon in Santa Cruz, Manila. Dr. Jeffrey Samuel Co. practices at Chinese General Hospital and Medical Center in Santa Cruz, Manila. He completed Doctor of Medicine from University of Santo Tomas in 2010. He is a member of Society of Physician Entrepreneurs. Some of the services provided by the doctor are: Pancreas transplantation, Reconstructive, Microvascular Surgery, Cardio Thoracic Surgery, Cancer Surgery and Kidney Transplant etc. </p>
+							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="doctors_here">
 							<span class="officer-circular"><img src="{{ asset('images/pro-2.png') }}" alt=""></span>
-							<h5>Lauralee Yalden, MD</h5>
-							<span class="department_name">Head of Department</span>
+							<h5>Dr. Sammy C. Cunanan</h5>
+							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Cum sociis natoque penatibus et magnis dis parturient montesmus.</p>
-							<p>Speaks: <strong>English</strong></p>
+							<p>Dr. Sammy C. Cunanan is a General Surgeon in Santa Cruz, Manila and has an experience of 22 years in this field. Dr. Sammy C. Cunanan practices at Chinese General Hospital and Medical Center in Santa Cruz, Manila. He completed Doctor of Medicine from University of Santo Tomas in 1989. He is a member of Philippine Medical Association and Philippine College of Surgeon.</p>
+							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="doctors_here">
 							<span class="officer-circular"><img src="{{ asset('images/pro-1.png') }}" alt=""></span>
-							<h5>Lauralee Yalden, MD</h5>
-							<span class="department_name">Head of Department</span>
+							<h5>Dr. Cindy C. Panganiban</h5>
+							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Cum sociis natoque penatibus et magnis dis parturient montesmus.</p>
-							<p>Speaks: <strong>English</strong></p>
+							<p>Dr. Cindy C. Panganiban is a Pediatrician in Santa Cruz, Manila and has an experience of 15 years in this field. Dr. Cindy C. Panganiban practices at Chinese General Hospital and Medical Center in Santa Cruz, Manila. She completed Doctor of Medicine from University of Santo Tomas in 1998. She is a member of Philippine Pediatric Society (PPS) and Philippine Medical Association.</p>
+							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="doctors_here">
 							<span class="officer-circular"><img src="{{ asset('images/pro-2.png') }}" alt=""></span>
-							<h5>Lauralee Yalden, MD</h5>
-							<span class="department_name">Head of Department</span>
+							<h5>Dr. Winnie Sharon Khoo</h5>
+							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Cum sociis natoque penatibus et magnis dis parturient montesmus. Cum sociis natoque penatibus et magnis dis parturient montesmus.</p>
-							<p>Speaks: <strong>English</strong></p>
+							<p>Dr. Winnie Sharon Khoo is a Neurologist in Manila, Metro Manila and has an experience of 3 years in this field. Dr. Winnie Sharon Khoo practices at Chinese General Hospital and Medical Center in Manila, Metro Manila. She completed Doctor of Medicine from West Visayas State University College of Medicine in 2006. She is a member of Philippine Medical Association and Philippine Neurological Association (PNA). </p>
+							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
 				</div>

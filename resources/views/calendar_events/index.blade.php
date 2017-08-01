@@ -47,10 +47,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="page-header">
-				<h1>CalendarEvents</h1>
-			</div>
 
+			<div class="calendarevents-create">
+
+				<h1>CalendarEvents</h1>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -90,10 +90,10 @@
 						</tbody>
 					</table>
 
-					<a class="btn btn-success" href="{{ route('calendar_events.create') }}">Create</a>
+					<a class="btn btn-formsubmit password-btn" href="{{ route('calendar_events.create') }}">Create</a>
 				</div>
 			</div>
-			{{ Form::close() }}
+			</div>
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>
 			</div>

@@ -42,12 +42,12 @@
 						<div class="callout_icons">
 							<div class="custsupport">
 								<div class="cust-support">
-									<p><a href="https://www.google.co.in/?gws_rd=ssl"><img src="images/emergency-no.png" alt="" /> <span>(732) 803-010-03</span></a></p>
+									<p><a href="https://www.google.co.in/?gws_rd=ssl"><img src="{{ asset('images/emergency-no.png') }}" alt="" /> <span>(732) 803-010-03</span></a></p>
 								</div></a>
 							</div>
 							<div class="emailto">
 								<div class="email-to">
-									<p><a href="mailto:doctor@Online"><img src="images/email.png" alt="" /> <span>doctor@Online</span></a></p>
+									<p><a href="mailto:doctor@Online"><img src="{{ asset('images/email.png') }}" alt="" /> <span>doctor@Online</span></a></p>
 								</div>
 							</div>
 						</div>
@@ -192,7 +192,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face to face consultation can be immediate</strong> & any where, via computers terminals and smart hand phones.</h1>
+									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -202,7 +202,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face to face consultation can be immediate</strong> & any where, via computers terminals and smart hand phones.</h1>
+									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -212,7 +212,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face to face consultation can be immediate</strong> & any where, via computers terminals and smart hand phones.</h1>
+									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -237,8 +237,8 @@
 				<div class="col-lg-7 col-md-6 col-sm-12">
 					<div class="who-we-are animated fadeInUpShort">
 						<h1><span>Who</span> We are</h1>
-						<p><strong>Dr. Online is a platform via the internet or smart handphone build for patients and doctors where patients can have face to face consultation via video conference with doctors or team of doctors to be diagnosed, treated and allow doctors to manage patients’ post medical conditions.</strong> Drugs and medication can be delivered within a short period to patients designated location usually their homes. This platform surely would also provide opportunities for patients from anywhere be it the most remote locations to have access to the best medical care from anywhere in the world.</p>
-						<p>This platform would also allow patients to have the best available drugs and medication and suppliers able to deliver drugs and medication directly to patients based on shortest possible time and longest possible distance. This would allow the cost of drugs and medication be at the lowest possible by taking away all the wholesalers and drugs dispensary companies.</p>
+						<p>We know how difficult it can be to get an appointment from a doctor with huge queues and hassles of travelling. Hence we’ve built an online platform for virtual face-to-face consultation with reputed doctors around the world. The doctors will now diagnose, treat the illness and conduct follow-ups using this portal at the comforts of your home.</p>
+						<p>This platform will also provide services such as on-time delivery of prescribed drugs, online medical record keeping, health management system and health insurance coverage. The medicines are sourced directly from the manufacturer hence are be available at a reduced cost to you. We aim at easing your and your family’s life and help you lead a healthy and happier life!</p>
 					</div>
 				</div>
 				<div class="col-lg-5 col-md-6 col-sm-12 text-center">
@@ -252,7 +252,7 @@
 
 	<section class="our-commitments-bg animatedParent">
 		<div class="container">
-			<h1><span>Our</span> commitments</h1>
+			<h1><span>Our</span> Commitments to the world</h1>
 			<div id="myCarousel1" class="carousel slide carousel-fade" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
@@ -267,20 +267,10 @@
 									<div class="col-md-6 animated fadeInUpShort">
 										<div class="commitments-points">
 											<ul>
-												<li>To reduce the cost of medical services and medical insurance to at least 30%</li>
-												<li>To Increase  doctors professional fee and improved working environment</li>
-												<li>To allow more people to have access to better medical services for the poor and remote areas</li>
-												<li>To improve the method of delivery of medical services</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-md-6 animated fadeInUpShort">
-										<div class="commitments-points">
-											<ul>
-												<li>To be social responsible and protects the environment</li>
-												<li>To plough back profits for research and development for the medical industry</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
+												<li>To reduce in the cost of medical services and health insurance</li>
+												<li>To enable access to better medical services even in the remotest areas</li>
+												<li>To achieve improved delivery of medical services</li>
+												<li>To be a socially responsible and environment friendly platform</li>
 											</ul>
 										</div>
 									</div>
@@ -293,20 +283,10 @@
 									<div class="col-md-6 animated fadeInUpShort">
 										<div class="commitments-points">
 											<ul>
-												<li>To reduce the cost of medical services and medical insurance to at least 30%</li>
-												<li>To Increase  doctors professional fee and improved working environment</li>
-												<li>To allow more people to have access to better medical services for the poor and remote areas</li>
-												<li>To improve the method of delivery of medical services</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-md-6 animated fadeInUpShort">
-										<div class="commitments-points">
-											<ul>
-												<li>To be social responsible and protects the environment</li>
-												<li>To plough back profits for research and development for the medical industry</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
+												<li>To reduce in the cost of medical services and health insurance</li>
+												<li>To enable access to better medical services even in the remotest areas</li>
+												<li>To achieve improved delivery of medical services</li>
+												<li>To be a socially responsible and environment friendly platform</li>
 											</ul>
 										</div>
 									</div>
@@ -319,20 +299,10 @@
 									<div class="col-md-6 animated fadeInUpShort">
 										<div class="commitments-points">
 											<ul>
-												<li>To reduce the cost of medical services and medical insurance to at least 30%</li>
-												<li>To Increase  doctors professional fee and improved working environment</li>
-												<li>To allow more people to have access to better medical services for the poor and remote areas</li>
-												<li>To improve the method of delivery of medical services</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-md-6 animated fadeInUpShort">
-										<div class="commitments-points">
-											<ul>
-												<li>To be social responsible and protects the environment</li>
-												<li>To plough back profits for research and development for the medical industry</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
-												<li>To allocate a certain amount of the profits for charities and the poor</li>
+												<li>To reduce in the cost of medical services and health insurance</li>
+												<li>To enable access to better medical services even in the remotest areas</li>
+												<li>To achieve improved delivery of medical services</li>
+												<li>To be a socially responsible and environment friendly platform</li>
 											</ul>
 										</div>
 									</div>
@@ -352,74 +322,50 @@
 				<div class="our-specilisation animatedParent">
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
+							<img src="{{ asset('images/specialization/General_Practitioner.jpg') }}" alt="" />
+							<h5>General Practitioner</h5>
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
+						<a href="#">
+							<img src="{{ asset('images/specialization/Urology.jpg') }}" alt="" />
 							<h5>Urology</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Endocrinology.jpg') }}" alt="" />
+							<h5>Endocrinology</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Cardiology.jpg') }}" alt="" />
+							<h5>Cardiology</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Geriatrics.jpg') }}" alt="" />
+							<h5>Geriatrics</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Psychiatry.jpg') }}" alt="" />
+							<h5>Occupational medicine</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Counselling_Therapy.jpg') }}" alt="" />
+							<h5>Counselling and therapy</h5>
 						</a>
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/specilisation.jpg" alt="" />
-							<h5>Urology</h5>
+							<img src="{{ asset('images/specialization/Food_Nutrition_Consultants.jpg') }}" alt="" />
+							<h5>Food & Nutrition Consultants</h5>
 						</a>
 					</div>
 					<button class="btn btn-specilisation">View all our Specialisation</button>
@@ -442,67 +388,31 @@
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
 							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
+							<h5>Post surgery homecare</h5>
 						</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
 							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
+							<h5>Medical data records</h5>
 						</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
 							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
+							<h5>On-time delivery of medicine</h5>
 						</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
 							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
+							<h5>Health management system</h5>
 						</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
 						<a href="#">
 							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
-						</a>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
-						<a href="#">
-							<img src="images/services.png" alt="" />
-							<h5>Consultation with Doctors</h5>
+							<h5>Health insurance </h5>
 						</a>
 					</div>
 					<button class="btn btn-services">View al our Services</button>
@@ -518,15 +428,15 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="need-help">
 						<h1>Need Help?</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut mollitia, quidem praesentium deserunt similique.</p>
+						<p>We’re available 24*7 to answer your queries. Contact us now.</p>
 						<button class="btn btn-online-dr">See a online doctor today</button>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="download-the-app">
 						<h1>Download the App</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut mollitia, quidem praesentium deserunt similique.</p>
-						<img src="images/download_gp.png" alt="" /> <img src="images/download_app_store.png" alt="" />
+						<p>Dr.Online is now available on your smartphone! Download it now.</p>
+						<img src="{{ asset('images/download_gp.png') }}" alt="" /> <img src="{{ asset('images/download_app_store.png') }}" alt="" />
 					</div>
 				</div>
 			</div>

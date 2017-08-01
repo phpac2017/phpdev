@@ -47,10 +47,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="page-header">
-				<h1>CalendarEvents / Show </h1>
-			</div>
 
+			<div class="calendarevents-create">
+				<h1>CalendarEvents / Show </h1>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -80,12 +79,12 @@
 							 <p class="form-control-static">{{$calendar_event->background_color}}</p>
 						</div>
 				
-					<a class="btn btn-default" href="{{ route('calendar_events.index') }}">Back</a>
-					<a class="btn btn-warning" href="{{ route('calendar_events.edit', $calendar_event->id) }}">Edit</a>
-					<form action="#/$calendar_event->id" method="DELETE" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><button class="btn btn-danger" type="submit">Delete</button></form>
+					<a class="btn btn-formsubmit password-btn" href="{{ route('calendar_events.index') }}">Back</a>
+					<a class="btn btn-formsubmit password-btn" href="{{ route('calendar_events.edit', $calendar_event->id) }}">Edit</a>
+					<form action="#/$calendar_event->id" method="DELETE" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><button class="btn btn-formsubmit password-btn" type="submit">Delete</button></form>
 				</div>
 			</div>
-			{{ Form::close() }}
+			</div>
 			<div class="footer-copyrights">
 				<h5>Copyright @ 2017 Doctor online All Rights reserved</h5>
 			</div>
