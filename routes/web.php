@@ -163,6 +163,15 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('self_assessment_female_qa',['as'=>'self_assessment_female_qa','uses'=>'PatientAssessmentController@getSelfAssessmentFemaleQA']);
 		Route::post('self_assessment_female_qa',['as'=>'self_assessment_female_qa','uses'=>'PatientAssessmentController@postSelfAssessmentFemaleQA']);
 
+		//Schedule Appointment Page
+		Route::get('schedule_appointment',['as'=>'schedule_appointment','uses'=>'PatientAssessmentController@getScheduleAppointment']);
+		Route::post('schedule_appointment',['as'=>'schedule_appointment','uses'=>'PatientAssessmentController@postScheduleAppointment']);
+
+		//Schedule Appointment Page
+		Route::get('get_appointment',['as'=>'get_appointment','uses'=>'PatientAssessmentController@getAppointment']);
+		Route::post('get_appointment',['as'=>'get_appointment','uses'=>'PatientAssessmentController@postAppointment']);
+
+
 		//Patient Appointment Page
 		Route::get('book_appointment', function () {
 			return view('patient/appointment');

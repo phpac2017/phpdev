@@ -865,7 +865,7 @@ button, select {
 	color: #000;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	font-size: 42px;
+	font-size: 36px;
 }
 .patient-overlay h1 {
 	color: #fff;
@@ -1083,7 +1083,7 @@ button, select {
 .our_services_bg h1, 
 .we_are_here_bg h1, 
 .tips_news_bg h1 {
-	font-size: 50px;
+	font-size: 45px;
 	font-weight: 700;
 	color: #000;
 	margin-bottom: 50px;
@@ -2875,6 +2875,12 @@ label.specialist-cancer i {
 	padding: 15px 20px 0 20px;
 	margin-bottom: 10px;
 }
+.appointment-but-div{
+	padding: 10px 0 30px 0
+}
+.goback-button {
+	margin: 0 0 14px 0;
+}
 .medicine_selection {
 	border-bottom: 1px solid #cdcdcd;
 	margin-top: 10px;
@@ -3912,6 +3918,7 @@ button.pointer-close, button.pointer-close:hover, button.pointer-close:focus {
 }
 .slider-overlay h1 {
 	font-size: 36px;
+
 }
 .who-we-are {
 	padding-left: 0;

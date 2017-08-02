@@ -290,7 +290,7 @@
 		<div class="container animated fadeInUpShort">
 			<div class="row">
 				<div class="col-md-12">
-					<h3>If you are a Healthcare provider, Doctor, Psychologist, Nutritionist or a Dietician.We need you!Make a difference in the world today by joining hands with "Doctor online". If our platform interests you, please tell us a little something about yourself and your work by dropping in a mail at <a href="mailto:contact@Doctoronline.com"> contact@Doctoronline.com</a>. We would love to hear from you. </h3>
+					<h3>If you are a Healthcare provider, Doctor, Psychologist, Nutritionist or a Dietician.We need you!Make a difference in the world today by joining hands with "Doctor online". If our platform interests you, please tell us a little something about yourself and your work by dropping in a mail at <a href="mailto:contact@Doctoronline.com"> contact@Doctoronline.com</a> We would love to hear from you. </h3>
 				</div>
 			</div>
 		</div>

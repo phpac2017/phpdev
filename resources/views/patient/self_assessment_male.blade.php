@@ -72,7 +72,7 @@
 						<div class="col-md-4 col-sm-12">
 							<ul class="breadcrumbs-left">
 								<li>Home</li>
-								<li><a href="#">Edit Profile</a></li>
+								<li><a href="{{ url('self_assessment') }}">Self Assessment</a></li>
 							</ul>
 						</div>
 						<div class="col-md-8 col-sm-12 text-right">
@@ -179,31 +179,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -221,31 +221,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -262,31 +262,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -302,31 +302,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -342,31 +342,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -382,31 +382,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -422,31 +422,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -462,31 +462,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -502,31 +502,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -542,31 +542,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -583,31 +583,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -623,31 +623,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -663,31 +663,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -703,31 +703,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -743,31 +743,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -783,31 +783,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -823,31 +823,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -863,31 +863,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -903,31 +903,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -943,31 +943,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>
@@ -983,31 +983,31 @@
 												</h3>
 													<ul>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Dreum Ipsum yu</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Dreum Ipsum one</a>
 														</li>
 														<li>
-															<a href="#">Moreum Ipsudo</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moreum Ipsudo</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsukuso</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsukuso</a>
 														</li>
 														<li>
-															<a href="#">Voreum Ipsudui</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Voreum Ipsudui</a>
 														</li>
 														<li>
-															<a href="#">Oreum Ipsuoku</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Oreum Ipsuoku</a>
 														</li>
 														<li>
-															<a href="#">Koreum Ipsdoji</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Koreum Ipsdoji</a>
 														</li>
 														<li>
-															<a href="#">Moeum Ipsgdgor</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Moeum Ipsgdgor</a>
 														</li>
 														<li>
-															<a href="#">Loreum Ipsum one</a>
+															<a href="{{ url('patient/self_assessment_male_qa') }}">Loreum Ipsum one</a>
 														</li>
 													</ul>
 											</div>

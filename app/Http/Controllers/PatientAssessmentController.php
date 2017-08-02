@@ -54,4 +54,12 @@ class PatientAssessmentController extends Controller
     public function postSelfAssessmentFemaleQA(){
     	//return view('patient/');
     }
+
+    public function getScheduleAppointment(){
+        return view('patient/schedule_appointment');
+    }
+
+    public function getAppointment(){
+        return view('patient/book_appointment');
+    }
 }

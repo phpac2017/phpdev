@@ -120,7 +120,7 @@
 									<div id="navbar" class="navbar-collapse collapse">
 										<ul class="nav navbar-nav">
 											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">For Patient</a>
+												<a href="{{ url('doctor') }}">For Doctor</a>
 												<!--ul class="dropdown-menu sub-menus">
 													<li><a href="#">DSP Mixers</a></li>
 													<li><a href="#">Amplifiers</a></li>
@@ -167,8 +167,8 @@
 								<div class="col-lg-12">
 									<h1><strong>Are you feeling uneasy today? Want an unbiased second opinion? Let us help you connect with trustworthy and experienced doctors now. </h1>
 									<a href="{{ url('self_assessment') }}" class="btn patient_btn">Self Assesment</a>
-									<a href="{{ url('patient/book_appointment') }}" class="btn patient_btn">Appointment Now</a>
-									<a href="#" class="btn consult_btn">Consult Now</a>
+									<a href="{{ url('patient/get_appointment') }}" class="btn patient_btn">Appointment Now</a>
+									<a href="{{ url('patient/get_appointment') }}" class="btn consult_btn">Consult Now</a>
 								</div>
 							</div>
 						</div>
@@ -379,7 +379,7 @@
 							<h5>Dr. Jeffrey Samuel Co</h5>
 							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Dr. Jeffrey Samuel Co. is a General Surgeon in Santa Cruz, Manila. Dr. Jeffrey Samuel Co. practices at Chinese General Hospital and Medical Center in Santa Cruz, Manila. He completed Doctor of Medicine from University of Santo Tomas in 2010. He is a member of Society of Physician Entrepreneurs. Some of the services provided by the doctor are: Pancreas transplantation, Reconstructive, Microvascular Surgery, Cardio Thoracic Surgery, Cancer Surgery and Kidney Transplant etc. </p>
+							<p>Dr. Jeffrey Samuel Co. is a General Surgeon in Santa Cruz, Manila. Dr. Jeffrey Samuel Co. practices at Chinese General Hospital and Medical Center in Santa Cruz, Manila. He completed Doctor of Medicine from University of Santo Tomas in 2010. He is a member of Society of Physician Entrepreneurs. Pancreas transplantation, Reconstructive, Microvascular Surgery etc. </p>
 							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
@@ -409,7 +409,7 @@
 							<h5>Dr. Winnie Sharon Khoo</h5>
 							<span class="department_name">Doctor of Medicine</span>
 							<img src="{{ asset('images/star.png') }}" alt="" />
-							<p>Dr. Winnie Sharon Khoo is a Neurologist in Manila, Metro Manila and has an experience of 3 years in this field. Dr. Winnie Sharon Khoo practices at Chinese General Hospital and Medical Center in Manila, Metro Manila. She completed Doctor of Medicine from West Visayas State University College of Medicine in 2006. She is a member of Philippine Medical Association and Philippine Neurological Association (PNA). </p>
+							<p>Dr. Winnie Sharon Khoo is a Neurologist in Manila, Metro Manila and has an experience of 3 years in this field. Dr. Winnie Sharon Khoo practices at Chinese General Hospital and Medical Center in Manila, Metro Manila. She completed Doctor of Medicine from West Visayas State University College of Medicine in 2006. She is a member of Philippine Medical Association and (PNA). </p>
 							<p>Speaks: <strong>English, Chinese</strong></p>
 						</div>
 					</div>
