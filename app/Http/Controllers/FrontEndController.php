@@ -43,11 +43,14 @@ class FrontEndController extends Controller
 			if($getExistingEmail != array()){
 				if($getExistingEmail[0]['email']==''){
 					return 0;
+                    Log::info('Return Value is 0');
 				}else{
 					return 1;
+                    Log::info('Return Value is 1');
 				}
 			}else{
                 return 0;
+                Log::info('Return Value is 0');
             }
 		}else{			
 			return Redirect::to('/');
