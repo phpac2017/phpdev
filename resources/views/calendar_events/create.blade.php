@@ -50,7 +50,7 @@
 
 			<div class="calendarevents-create">
 				
-					<h1>CalendarEvents / Create </h1>
+					<h1>Events / Create </h1>
 
 				<div class="row">
 					<div class="col-md-12 create_events">
@@ -59,24 +59,24 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 							<div class="form-group">
-								 <label for="title">TITLE</label>
+								 <label for="title">Title</label>
 								 <input type="text" name="title" class="form-control" value=""/>
 							</div>
 								<div class="form-group">
-								 <label for="start">START</label>
+								 <label for="start">Start</label>
 								 <input type="text" name="start" class="form-control" id="datepicker" readonly/>
 							</div>
 								<div class="form-group">
-								 <label for="end">END</label>
+								 <label for="end">End</label>
 								 <input type="text" name="end" class="form-control" id="datepicker1" readonly/>
 							</div>
 								<div class="form-group">
-								 <label for="is_all_day">IS_ALL_DAY</label>
-								 <input type="text" name="is_all_day" class="form-control" value=""/>
+								 <label for="is_all_day">Is All Day</label>
+								 <input type="text" name="is_all_day" class="form-control" value="1" readonly="true" />
 							</div>
 								<div class="form-group">
-								 <label for="background_color">BACKGROUND_COLOR</label>
-								 <input type="text" name="background_color" class="form-control" value=""/>
+								 <label for="background_color">Background Color</label>
+								 <input type="text" name="background_color" class="form-control demo1" value="#418BCA"/>
 							</div>
 
 							{{ Form::hidden('user_id', $user_id, array('class' => 'form-control', 'id' => 'id')) }}
@@ -100,13 +100,15 @@
 
 @section('scripts')
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/responsive-tabs.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
+<link rel="stylesheet" href="{{ asset('css/jquery_ui.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/responsive-tabs.css') }}">
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script> 
+
 <script>
 $(document).ready(function(){
+	$(".demo1").colorpicker();
     $("#datepicker, #datepicker1").datepicker({ 
         autoclose: true, 
         todayHighlight: true,

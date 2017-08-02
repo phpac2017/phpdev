@@ -46,7 +46,9 @@ class FrontEndController extends Controller
 				}else{
 					return 1;
 				}
-			}
+			}else{
+                return 0;
+            }
 		}else{			
 			return Redirect::to('/');
 		}

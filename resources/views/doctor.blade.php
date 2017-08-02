@@ -52,8 +52,8 @@
 							<div class="col-md-12 text-right mob-icons">
 								<div class="language language-selector">
 									<select class="selectpicker" data-width="fit">
-										<option data-content='<span class="flag-icon flag-icon-in"></span> English (US)'>English (US)</option>
-										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chinese'>Chinese</option>
+										<option data-content='<span class="flag-icon flag-icon-in"></span> Eng'>English</option>
+										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chi'>Chinese</option>
 									</select>
 								</div>
 								@if(Auth::guest())

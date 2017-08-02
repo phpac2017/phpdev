@@ -50,7 +50,7 @@
 
 			<div class="calendarevents-create">
 
-				<h1>CalendarEvents</h1>
+				<h1>Events List</h1>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -58,12 +58,12 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>TITLE</th>
-								<th>START</th>
-								<th>END</th>
-								<th>IS_ALL_DAY</th>
-								<th>BACKGROUND_COLOR</th>
-								<th class="text-right">OPTIONS</th>
+								<th>Title</th>
+								<th>Start</th>
+								<th>End</th>
+								<th>Is All Day</th>
+								<th>Background Color</th>
+								<th class="text-right">Options</th>
 							</tr>
 						</thead>
 

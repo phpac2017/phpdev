@@ -59,23 +59,23 @@
 							<p class="form-control-static">{{$calendar_event->id}}</p>
 						</div>
 						<div class="form-group">
-							 <label for="title">TITLE</label>
+							 <label for="title">Title</label>
 							 <p class="form-control-static">{{$calendar_event->title}}</p>
 						</div>
 							<div class="form-group">
-							 <label for="start">START</label>
+							 <label for="start">Start</label>
 							 <p class="form-control-static">{{$calendar_event->start}}</p>
 						</div>
 							<div class="form-group">
-							 <label for="end">END</label>
+							 <label for="end">End</label>
 							 <p class="form-control-static">{{$calendar_event->end}}</p>
 						</div>
 							<div class="form-group">
-							 <label for="is_all_day">IS_ALL_DAY</label>
+							 <label for="is_all_day">Is All Dady</label>
 							 <p class="form-control-static">{{$calendar_event->is_all_day}}</p>
 						</div>
 							<div class="form-group">
-							 <label for="background_color">BACKGROUND_COLOR</label>
+							 <label for="background_color">Background Color</label>
 							 <p class="form-control-static">{{$calendar_event->background_color}}</p>
 						</div>
 				

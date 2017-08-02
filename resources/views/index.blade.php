@@ -57,8 +57,8 @@
 							<div class="col-md-12 text-right mob-icons">
 								<div class="language language-selector">
 									<select class="selectpicker" data-width="fit">
-										<option data-content='<span class="flag-icon flag-icon-in"></span> English (US)'>English (US)</option>
-										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chinese'>Chinese</option>
+										<option data-content='<span class="flag-icon flag-icon-in"></span> Eng'>English</option>
+										<option data-content='<span class="flag-icon flag-icon-cn"></span> Chi'>Chinese</option>
 									</select>
 								</div>
 								@if(Auth::guest())
@@ -78,7 +78,7 @@
 												$fold = 'patients/profile';
 											}
 										?>
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false"><span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/></span></button>
+										<button class="btn btn-default dropdown-toggle img_circular" type="button" data-toggle="dropdown" data-submenu="" aria-expanded="false"><span class="login-dropdown"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/></span></button>
 										<ul class="dropdown-menu">
 											<li><div class="u-user-head"><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/>
 											<div class="u-name"><a href="#" class="user_name">{{ Auth::user()->name }}</a><div class="number">{{ Auth::user()->mobile_number }}</div></div></div>
