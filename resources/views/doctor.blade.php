@@ -171,7 +171,7 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
-										<h1>Join our platform today and consult patients from across the world. Registration is free</strong></h1>
+										<h1>Join our platform today and consult patients from across the world. Registration is free</h1>
 										<a href="{{ url('login') }}" class="create_profile">Create your profile now</a>
 									</div>
 								</div>

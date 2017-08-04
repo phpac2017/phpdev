@@ -12,7 +12,7 @@
 	<title>Home</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
 	<!-- Custom CSS -->
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -193,7 +193,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
+									<h1>Face-to-face virtual consultation with doctors is now instant Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -203,7 +203,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
+									<h1>Face-to-face virtual consultation with doctors is now instant Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -213,7 +213,7 @@
 						<div class="slider-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Face-to-face virtual consultation with doctors is now instant</strong> Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
+									<h1>Face-to-face virtual consultation with doctors is now instant Consult with doctors at the click of a button without the hassles of long queue and long travel.</h1>
 								</div>
 							</div>
 						</div>
@@ -237,7 +237,7 @@
 			<div class="row">
 				<div class="col-lg-7 col-md-6 col-sm-12">
 					<div class="who-we-are animated fadeInUpShort">
-						<h1><span>Who</span> We are</h1>
+						<h1>Who We are</h1>
 						<p>We know how difficult it can be to get an appointment from a doctor with huge queues and hassles of travelling. Hence we’ve built an online platform for virtual face-to-face consultation with reputed doctors around the world. The doctors will now diagnose, treat the illness and conduct follow-ups using this portal at the comforts of your home.</p>
 						<p>This platform will also provide services such as on-time delivery of prescribed drugs, online medical record keeping, health management system and health insurance coverage. The medicines are sourced directly from the manufacturer hence are be available at a reduced cost to you. We aim at easing your and your family’s life and help you lead a healthy and happier life!</p>
 					</div>
@@ -253,7 +253,7 @@
 
 	<section class="our-commitments-bg animatedParent">
 		<div class="container">
-			<h1><span>Our</span> Commitments to the world</h1>
+			<h1>Our Commitments to the world</h1>
 			<div id="myCarousel1" class="carousel slide carousel-fade" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
@@ -318,7 +318,7 @@
 
 	<section class="our-specilisation-bg">
 		<div class="container">
-			<h1><span>Our</span> Specialisation</h1>
+			<h1>Our Specialisation</h1>
 			<div class="row">
 				<div class="our-specilisation animatedParent">
 					<div class="col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">
@@ -377,7 +377,7 @@
 
 	<section class="our-services-bg">
 		<div class="container">
-			<h1><span>Our</span> Services</h1>
+			<h1>Our Services</h1>
 			<div class="row">
 				<div class="our-services animatedParent">
 					<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 animated fadeInUpShort">

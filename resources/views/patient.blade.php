@@ -165,7 +165,7 @@
 						<div class="slider-overlay patient-overlay">
 							<div class="row">
 								<div class="col-lg-12">
-									<h1><strong>Are you feeling uneasy today? Want an unbiased second opinion? Let us help you connect with trustworthy and experienced doctors now. </h1>
+									<h1>Are you feeling uneasy today? Let us help you connect with trustworthy and experienced doctors now. </h1>
 									<a href="{{ url('self_assessment') }}" class="btn patient_btn">Self Assesment</a>
 									<a href="{{ url('patient/get_appointment') }}" class="btn patient_btn">Appointment Now</a>
 									<a href="{{ url('patient/get_appointment') }}" class="btn consult_btn">Consult Now</a>
@@ -225,7 +225,7 @@
 
 	<section class="our_process_bg animatedParent">
 		<div class="container animated fadeInUpShort">
-			<h1><span>Our</span> Process</h1>
+			<h1>Our Process</h1>
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
@@ -272,7 +272,7 @@
 						<img src="{{ asset('images/icon-1.png') }}" alt="" />
 						<h6>Step 6</h6>
 						<h5>Rate the doctor</h5>
-						<p>Just login/register to set up your account or download the app on your smartphone or mobile device. You can also call us for account assistance 24/7/365.</p>
+						<p>Your feedback is very important to us. Help us serve you better by giving us suggestions for improvement. Contact our customer care representatives at anytime.</p>
 					</div>
 				</div>
 			</div>
@@ -281,7 +281,7 @@
 
 	<section class="our_services_bg animatedParent">
 		<div class="container animated fadeInUpShort">
-			<h1><span>Our</span> Services</h1>
+			<h1>Our Services</h1>
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="our_services_description">
@@ -370,7 +370,7 @@
 
 	<section class="we_are_here_bg animatedParent">
 		<div class="container animated fadeInUpShort">
-			<h1><span>We are</span> Here for you</h1>
+			<h1>We are Here for you</h1>
 			<div class="row">
 				<div class="owl-carousel owl-theme">
 					<div class="col-md-12">

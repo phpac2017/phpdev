@@ -1,6 +1,9 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 }
+
+/* font-family: 'Lato', sans-serif; */
+
 a:hover, 
 a:focus {
 	text-decoration: none;
@@ -863,7 +866,7 @@ button, select {
 }
 .slider-overlay h1 {
 	color: #000;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	font-size: 36px;
 }
@@ -1084,9 +1087,10 @@ button, select {
 .we_are_here_bg h1, 
 .tips_news_bg h1 {
 	font-size: 45px;
-	font-weight: 700;
+	font-weight: 400;
 	color: #000;
 	margin-bottom: 50px;
+	font-family: 'Lato', sans-serif;
 }
 .who-we-are h1 span, 
 .our-specilisation-bg h1 span, 
@@ -1388,7 +1392,8 @@ button, select {
 .need-help h1, 
 .download-the-app h1 {
 	font-size: 50px;
-	font-weight: 700;
+	font-weight: 400;
+	font-family: 'Lato', sans-serif;
 	color: #fff;
 }
 .need-help p, 
@@ -2212,6 +2217,7 @@ label.specialist-cancer i {
 	color: #fff;
 	margin-top: 0;
 	line-height: 42px;
+	font-family: 'Lato', sans-serif;
 }
 .doctor_overlay h1 strong {
 	font-weight: 700;
@@ -2329,9 +2335,10 @@ label.specialist-cancer i {
 	font-size: 42px;
 	font-weight: 400;
 	color: #000;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	line-height: 50px;
 	margin-bottom: 20px;
+	font-family: 'Lato', sans-serif;
 }
 .doctor_profile_left h2 strong, 
 .doctor_profile_right h2 strong {
@@ -2583,7 +2590,8 @@ label.specialist-cancer i {
 }
 .testimonial_bg h1 {
 	font-size: 42px;
-	font-weight: 800;
+	font-weight: 400;
+	font-family: 'Lato', sans-serif;
 	line-height: 50px;
 	text-transform: uppercase;
 }
