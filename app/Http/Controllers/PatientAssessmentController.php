@@ -19,6 +19,8 @@ class PatientAssessmentController extends Controller
                 return Redirect::to('patient/self_assessment_female');
             }
         }else{
+	
+	    session()->flash('user_role',3);
             return Redirect::to('login');
         }
     }

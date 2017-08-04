@@ -123,7 +123,7 @@ class AuthController extends Controller
 				return Redirect::to('patient/dashboard');
 			}
     	}else{
-    		return view('Login');
+    		return view('login');
     	}
     }
 

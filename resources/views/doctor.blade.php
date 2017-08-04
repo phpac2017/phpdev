@@ -196,7 +196,7 @@
 			<div class="row">
 				<div class="col-md-7 col-sm-12">
 					<div class="doctor_profile_left">
-						<h2>ACCESS TO THOUSANDS OF NEW PATIENTS ACROSS THE GLOBE</h2>
+						<h2>Access to thousands of New Patients across the Globe</h2>
 						<h4>Through Doctor Online, the selected doctors can instantly connect with patients anytime, anywhere:</h4>
 						<ul>
 							<li>Easy patient discovery</li>
@@ -222,7 +222,7 @@
 			<div class="row">
 				<div class="col-md-7 col-sm-12">
 					<div class="doctor_profile_left">
-						<h2>IMMEDIATE AND INSTANT COMPENSATION</strong></h2>
+						<h2>Immediate and Instant Compensation</h2>
 						<h4>Dr.Online removes the uncertainities of medical career by providing substantial and immediate compensation to all our partners.</h4>
 						<ul>
 							<li>Get paid quickly; Money directly deposited to your bank account</li>
@@ -252,7 +252,7 @@
 				</div>
 				<div class="col-md-7 col-sm-12">
 					<div class="doctor_profile_left">
-						<h2>CHOOSE YOUR OWN TIMINGS AND PLACE OF WORK</h2>
+						<h2>Choose your own timings and place of work</h2>
 						<ul>
 							<li>Be your own boss by choosing your time of consultation</li>
 							<li>Plan and choose your work place</li>

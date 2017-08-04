@@ -70,9 +70,10 @@ Route::get('doctor', function () {
     return view('doctor');
 });
 
+
 Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'doctor', 'middleware' => ['role:doctor']], function() {
-
+		
 		//Dashboard Page
 		Route::get('dashboard', function () {
 		    return view('doctor/dashboard');

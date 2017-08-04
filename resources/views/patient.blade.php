@@ -229,7 +229,7 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-1.jpg') }}" alt="" />
 						<h6>Step 1</h6>
 						<h5>Set Up Your Account</h5>
 						<p>Just login/register to set up your account or download the app on your smartphone or mobile device. You can also call us for account assistance 24/7/365.</p>
@@ -237,7 +237,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-2.jpg') }}" alt="" />
 						<h6>Step 2</h6>
 						<h5>Contact Doctor Online</h5>
 						<p>After reviewing your electronic health record, you’ll be connected with a Doctor online in an average of 6 minutes and there’s no time limit on your eVisit.</p>
@@ -245,7 +245,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-3.jpg') }}" alt="" />
 						<h6>Step 3</h6>
 						<h5>Get Treatment</h5>
 						<p>Your Doctor online will provide personalized, high quality care, from diagnosis to treatment. Our board-certified ER physicians have earned a 98% patient satisfaction rating.</p>
@@ -253,7 +253,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-4.jpg') }}" alt="" />
 						<h6>Step 4</h6>
 						<h5>ePrescriptions Go Right to Your Pharmacy</h5>
 						<p>Any medications you might need will be sent electronically to the pharmacy you choose. Every eVisit is posted in your account and added to your electronic health record.</p>
@@ -261,7 +261,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-5.jpg') }}" alt="" />
 						<h6>Step 5</h6>
 						<h5>We Always Follow Up</h5>
 						<p>We’ll follow-up with you within 72 hours to be sure you’re happy with our service. If you’re still not feeling well, let us know and we’ll connect you with the doctor on call.</p>
@@ -269,7 +269,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="process_steps">
-						<img src="{{ asset('images/icon-1.png') }}" alt="" />
+						<img src="{{ asset('images/icon-6.jpg') }}" alt="" />
 						<h6>Step 6</h6>
 						<h5>Rate the doctor</h5>
 						<p>Your feedback is very important to us. Help us serve you better by giving us suggestions for improvement. Contact our customer care representatives at anytime.</p>
