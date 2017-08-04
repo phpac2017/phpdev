@@ -17,11 +17,11 @@ class CreateDoctorProfile extends Migration
             $table->increments("id");
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string("title",10))->nullable();
-            $table->string("city",50))->nullable();
-            $table->string("experience",10))->nullable();
+            $table->string("title",10)->nullable();
+            $table->string("city",50)->nullable();
+            $table->string("experience",10)->nullable();
             $table->text('description')->nullable();
-            $table->string("profile_pic"))->nullable();
+            $table->string("profile_pic")->nullable();
         });
     }
 

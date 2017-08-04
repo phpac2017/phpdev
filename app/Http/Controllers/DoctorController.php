@@ -206,12 +206,13 @@ class DoctorController extends Controller
   public function getDocuments()
   {
     $user_id = \Auth::user()->id;
-    $doctor_documents = $doc_docs = array();
+    $doctor_documents = $doc_docs = $doctor_files = $doc_files = array();
     $doctor_documents = \App\tblDoctor_Documents::selectRaw('*')->where('user_id', $user_id)->get()->toArray();
+	$doctor_files = \App\tblDoctor_Files::selectRaw('*')->where('user_id', $user_id)->get()->toArray();
     //echo "<pre>";print_r($doctor_education);print_r($doctor_specialization);exit;
 
     //echo "<pre>";print_r($doc);exit;
-    return view('doctor/registration_documents',compact('doctor_documents'));
+    return view('doctor/registration_documents',compact('doctor_documents','doctor_files'));
   }
 
   /**
@@ -284,8 +285,6 @@ class DoctorController extends Controller
   public function updateDocuments(User $user, Request $request)
   {
     //echo "<pre>";print_r($request->all());//exit;
-    
-    
     $cr_no = $request->get('cr_no');
     $council = $request->get('council');
     $year = $request->get('year');
@@ -298,7 +297,7 @@ class DoctorController extends Controller
       $safeName = str_random(10) . '.' . $extension;
       $file->move($destinationPath, $safeName);
     }else{
-      $safeName = 'def_img.png';
+      $safeName = '';
     }
 
     $cr_count = count($request->get('cr_no'));
@@ -316,7 +315,6 @@ class DoctorController extends Controller
           $docReg->council_reg_no   = $cr_no[$c];
           $docReg->council_name      = $council[$c];
           $docReg->year = $year[$c];
-          $docReg->documents = $safeName;
           if($docReg->save()){
             $docReg_LID = $docReg->id;
             Log::info("tblDoctor_Documents Details Inserted");
@@ -334,7 +332,6 @@ class DoctorController extends Controller
           $docReg->council_reg_no   = $cr_no[$c];
           $docReg->council_name      = $council[$c];
           $docReg->year = $year[$c];
-          $docReg->documents = $safeName;
           if($docReg->save()){
             $docReg_LID = $docReg->id;
             Log::info("tblDoctor_Documents Details Inserted");
@@ -348,6 +345,19 @@ class DoctorController extends Controller
       }
         
     }
+	
+	if($safeName!=''){
+		$docFile = new \App\tblDoctor_Files;
+		$docFile->user_id = $user_id;
+		$docFile->documents   = $safeName;
+		if($docFile->save()){
+			$docFile_LID = $docFile->id;
+			Log::info("tblDoctor_Files Details Inserted");
+			Log::info("tblDoctor_Files Last Inserted ID - ".$docFile_LID);
+		}else{
+			Log::info("There were issues while inserting tblDoctor_Files Details");
+		}
+	}
     
     // Redirect to the user page
     return Redirect::to('doctor/documents');

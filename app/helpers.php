@@ -94,7 +94,7 @@ if(! function_exists('getProfilePic')){
 			$doc_city = "";
 			$doc_exp = "";
 			$doc_des = "";
-			$imgsrc = "def_img.png";
+			$imgsrc = "random-avatar7.jpg";
 
 		}
 		return $imgsrc;

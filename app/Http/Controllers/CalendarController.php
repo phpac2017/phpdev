@@ -31,7 +31,7 @@ class CalendarController extends Controller
             Carbon::today()->setTime(23, 59),
             null,
             [
-                'color' => '#0F0',
+                'color' => '#0e8fbc',
                 'url' => 'http://google.com',
             ]
         );

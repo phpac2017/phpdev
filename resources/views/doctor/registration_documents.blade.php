@@ -142,6 +142,15 @@
 							<span>Drop or <input name="profile_pic" type="file" id="profile_pic" accept="image/*">Upload Photos</a></span>
 						</div>
 					</div>
+					<?php if($doctor_files != array()) {
+						foreach($doctor_files as $dd_key => $dd){ 
+							$count = $dd_key+1;
+					?>
+						<p class="upld_list"> Your Recently uploaded files.. </p>
+						<p><?php echo $count." - ".$dd['documents'];?></p>
+					<?php } } else {?>
+						<p class="upld_list_emp"> You didn't upload any files recently. </p>
+					<?php }?>
 				{{ Form::close() }}
 					<div class="next-page-btn">
 						<div class="text-right">

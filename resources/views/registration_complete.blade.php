@@ -42,7 +42,8 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="home1">
 							<div class="form-group">
-								<label for="usr">A verification code has been sent to your email. Please check your account and verify.</label>
+								<!--<label for="usr">A verification code has been sent to your email. Please check your account and verify.</label>-->
+								<label for="usr">Registration has been completed Successfully.</label><a href="{{ url('login') }}" class="btn btn-formsubmit password-btn">Login</a>
 							</div>
 						</div>
 					</div>

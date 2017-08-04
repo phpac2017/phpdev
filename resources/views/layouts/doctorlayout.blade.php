@@ -42,12 +42,20 @@
 		@if (!Auth::guest())
 		<div class="user-profile">			
 			<ul class="user-img dr-user-img">
+				<?php 
+					$userid = Auth::user()->id;
+					$imgsrc = call_user_func('getProfilePic', $userid);
+					$role = Auth::user()->roles->first()->name;
+					if($role==='admin'){
+						$fold = 'admin/profile';
+					}elseif($role==='doctor'){
+						$fold = 'doctors/profile';
+					}else{
+						$fold = 'patients/profile';
+					}
+				?>
 				<li>
-					<?php 
-						$userid = Auth::user()->id;
-						$imgsrc = call_user_func('getProfilePic', $userid);
-					?>
-					<span><img src="{{ asset('uploads/doctors/profile/').'/'.$imgsrc}}" alt="" /></span>
+					<span><img src="{{ asset('uploads/').'/'.$fold.'/'.$imgsrc}}" alt=""/></span>
 				</li>
 				<li>
 					Welcome,

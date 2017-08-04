@@ -5300,3 +5300,12 @@ label.error{
 .top-space{
 margin-top:10px;
 }
+.upld_list{
+	color:#0e8fbc;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+.upld_list_emp{
+	color:#FF0000;
+	font-weight:bold;
+}

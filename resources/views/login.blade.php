@@ -274,8 +274,7 @@
 	<script>
 	$(document).ready(function(){
 
-		
-		
+		var mode = '<?php echo session('user_role');?>';
 		$("#user_role").on('change',function(){
 			if($( "#user_role option:selected" ).text()=='Patient'){
 				$(".doctor-fields").hide();
@@ -285,10 +284,19 @@
 			
 		});
 		
-		//Determine User Type
-		@if(session('user_role',2)==3)
+		if(mode==2){
+			$("#user_role").select2("enable", false);
+			$(".doctor-fields").show();
+		}else if(mode==3){
+			$("#user_role").select2("enable", false);
 			$(".doctor-fields").hide();
-		@endif
+		}else{
+			$(".doctor-fields").show();
+		}
+		//Determine User Type
+		//@if(session('user_role',2)==3)
+			//$(".doctor-fields").hide();
+		//@endif
 
 		//Forgot Pasword form hide and login form show
 		$("#bck-to-login").on('click',function(){
